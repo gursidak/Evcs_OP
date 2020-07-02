@@ -1,0 +1,48 @@
+.body {
+  background-color: #EC1B21;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: white;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.body .content-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: top;
+      -ms-flex-pack: top;
+          justify-content: top;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.body .content-box img {
+  width: 30vmax;
+  height: 50vmin;
+  margin-top: 100px;
+}
+
+.body .content-box h1 {
+  margin: none;
+  position: fixed;
+  bottom: 1vh;
+  font-size: inherit;
+}
+/*# sourceMappingURL=Logo.css.map */
