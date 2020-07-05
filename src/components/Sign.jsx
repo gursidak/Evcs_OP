@@ -13,8 +13,13 @@ class Sign extends Component {
 
         this.state={
             activelog : 0,
-            imageUploaded:null
+            imageUploaded:null,
+            mobileNo:"",
+
+
         };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
         changeState(activeId){
             this.setState({activelog: activeId});
@@ -22,8 +27,20 @@ class Sign extends Component {
 
         fileSelector(event){
             this.setState( {imageUploaded: event.target.files[0]
+                }
+            )
         }
-        )
+
+        handleChange(event){
+
+            this.setState({mobileNo:event.target.value})
+
+        }
+
+        handleSubmit(event){
+            console.log('values are submitted successfully : ' + this.state.mobileNo);
+            event.preventDefault();
+
         }
 
         toggleinup(){
@@ -31,12 +48,12 @@ class Sign extends Component {
            if(this.state.activelog===0) {
                return( 
                 <div>
-                <form className='sign-in-form'>
+                <form className='sign-in-form' onSubmit={this.handleSubmit} >
 
                     <h3>GATS Charging Station</h3><br/>
                     <div className='input-box'>
                     <i className='fa fa-phone'></i>
-                    <input type='tel'minLength='10' pattern="-?[0-9]*(\.[0-9]+)?" maxLength='10' placeholder='Enter your phone number'></input>
+                    <input type='tel'minLength='10' value={this.state.mobileNo} onChange={this.handleChange} pattern="-?[0-9]*(\.[0-9]+)?" maxLength='10' placeholder='Enter your phone number'></input>
                     <Button type='button' id='submitphone' onClick={()=> this.changeState(3)}> <i className='fa fa-arrow-right' ></i></Button>
                     </div>
                 </form>
@@ -48,7 +65,8 @@ class Sign extends Component {
             return(
                 <div>
                      <h4> Enter verification code </h4>
-                 <div className='otp-boxes' style={{textAlign:'center' , justifyContent:'center'}}>
+                    <div className='otp-boxes' style={{textAlign:'center' , justifyContent:'center'}}>
+                        
                         <div style={{display:'flex' , alignItems:'center' }}>
                             <input className='otp-input' style={{width:'3rem', height:'3rem' , fontSize:'2rem' , textAlign:'center'}} maxLength='1'  ></input>
                         </div>
@@ -60,7 +78,8 @@ class Sign extends Component {
                         </div>
                         <div style={{display:'flex' , alignItems:'center' }}>
                             <input className='otp-input' style={{width:'3rem', height:'3rem' , fontSize:'2rem' , textAlign:'center'}} maxLength='1' ></input>
-                        </div>                     <div style={{display:'flex' , alignItems:'center' }}>
+                        </div>                     
+                        <div style={{display:'flex' , alignItems:'center' }}>
                             <input className='otp-input' style={{width:'3rem', height:'3rem' , fontSize:'2rem' , textAlign:'center'}} maxLength='1' ></input>
                         </div>                        
                         <div style={{display:'flex' , alignItems:'center' }}>
@@ -73,21 +92,23 @@ class Sign extends Component {
             );
         }
 
-
-
-
-
-
-
            else if(this.state.activelog === 1){
              return (
                  <div className="addVehicleInfo">
 
-                            <form className="form-elements">
+                            <form className="form-elements" >
                             <Textfield
                                 style={{fontSize:'60px'}}
                                 onChange={() => {}}
-                                label= "Good Name..."
+                                label= "Station Name..."
+                                maxLength='100'
+                                style={{width: '300px' , color:'black' }}
+                            />
+                            <br />
+                            <Textfield
+                                style={{fontSize:'60px'}}
+                                onChange={() => {}}
+                                label= "Owner Name...(As on Adhaar Card)"
                                 maxLength='30'
                                 style={{width: '300px' , color:'black' }}
                             />
@@ -95,23 +116,21 @@ class Sign extends Component {
                             <Textfield
                                 style={{fontSize:'60px'}}
                                 onChange={() => {}}
-                                pattern="-?[0-9]*(\.[0-9]+)?"
-                                error="Input is not a number!"
-                                label="Contact Number..."
-                                maxLength='10'
-                                disabled
-                                style={{width: '300px'}}
-                             /> 
+                                label= "GSTIN"
+                                maxLength='15'
+                                style={{width: '300px' , color:'black' }}
+                            />
                             <br/>
                             <Textfield
                                 style={{fontSize:'60px'}}
-                                onChange={() => {}}
+                                value=""
+                                onChange={() => {  }}
                                 label= "EMAIL_ID..."
                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                 error="enter a valid email-address"
                                 style={{width: '300px' , color:'black' }}
                             />
-                        <Button raised accent ripple style={{ background:'red'  }} onClick={()=>this.changeState(2)}>ADD VEHICLE INFO</Button>
+                        <Button raised accent ripple style={{ background:'red'  }} onClick={()=>this.changeState(2)}>ADD STATION INFO</Button>
                         </form>
                  </div>
              )   
@@ -120,23 +139,38 @@ class Sign extends Component {
             else if(this.state.activelog === 2){
                 return (
                   <div className = 'submit-page' >
+
+                            <br/>
+
                             <Textfield
                                 style={{fontSize:'60px'}}
                                 onChange={() => {}}
-                                label= "REG NO."
-                                maxLength=''
+                                label= "BANK ACCOUNT NUMBER"
+                                maxLength='18'
                                 style={{width: '300px' , color:'black' }}
                             />
+                            
                             <br/>
-                            <label style={{fontSize:'18px' , textAlign:'center'}}>Upload RC : </label>
-                            <input style={{margin:'0 auto' , justifyContent:'center' , alignContent:'center' , fontSize:'0.2em'}} type='file' onChange ={ (event) =>(this.fileSelector(event))} ></input>
-                            <br/><br/>
-                            <select placeholder='place' style={{width:'100%'}}>
-                                <option>Select RC type</option>
-                                <option>option1</option>
-                                <option>option2</option>
-                            </select>
+                            
+                            <Textfield
+                                style={{fontSize:'60px'}}
+                                onChange={() => {}}
+                                label= "BANK IFSC CODE"
+                                maxLength='11'
+                                style={{width: '300px' , color:'black' }}
+                            />
+                            
                             <br/>
+                            
+                            <Textfield
+                                style={{fontSize:'60px'}}
+                                onChange={() => {}}
+                                label= "ADHAAR NUMBER"
+                                maxLength='12'
+                                style={{width: '300px' , color:'black' }}
+                            />
+
+                            <br />
                        <Button raised accent ripple  style={{ background:'red' }}> SUBMIT </Button>
                   </div>
                 )               
