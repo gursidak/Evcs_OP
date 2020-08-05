@@ -168,8 +168,8 @@
 }
 
 .sign-box .Sign .otp-input {
-  border-style: double;
-  border-radius: 25%;
+  border-style: solid;
+  /* border-radius: 25%; */
   margin: 0.15em;
   outline: none;
 }
