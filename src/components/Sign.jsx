@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './Css/App.css'
-import ReactMDL from 'react-mdl';
-import { Textfield, Button, Card, Grid, Cell } from 'react-mdl';
-// import { Link } from 'react-router-dom';
+import { Button, Grid, Cell } from 'react-mdl';
 import Carousel from './Carousel'
 import LOGO from './logo.jpg'
 import OtpInput from 'react-otp-input';
+import TextField from '@material-ui/core/TextField';
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+
 import './Sign.css'
 
 class Sign extends Component {
-
     constructor(props) {
         super(props);
 
@@ -35,18 +35,24 @@ class Sign extends Component {
     handleOTPChange = otp => this.setState({ otp: otp });
 
     handleChange(event) {
-
         this.setState({ mobileNo: event.target.value })
-
     }
 
     handleSubmit(event) {
         console.log('values are submitted successfully : ' + this.state.mobileNo);
         event.preventDefault();
-
     }
 
     toggleinup() {
+        const color = "#f00";
+        const black = '000000';
+        const theme = createMuiTheme({
+            palette: {
+                common: { black: color, white: color },
+                primary: { main: color, dark: color, light: color },
+                text: { primary: black, secondary: black }
+            }
+        });
 
         if (this.state.activelog === 0) {
             return (
@@ -80,7 +86,7 @@ class Sign extends Component {
                         inputStyle="otp-input"
                         focusStyle="focus-style"
                     />
-                    <Button disabled={isDisabled} onClick={() => this.changeState(1)}>{text}</Button>
+                    <Button className="otp-button" disabled={isDisabled} onClick={() => this.changeState(1)}>{text}</Button>
                 </div>
             );
         }
@@ -88,42 +94,23 @@ class Sign extends Component {
         else if (this.state.activelog === 1) {
             return (
                 <div className="addVehicleInfo">
-
-                    <form className="form-elements" >
-                        <Textfield
-                            style={{ fontSize: '60px' }}
-                            onChange={() => { }}
-                            label="Station Name..."
-                            maxLength='100'
-                            style={{ width: '300px', color: 'black' }}
-                        />
-                        <br />
-                        <Textfield
-                            style={{ fontSize: '60px' }}
-                            onChange={() => { }}
-                            label="Owner Name...(As on Adhaar Card)"
-                            maxLength='30'
-                            style={{ width: '300px', color: 'black' }}
-                        />
-                        <br />
-                        <Textfield
-                            style={{ fontSize: '60px' }}
-                            onChange={() => { }}
-                            label="GSTIN"
-                            maxLength='15'
-                            style={{ width: '300px', color: 'black' }}
-                        />
-                        <br />
-                        <Textfield
-                            style={{ fontSize: '60px' }}
-                            value=""
-                            onChange={() => { }}
-                            label="EMAIL_ID..."
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                            error="enter a valid email-address"
-                            style={{ width: '300px', color: 'black' }}
-                        />
-                        <Button raised accent ripple style={{ background: 'red' }} onClick={() => this.changeState(2)}>ADD STATION INFO</Button>
+                    <form className="info-form" >
+                        <MuiThemeProvider theme={theme}>
+                            <TextField
+                                label="GSTIN Number"
+                                maxLength='100'
+                                type="text"
+                                autofocus
+                            />
+                            <br />
+                            <TextField
+                                label="Aadhar Number"
+                                maxLength='30'
+                                type="text"
+                            />
+                            <br />
+                        </MuiThemeProvider>
+                        <Button className="otp-button" onClick={() => this.changeState(2)}>ADD INFO</Button>
                     </form>
                 </div>
             )
@@ -131,49 +118,37 @@ class Sign extends Component {
 
         else if (this.state.activelog === 2) {
             return (
-                <div className='submit-page' >
-
-                    <br />
-
-                    <Textfield
-                        style={{ fontSize: '60px' }}
-                        onChange={() => { }}
-                        label="BANK ACCOUNT NUMBER"
-                        maxLength='18'
-                        style={{ width: '300px', color: 'black' }}
-                    />
-
-                    <br />
-
-                    <Textfield
-                        style={{ fontSize: '60px' }}
-                        onChange={() => { }}
-                        label="BANK IFSC CODE"
-                        maxLength='11'
-                        style={{ width: '300px', color: 'black' }}
-                    />
-
-                    <br />
-
-                    <Textfield
-                        style={{ fontSize: '60px' }}
-                        onChange={() => { }}
-                        label="ADHAAR NUMBER"
-                        maxLength='12'
-                        style={{ width: '300px', color: 'black' }}
-                    />
-
-                    <br />
-                    <Button raised accent ripple style={{ background: 'red' }}> SUBMIT </Button>
+                <div className="addVehicleInfo">
+                    <form className="info-form" >
+                        <MuiThemeProvider theme={theme}>
+                            <TextField
+                                label="Bank A/C Holder Name"
+                                maxLength='100'
+                                type="text"
+                                autofocus
+                            />
+                            <br />
+                            <TextField
+                                label="Bank A/C Number"
+                                maxLength='30'
+                                type="text"
+                            />
+                            <br />
+                            <TextField
+                                label="IFSC Code"
+                                maxLength='30'
+                                type="text"
+                            />
+                            <br />
+                        </MuiThemeProvider>
+                        <Button className="otp-button" onClick={() => this.changeState(2)}>SUBMIT</Button>
+                    </form>
                 </div>
             )
-
         }
     }
 
-
     render() {
-
         return (
             <div className="sign-box">
                 <link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
@@ -199,9 +174,7 @@ class Sign extends Component {
 
             </div>
         )
-
     }
 }
 
 export default Sign;
-
