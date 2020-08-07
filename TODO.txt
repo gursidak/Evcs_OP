@@ -22,6 +22,3 @@ Show all bookings (current)
 Edit bank a/c: hover below & edit & SUBMIT
 
 online & offline status -> active / inactive status
-
-
-

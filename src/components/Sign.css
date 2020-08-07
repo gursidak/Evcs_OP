@@ -9,7 +9,6 @@ input {
 
 .input-style {
     margin-right: 0.1em;
-    /* border-radius: 0.1em; */
 }
 
 .focus-style {
@@ -35,14 +34,12 @@ input {
 }
 
 .addVehicleInfo {
-    /* border: 2px solid blue; */
     width: 500px;
 }
 
 .info-form {
     border: 2px solid red;
     width: 400px;
-    /* padding: 5em; */
     margin: auto;
 }
 
@@ -69,6 +66,7 @@ input {
     color: rgba(0, 0, 0, 0.233) !important;
 }
 
-.ujk {
-    color: #000000;
+.input-box Button:disabled {
+    background-color: rgba(255, 0, 0, 0.404) !important;
+    color: rgba(0, 0, 0, 0.233) !important;
 }
