@@ -25,7 +25,12 @@ class Sign extends Component {
             otp: '',
             aadharNumber: '',
             gstin: '',
-            showWarning: false
+            showWarning: false,
+            place: '',
+            location: {
+                lat: '',
+                lng: ''
+            }
         };
     }
 
@@ -78,8 +83,12 @@ class Sign extends Component {
         }
     }
 
-    handleFileAndLocation = () => {
+    handleLocation = (location) => {
+        this.setState({ location: location });
+    }
 
+    handlePlace = (place) => {
+        this.setState({ place: place });
     }
 
     toggleinup() {
@@ -206,6 +215,7 @@ class Sign extends Component {
                 <FindLocation
                     theme={theme}
                     changeState={this.changeState}
+                    handlePlace={this.handlePlace}
                 />
             )
         }

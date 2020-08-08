@@ -12,6 +12,7 @@
     "react": "^16.13.1",
     "react-browser-router": "^2.1.2",
     "react-dom": "^16.13.1",
+    "react-geocode": "^0.2.1",
     "react-mdl": "^2.1.0",
     "react-otp-input": "^2.0.2",
     "react-owl-carousel": "^2.3.1",
