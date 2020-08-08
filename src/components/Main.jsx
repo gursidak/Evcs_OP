@@ -11,7 +11,8 @@ export default function Main() {
             <Route exact path='/' component={Landing} />
             <Route path='/main' component={MainView} />
             <Route path='/sign' component={Sign} />
-            <Route path='/carousel' component={Carousel} />
+            <Route path='/carousel' component={Carousel}
+            />
         </switch>
     );
 }

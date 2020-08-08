@@ -6,9 +6,13 @@ import LOGO from './logo.jpg'
 import OtpInput from 'react-otp-input';
 import TextField from '@material-ui/core/TextField';
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
-import FormSnackBar from './FormSnackBar'
+import FirstForm from './FirstForm';
 import validator from 'gstin-validator';
-import './Sign.css'
+import FileAndLocation from './FileAndLocation';
+import FindLocation from './FindLocation'
+// import FormSnackBar from './FormSnackBar'
+
+import './Sign.css';
 
 class Sign extends Component {
     constructor(props) {
@@ -63,16 +67,19 @@ class Sign extends Component {
         const gstin = e.target.value;
         if (gstin.length > 15) return;
         this.setState({ gstin: gstin })
+        // if (!validator.isValidGSTNumber( this.state.gstin)) return <FormSnackBar />
     }
 
     handleFirstForm = (e) => {
-        // e.preventDefault();
         if (validator.isValidGSTNumber(this.state.gstin)) {
-            this.changeState(2);
+            this.changeState(3);
         } else {
-            // this.setState({ showWarning: false });
-            this.setState(() => { return { showWarning: true } });
+            this.setState({ showWarning: true });
         }
+    }
+
+    handleFileAndLocation = () => {
+
     }
 
     toggleinup() {
@@ -107,7 +114,7 @@ class Sign extends Component {
                             <Button
                                 type='button'
                                 id='submitphone'
-                                onClick={() => this.changeState(3)}
+                                onClick={() => this.changeState(1)}
                                 disabled={isDisabled}
                             > <i className='fa fa-arrow-right' ></i>
                             </Button>
@@ -117,7 +124,7 @@ class Sign extends Component {
             )
         }
 
-        else if (this.state.activelog === 3) {
+        else if (this.state.activelog === 1) {
             const isDisabled = this.state.otp.length < 4;
             const text = isDisabled ? "ENTER OTP" : "VERIFY AND PROCEED";
             return (
@@ -136,52 +143,32 @@ class Sign extends Component {
                     <Button
                         className="otp-button"
                         disabled={isDisabled}
-                        onClick={() => this.changeState(1)}
+                        onClick={() => this.changeState(2)}
                     >{text}</Button>
                 </div>
             );
         }
 
-        else if (this.state.activelog === 1) {
+        else if (this.state.activelog === 2) {
             const showAadhar = this.state.aadharNumber.replace(/(.{4})/g, '$1 ').trim();
-            const isDisabled = this.state.gstin.length !== 15 || this.state.aadharNumber.length !== 12;
             // 12AAACI1681G1Z0 : Use as a valid GSTIN
+            console.log(`showWarning before passing: ${this.state.showWarning}`);
             return (
-                <div className="addVehicleInfo">
-                    {validator.isValidGSTNumber(this.state.gstin) ? "YES" : "NO"}
-                    {this.state.showWarning ? <FormSnackBar /> : ""}
-                    <form className="info-form" >
-                        <MuiThemeProvider theme={theme}>
-                            <TextField
-                                label="GSTIN Number"
-                                maxLength='15'
-                                type="text"
-                                autoFocus
-                                onChange={this.handleGSTIN}
-                                value={this.state.gstin}
-                            />
-                            <br />
-                            <TextField
-                                label="Aadhar Number"
-                                maxLength='12'
-                                type="text"
-                                onChange={this.handleAadhar}
-                                value={showAadhar}
-                            />
-                            <br />
-                        </MuiThemeProvider>
-                        <Button
-                            type="button"
-                            className="otp-button"
-                            disabled={isDisabled}
-                            onClick={this.handleFirstForm}
-                        >ADD INFO</Button>
-                    </form>
-                </div>
+                <FirstForm
+                    theme={theme}
+                    showAadhar={showAadhar}
+                    // isDisabled={isDisabled}
+                    gstin={this.state.gstin}
+                    showWarning={this.state.showWarning}
+                    handleGSTIN={this.handleGSTIN}
+                    handleAadhar={this.handleAadhar}
+                    handleFirstForm={this.handleFirstForm}
+                    aadharNumber={this.state.aadharNumber}
+                />
             )
         }
 
-        else if (this.state.activelog === 2) {
+        else if (this.state.activelog === 3) {
             return (
                 <div className="info-form">
                     <MuiThemeProvider theme={theme}>
@@ -205,8 +192,21 @@ class Sign extends Component {
                         />
                         <br />
                     </MuiThemeProvider>
-                    <Button className="otp-button">SUBMIT</Button>
+                    <Button className="otp-button" onClick={() => this.changeState(4)}>SUBMIT</Button>
                 </div>
+            )
+        } else if (this.state.activelog === 4) {
+            return (
+                <FileAndLocation
+                    changeState={this.changeState}
+                />
+            )
+        } else if (this.state.activelog === 5) {
+            return (
+                <FindLocation
+                    theme={theme}
+                    changeState={this.changeState}
+                />
             )
         }
     }

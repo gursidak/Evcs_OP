@@ -70,3 +70,27 @@ input {
     background-color: rgba(255, 0, 0, 0.404) !important;
     color: rgba(0, 0, 0, 0.233) !important;
 }
+
+.file-upload-form {
+    border: 2px solid red;
+    width: 500px;
+    font-size: 0.3em;
+    margin-right: auto;
+}
+
+.file-upload-form Button {
+    background-color: red;
+    color: white;
+    width: 80%;
+}
+
+.file-upload-form Button:hover {
+    background-color: red;
+    color: white;
+    width: 80%;
+}
+
+.file-upload-form Button:disabled {
+    background-color: rgba(255, 0, 0, 0.404) !important;
+    color: rgba(0, 0, 0, 0.233) !important;
+}
