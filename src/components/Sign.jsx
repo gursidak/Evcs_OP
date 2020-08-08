@@ -208,6 +208,8 @@ class Sign extends Component {
             return (
                 <FileAndLocation
                     changeState={this.changeState}
+                    handlePlace={this.handlePlace}
+                    handleLocation={this.handleLocation}
                 />
             )
         } else if (this.state.activelog === 5) {
@@ -216,6 +218,9 @@ class Sign extends Component {
                     theme={theme}
                     changeState={this.changeState}
                     handlePlace={this.handlePlace}
+                    handleLocation={this.handleLocation}
+                    place={this.state.place}
+                    location={this.state.location}
                 />
             )
         }

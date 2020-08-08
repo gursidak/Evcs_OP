@@ -2,8 +2,10 @@ import React from 'react'
 import './Sign.css';
 import { Button } from 'react-mdl';
 
-export default function FileAndLocation({ changeState }) {
+export default function FileAndLocation({ changeState, handlePlace, handleLocation }) {
     const onClick = () => {
+        handlePlace('');
+        handleLocation({});
         changeState(5);
     }
 
