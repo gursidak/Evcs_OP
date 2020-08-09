@@ -11,6 +11,7 @@ import validator from 'gstin-validator';
 import FileAndLocation from './FileAndLocation';
 import FindLocation from './FindLocation'
 // import FormSnackBar from './FormSnackBar'
+import Map from './Map'
 
 import './Sign.css';
 
@@ -30,7 +31,8 @@ class Sign extends Component {
             location: {
                 lat: '',
                 lng: ''
-            }
+            },
+            useGPS: true
         };
     }
 
@@ -90,6 +92,12 @@ class Sign extends Component {
     handlePlace = (place) => {
         this.setState({ place: place });
     }
+
+    handleUseGPS =  val => {
+        this.setState({useGPS: val})
+    }
+
+    
 
     toggleinup() {
         const color = "#f00";
@@ -161,7 +169,6 @@ class Sign extends Component {
         else if (this.state.activelog === 2) {
             const showAadhar = this.state.aadharNumber.replace(/(.{4})/g, '$1 ').trim();
             // 12AAACI1681G1Z0 : Use as a valid GSTIN
-            console.log(`showWarning before passing: ${this.state.showWarning}`);
             return (
                 <FirstForm
                     theme={theme}
@@ -210,6 +217,10 @@ class Sign extends Component {
                     changeState={this.changeState}
                     handlePlace={this.handlePlace}
                     handleLocation={this.handleLocation}
+                    place={this.state.place}
+                    location={this.state.location}
+                    handleGPS={this.handleGPS}
+                    useGPS={this.state.useGPS}
                 />
             )
         } else if (this.state.activelog === 5) {
@@ -221,7 +232,12 @@ class Sign extends Component {
                     handleLocation={this.handleLocation}
                     place={this.state.place}
                     location={this.state.location}
+                    handleUseGPS={this.handleUseGPS}
                 />
+            )
+        } else if (this.state.activelog === 6) {
+            return (
+                <Map />
             )
         }
     }

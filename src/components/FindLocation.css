@@ -7,10 +7,6 @@
     display: flex;
 }
 
-.enter-location TextField {
-    width: 80%
-}
-
 .MuiFormControl-root, MuiTextField-root {
     width: 100%
 }
@@ -31,23 +27,19 @@
     background-color: white;
 }
 
-.enter-location {
+.location-list-container {
     margin-top: 0.5em;
-    /* margin-left: 0; */
     width: 80%;
     font-size: 0.3em;
     padding-left: 0;
-    /* margin-left: 0; */
 }
 .location-item {
     border-bottom: 2px solid rgba(240, 240, 240, 0.068);
     padding-top: 1em;
-    /* margin-bottom: 1em; */
     padding-bottom: 1em;
     padding-left: 0;
     font-size: 0.9em;
     cursor: pointer;
-    /* left: 0; */
 }
 
 #main-text {
@@ -58,9 +50,6 @@
 #secondary-text {
     font-weight: bold;
     padding-left: 0;
-    /* font-weight: 200; */
     color: rgba(0, 0, 0, 0.438);
-    /* font-size: 0.6em; */
 }
-
 

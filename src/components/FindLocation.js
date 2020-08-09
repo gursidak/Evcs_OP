@@ -3,9 +3,11 @@ import TextField from '@material-ui/core/TextField';
 import { MuiThemeProvider } from "@material-ui/core";
 import { Button } from 'react-mdl';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import uniqid from 'uniqid';
 import './FindLocation.css';
 
-export default function FindLocation({ theme, place, location, changeState, handlePlace, handleLocation }) {
+export default function FindLocation({ theme, place, location, changeState, handlePlace, handleLocation, handleUseGPS }) {
     const handleSelect = async value => {
         const results = await geocodeByAddress(value);
         const latLng = await getLatLng(results[0]);
@@ -17,15 +19,9 @@ export default function FindLocation({ theme, place, location, changeState, hand
     const onClick = () => {
         handlePlace('');
         handleLocation({});
+        handleUseGPS(true);
         changeState(4);
     }
-
-    const updatePlace = (e) => {
-        const place = e.target.value;
-        // getLocation(place)
-        handlePlace(place);
-    }
-
     const className = 'location-item';
     return (
         <div className="find-location">
@@ -40,18 +36,18 @@ export default function FindLocation({ theme, place, location, changeState, hand
                 ></i>
                 </Button>
                 <PlacesAutocomplete
+                    // key={id}
                     value={place}
                     onChange={handlePlace}
                     onSelect={handleSelect}
+                    shouldFetchSuggestions={place.length > 1}
                 >
 
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                        <div className="enter-location">
+                        <div className="location-list-container">
                             <TextField {...getInputProps({ placeholder: "Set Location" })} />
-
+                            {loading ? <div key={uniqid}><CircularProgress /></div> : null}
                             <div>
-                                {loading ? <div>...loading</div> : null}
-
                                 {suggestions.map(suggestion => {
                                     const style = {
                                         backgroundColor: suggestion.active ? "#f0f0f0" : "#fff",
@@ -59,11 +55,11 @@ export default function FindLocation({ theme, place, location, changeState, hand
                                     };
 
                                     return (
-                                        <div  {...getSuggestionItemProps(suggestion, { className, style })}>
+                                        <div {...getSuggestionItemProps(suggestion, { className, style })}>
                                             <div id="main-text">
                                                 {suggestion.formattedSuggestion.mainText}
                                             </div>
-                                            <div id="secondary-text">
+                                            <div  id="secondary-text">
                                                 {suggestion.formattedSuggestion.secondaryText}
                                             </div>
                                         </div>
