@@ -23,6 +23,7 @@ import { mainListItems, secondaryListItems } from './ListItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import Card from './Card'
 import './styles.css'
 
 function Copyright() {
@@ -160,6 +161,7 @@ export default function Dashboard() {
                     paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
                 }}
                 open={open}
+                transitionDuration={500}
             >
                 <div className={classes.toolbarIcon}>
                     <IconButton onClick={handleDrawerClose}>
@@ -167,6 +169,7 @@ export default function Dashboard() {
                     </IconButton>
                 </div>
                 <Divider />
+                {/* <Card /> */}
                 <List>{mainListItems}</List>
                 {/* <Divider /> */}
                 {/* <List>{secondaryListItems}</List> */}
