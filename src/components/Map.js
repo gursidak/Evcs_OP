@@ -1,4 +1,5 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import Geocode from "react-geocode";
 import { Button } from 'react-mdl';
 import TextField from '@material-ui/core/TextField';
 import {
@@ -9,15 +10,8 @@ import {
 } from "react-google-maps";
 import './Sign.css';
 
-/* 
-    Open Maps with a default center and zoom
-    onComponent mount, drag marker to current location 
-    onDragEnd update current location
-
-*/
-
-// { lat: 54.68916, lng: 25.2798 }
-function Map({ location, handleLocation, changeState }) {
+function Map({ location, handleLocation, changeState, place, handlePlace }) {
+    Geocode.setApiKey("AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw");
     const [center, setCenter] = useState(location);
     const [showMap, setShowMap] = useState(false);
     const refMap = useRef(null);
@@ -36,26 +30,14 @@ function Map({ location, handleLocation, changeState }) {
         console.log(`Longitude: ${crd.longitude}`);
         console.log(`More or less ${crd.accuracy} meters.`);
 
-        location = {
+        const loc = {
             lat: crd.latitude,
             lng: crd.longitude
         }
-        handleLocation(location);
-        setCenter(location);
+        handleLocation(loc);
+        getAndChangeAddress(loc);
+        setCenter(loc);
         setShowMap(true);
-        // changeState(6);
-        /* if (crd.accuracy > 500) {
-            console.log('Perhaps you should check your device settings for location accuracy');
-            console.log('Or you have not provided permissions for this device\'s location in the device settings');
-        } else {
-            successful = true;
-            console.log(`wasSuccesfull() became ${successful} inside else block of success() function`);
-            location = {
-                lat: crd.latitude,
-                lng: crd.longitude
-            }
-        } */
-
     }
 
     function error(err) {
@@ -89,8 +71,6 @@ function Map({ location, handleLocation, changeState }) {
     const handleBoundsChanged = () => {
         const mapCenter = refMap.current.getCenter(); //get map center
         setCenter(mapCenter);
-        // handleLocation(mapCenter);
-        // console.log(mapCenter.lat());
     }
 
     useEffect(() => {
@@ -104,13 +84,32 @@ function Map({ location, handleLocation, changeState }) {
             lng: newCenter.lng()
         }
         handleLocation(newLocation);
+        getAndChangeAddress(newLocation);
     }
 
     const returnToMenu = () => {
         changeState(4);
     }
 
-    // { lat: 25.2793479, lng: 78.9094509 }
+    const getAndChangeAddress = loc => {
+        const lat = loc.lat.toString();
+        const lng = loc.lng.toString();
+        console.log(typeof lat);
+
+        console.log(`From getAddress() function => lat: ${lat},  lng: ${lng}`);
+        Geocode.fromLatLng(lat, lng).then(
+            response => {
+                const address = response.results[0].formatted_address;
+                console.log(`Formatted address: ${address}`);
+                handlePlace(address);
+            },
+            error => {
+                console.error(error);
+                console.log('Error occuredd in getting address');
+            }
+        );
+    }
+
     return (
         <div className="map">
             {showMap && <GoogleMap
@@ -122,7 +121,7 @@ function Map({ location, handleLocation, changeState }) {
             >
                 <Marker position={center} />
             </GoogleMap>}
-            {location.lat !== '' && <TextField id="outlined-basic" label="Location" variant="outlined" disabled/> }
+            {location.lat !== '' && <TextField id="outlined-basic" label="Location" variant="outlined" disabled value={place} />}
             <Button className="otp-button" onClick={returnToMenu}>SAVE LOCATION</Button>
         </div>
     );

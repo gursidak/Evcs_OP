@@ -232,6 +232,8 @@ class Sign extends Component {
                     location={this.state.location}
                     handleLocation={this.handleLocation}
                     changeState={this.changeState}
+                    place={this.state.place}
+                    handlePlace={this.handlePlace}
                 />
             )
         } else if (this.state.activelog === 6) {

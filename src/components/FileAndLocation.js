@@ -18,7 +18,7 @@ import TextField from '@material-ui/core/TextField';
                     If successfull, pass co-ordinates to maps.
 */
 
-export default function FileAndLocation({ location, changeState, handlePlace, handleLocation, handleGPS, useGPS }) {
+export default function FileAndLocation({ location, changeState, handlePlace, handleLocation, handleGPS, useGPS, place }) {
 
     const changeToMap = () => {
         changeState(5);
@@ -37,7 +37,7 @@ export default function FileAndLocation({ location, changeState, handlePlace, ha
                     className="otp-button"
                     onClick={changeToMap}
                 >SELECT LOCATION</Button>
-                {location.lat !== '' && <TextField id="outlined-basic" label="Location" variant="outlined" disabled />}
+                {location.lat !== '' && <TextField id="outlined-basic" label="Location" variant="outlined" disabled defaultValue={place}/>}
 
                 <Button
                     className="otp-button"
