@@ -25,4 +25,4 @@ online & offline status -> active / inactive status
 
 API KEY: 'AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw'
 
-https://stackblitz.com/edit/react-fhgr5w?file=index.js
+https://www.npmjs.com/package/@react-google-maps/api

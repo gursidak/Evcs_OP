@@ -12,6 +12,7 @@ import FileAndLocation from './FileAndLocation';
 import FindLocation from './FindLocation'
 // import FormSnackBar from './FormSnackBar'
 import WrappedMap from './Map';
+import ChooseOptions from './ChooseOptions'
 import './Sign.css';
 
 class Sign extends Component {
@@ -234,6 +235,7 @@ class Sign extends Component {
                     changeState={this.changeState}
                     place={this.state.place}
                     handlePlace={this.handlePlace}
+                    handleUseGPS={this.handleUseGPS}
                 />
             )
         } else if (this.state.activelog === 6) {
@@ -247,6 +249,14 @@ class Sign extends Component {
                     location={this.state.location}
                     handleUseGPS={this.handleUseGPS}
                 />
+            )
+        } else if (this.state.activelog === 7) {
+            return (
+                <ChooseOptions changeState={this.changeState} />
+            )
+        } else if (this.state.activelog === 8) {
+            return (
+                <></ >
             )
         }
     }

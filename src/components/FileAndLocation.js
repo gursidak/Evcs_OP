@@ -20,8 +20,8 @@ import TextField from '@material-ui/core/TextField';
 
 export default function FileAndLocation({ location, changeState, handlePlace, handleLocation, handleGPS, useGPS, place }) {
 
-    const changeToMap = () => {
-        changeState(5);
+    const onClick = () => {
+        changeState(7);
     }
 
     return (
@@ -35,7 +35,7 @@ export default function FileAndLocation({ location, changeState, handlePlace, ha
                 <input type="image" alt=""></input>
                 <Button
                     className="otp-button"
-                    onClick={changeToMap}
+                    onClick={onClick}
                 >SELECT LOCATION</Button>
                 {location.lat !== '' && <TextField id="outlined-basic" label="Location" variant="outlined" disabled defaultValue={place}/>}
 

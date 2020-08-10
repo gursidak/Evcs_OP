@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { MuiThemeProvider } from "@material-ui/core";
 import { Button } from 'react-mdl';
@@ -8,6 +8,8 @@ import uniqid from 'uniqid';
 import './FindLocation.css';
 
 export default function FindLocation({ theme, place, location, changeState, handlePlace, handleLocation, handleUseGPS }) {
+    const [name, setName] = useState('');
+
     const handleSelect = async value => {
         const results = await geocodeByAddress(value);
         const latLng = await getLatLng(results[0]);
@@ -37,15 +39,15 @@ export default function FindLocation({ theme, place, location, changeState, hand
                 </Button>
                 <PlacesAutocomplete
                     // key={id}
-                    value={place}
-                    onChange={handlePlace}
+                    value={name}
+                    onChange={setName}
                     onSelect={handleSelect}
-                    shouldFetchSuggestions={place.length > 1}
+                // shouldFetchSuggestions={place.length > 1}
                 >
 
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                         <div className="location-list-container">
-                            <TextField {...getInputProps({ placeholder: "Set Location" })} />
+                            <TextField {...getInputProps({ placeholder: "Search Your Location" })} />
                             {loading ? <div key={uniqid}><CircularProgress /></div> : null}
                             <div>
                                 {suggestions.map(suggestion => {
@@ -59,7 +61,7 @@ export default function FindLocation({ theme, place, location, changeState, hand
                                             <div id="main-text">
                                                 {suggestion.formattedSuggestion.mainText}
                                             </div>
-                                            <div  id="secondary-text">
+                                            <div id="secondary-text">
                                                 {suggestion.formattedSuggestion.secondaryText}
                                             </div>
                                         </div>

@@ -10,7 +10,7 @@ import {
 } from "react-google-maps";
 import './Sign.css';
 
-function Map({ location, handleLocation, changeState, place, handlePlace }) {
+function Map({ location, handleLocation, changeState, place, handlePlace, handleUseGPS }) {
     Geocode.setApiKey("AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw");
     const [center, setCenter] = useState(location);
     const [showMap, setShowMap] = useState(false);
@@ -65,7 +65,10 @@ function Map({ location, handleLocation, changeState, place, handlePlace }) {
                 break;
         }
         console.warn(`ERROR(${err.code}): ${err.message}`);
-        changeState(6);
+        handlePlace('');
+        handleLocation({});
+        handleUseGPS(true);
+        changeState(7);
     }
 
     const handleBoundsChanged = () => {
@@ -75,6 +78,12 @@ function Map({ location, handleLocation, changeState, place, handlePlace }) {
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(success, error, options);
+
+        return () => {
+            handlePlace('');
+            handleLocation({});
+            handleUseGPS(true);
+        }
     }, [])
 
     const handleDragEnd = () => {
