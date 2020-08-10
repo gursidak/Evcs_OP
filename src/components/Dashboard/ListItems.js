@@ -11,18 +11,18 @@ import ContactSupportRoundedIcon from '@material-ui/icons/ContactSupportRounded'
 import EmojiObjectsRoundedIcon from '@material-ui/icons/EmojiObjectsRounded';
 import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRounded';
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
-// import Card from './Card'
+import Card from './Card'
 
 export const mainListItems = (
     <div>
-        <ListItem button={false}>
-            <ListItemIcon>
+        <ListItem button>
+            {/* <ListItemIcon>
                 <AccountCircleRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="My Profile" />
-            {/* <Card /> */}
+            </ListItemIcon> */}
+            {/* <ListItemText primary="My Profile" /> */}
+            <Card />
         </ListItem>
-        <Divider />
+        {/* <Divider /> */}
         <ListItem button>
             <ListItemIcon>
                 <DashboardIcon />

@@ -18,23 +18,23 @@ const usePersonStyles = makeStyles(() => ({
     name: {
         fontWeight: 600,
         fontSize: "1.5rem",
-        color: "#122740"
+        color: "white"
     },
     caption: {
         fontSize: "0.8rem",
-        color: "#758392",
+        color: "white",
         marginTop: -4
     }
 }));
 
 const PersonItem = ({ src, name, email }) => {
-    // const avatarStyles = useDynamicAvatarStyles({ size: 50 });
+    const avatarStyles = useDynamicAvatarStyles({ size: 50 });
     const styles = usePersonStyles();
     return (
         <Row gap={2} p={2.5}>
-{/*             <Item>
+            <Item>
                 <Avatar classes={avatarStyles} src={src} />
-            </Item> */}
+            </Item>
             <Row wrap grow gap={0.5} minWidth={0}>
                 <Item grow minWidth={0} position={"middle"}>
                     <div className={cx(styles.name, styles.text)}>{name}</div>
@@ -50,7 +50,9 @@ const useStyles = makeStyles(() => ({
         width: "100%",
         borderRadius: 16,
         boxShadow: "0 8px 16px 0 #BDC9D7",
-        overflow: "hidden"
+        overflow: "hidden",
+        backgroundColor: 'red',
+
     },
     header: {
         fontFamily: "Barlow, san-serif",

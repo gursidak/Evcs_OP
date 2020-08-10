@@ -156,12 +156,13 @@ export default function Dashboard() {
                 </Toolbar>
             </AppBar>
             <Drawer
-                variant="permanent"
+                variant="temporary"
                 classes={{
                     paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
                 }}
                 open={open}
                 transitionDuration={500}
+                
             >
                 <div className={classes.toolbarIcon}>
                     <IconButton onClick={handleDrawerClose}>
