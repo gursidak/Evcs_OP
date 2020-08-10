@@ -2,13 +2,13 @@ import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import RestoreRoundedIcon from '@material-ui/icons/RestoreRounded';
+import EvStationRoundedIcon from '@material-ui/icons/EvStation';
+import BugReportRoundedIcon from '@material-ui/icons/BugReportRounded';
+import ContactSupportRoundedIcon from '@material-ui/icons/ContactSupportRounded';
+import EmojiObjectsRoundedIcon from '@material-ui/icons/EmojiObjectsRounded';
+import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRounded';
 
 export const mainListItems = (
     <div>
@@ -20,32 +20,44 @@ export const mainListItems = (
         </ListItem>
         <ListItem button>
             <ListItemIcon>
-                <ShoppingCartIcon />
+                <RestoreRoundedIcon />
             </ListItemIcon>
-            <ListItemText primary="Orders" />
+            <ListItemText primary="All Bookings" />
         </ListItem>
         <ListItem button>
             <ListItemIcon>
-                <PeopleIcon />
+                <EvStationRoundedIcon />
             </ListItemIcon>
-            <ListItemText primary="Customers" />
+            <ListItemText primary="My Station" />
         </ListItem>
         <ListItem button>
             <ListItemIcon>
-                <BarChartIcon />
+                <BugReportRoundedIcon />
             </ListItemIcon>
-            <ListItemText primary="Reports" />
+            <ListItemText primary="Raise Issue" />
         </ListItem>
         <ListItem button>
             <ListItemIcon>
-                <LayersIcon />
+                <ContactSupportRoundedIcon />
             </ListItemIcon>
-            <ListItemText primary="Integrations" />
+            <ListItemText primary="Contact Admin" />
+        </ListItem>
+        <ListItem button>
+            <ListItemIcon>
+                <EmojiObjectsRoundedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Tips To EVCS" />
+        </ListItem>
+        <ListItem button>
+            <ListItemIcon>
+                <PowerSettingsNewRoundedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
         </ListItem>
     </div>
 );
 
-export const secondaryListItems = (
+/* export const secondaryListItems = (
     <div>
         <ListSubheader inset>Saved reports</ListSubheader>
         <ListItem button>
@@ -67,4 +79,4 @@ export const secondaryListItems = (
             <ListItemText primary="Year-end sale" />
         </ListItem>
     </div>
-);
+); */
