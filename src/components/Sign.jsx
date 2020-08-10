@@ -11,8 +11,7 @@ import validator from 'gstin-validator';
 import FileAndLocation from './FileAndLocation';
 import FindLocation from './FindLocation'
 // import FormSnackBar from './FormSnackBar'
-import Map from './Map'
-
+import WrappedMap from './Map';
 import './Sign.css';
 
 class Sign extends Component {
@@ -93,11 +92,11 @@ class Sign extends Component {
         this.setState({ place: place });
     }
 
-    handleUseGPS =  val => {
-        this.setState({useGPS: val})
+    handleUseGPS = val => {
+        this.setState({ useGPS: val })
     }
 
-    
+
 
     toggleinup() {
         const color = "#f00";
@@ -225,6 +224,18 @@ class Sign extends Component {
             )
         } else if (this.state.activelog === 5) {
             return (
+                <WrappedMap
+                    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw`}
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={<div style={{ height: `220px`, width: '300px' }} />}
+                    mapElement={<div style={{ height: `100%` }} />}
+                    location={this.state.location}
+                    handleLocation={this.handleLocation}
+                    changeState={this.changeState}
+                />
+            )
+        } else if (this.state.activelog === 6) {
+            return (
                 <FindLocation
                     theme={theme}
                     changeState={this.changeState}
@@ -234,10 +245,6 @@ class Sign extends Component {
                     location={this.state.location}
                     handleUseGPS={this.handleUseGPS}
                 />
-            )
-        } else if (this.state.activelog === 6) {
-            return (
-                <Map />
             )
         }
     }

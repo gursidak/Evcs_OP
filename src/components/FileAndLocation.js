@@ -1,6 +1,7 @@
 import React from 'react'
 import './Sign.css';
 import { Button } from 'react-mdl';
+import TextField from '@material-ui/core/TextField';
 
 /* 
     1. Ask user For Co-ordinates
@@ -18,69 +19,9 @@ import { Button } from 'react-mdl';
 */
 
 export default function FileAndLocation({ location, changeState, handlePlace, handleLocation, handleGPS, useGPS }) {
-    var options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 10000
-    };
 
-    function success(pos) {
-        var crd = pos.coords;
-        console.log(crd);
-        console.log('Your current position is:');
-        console.log(`Latitude : ${crd.latitude}`);
-        console.log(`Longitude: ${crd.longitude}`);
-        console.log(`More or less ${crd.accuracy} meters.`);
-
-        location = {
-            lat: crd.latitude,
-            lng: crd.longitude
-        }
-        handleLocation(location);
-        /* if (crd.accuracy > 500) {
-            console.log('Perhaps you should check your device settings for location accuracy');
-            console.log('Or you have not provided permissions for this device\'s location in the device settings');
-        } else {
-            successful = true;
-            console.log(`wasSuccesfull() became ${successful} inside else block of success() function`);
-            location = {
-                lat: crd.latitude,
-                lng: crd.longitude
-            }
-        } */
-
-    }
-
-    function error(err) {
-        if (!navigator.geolocation) {
-            console.log('Geolocation is not supported by your browser');
-        } else {
-            console.log("loading");
-        }
-        let typeErr = err.code;
-        console.log(`Code: ${typeErr}`);
-        switch (typeErr) {
-            case 1:
-                console.log('User has not given permissions');
-                break;
-
-            case 2:
-                console.log('The acquisition of the geolocation failed because at least one internal source of position returned an internal error.');
-                break;
-
-            case 3:
-                console.log('Timeout reached before obtaining information');
-                break;
-
-            default:
-                break;
-        }
-        console.warn(`ERROR(${err.code}): ${err.message}`);
+    const changeToMap = () => {
         changeState(5);
-    }
-
-    const askForLocation = () => {
-        navigator.geolocation.getCurrentPosition(success, error, options);
     }
 
     return (
@@ -94,8 +35,10 @@ export default function FileAndLocation({ location, changeState, handlePlace, ha
                 <input type="image" alt=""></input>
                 <Button
                     className="otp-button"
-                    onClick={askForLocation}
+                    onClick={changeToMap}
                 >SELECT LOCATION</Button>
+                {location.lat !== '' && <TextField id="outlined-basic" label="Location" variant="outlined" disabled />}
+
                 <Button
                     className="otp-button"
                 >SUBMIT</Button>
