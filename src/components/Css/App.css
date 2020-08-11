@@ -8,20 +8,18 @@
   margin-top: 1em;
 }
 
-.otp-boxes {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
 .otp-input {
   border-style: solid;
-  /* border-radius: 25%; */
-  margin: 0.15em;
+  margin: 1em;
   outline: none;
+  border-width: 0 0 2px 0;
+  padding: 0;
+  font-size: 2em;
+  /* width: 1em; */
+}
+
+.otp-box-container {
+  justify-content: center;
 }
 
 .stationListItem :hover {
@@ -49,4 +47,7 @@ Button:disabled {
   background-color: rgba(255, 0, 0, 0.486) !important;
   color: rgba(0, 0, 0, 0.637) !important;
 }
-
+Button:enabled {
+  background-color: red !important;
+  color: white;
+}

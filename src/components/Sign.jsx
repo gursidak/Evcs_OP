@@ -182,11 +182,14 @@ class Sign extends Component {
                         shouldAutoFocus={true}
                         inputStyle="otp-input"
                         focusStyle="focus-style"
+                        containerStyle="otp-box-container"
                     />
                     <Button
                         className="otp-button"
                         disabled={isDisabled}
                         onClick={() => this.changeState(2)}
+                        style={{ margin: theme.spacing(3, 0, 2) }}
+                        fullWidth
                     >{text}</Button>
                 </div>
             );
