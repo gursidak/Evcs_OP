@@ -3,17 +3,33 @@ import './Css/App.css'
 import { Button, Grid, Cell } from 'react-mdl';
 import Carousel from './Carousel'
 import LOGO from './logo.jpg'
+import Container from "@material-ui/core/Container";
 import OtpInput from 'react-otp-input';
 import TextField from '@material-ui/core/TextField';
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 import FirstForm from './FirstForm';
 import validator from 'gstin-validator';
+import Link from "@material-ui/core/Link";
 import FileAndLocation from './FileAndLocation';
 import FindLocation from './FindLocation'
 // import FormSnackBar from './FormSnackBar'
 import WrappedMap from './Map';
 import ChooseOptions from './ChooseOptions'
 import './Sign.css';
+import Typography from "@material-ui/core/Typography";
+
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {"Copyright © "}
+            <Link color="inherit" href="https://material-ui.com/">
+                EVCS
+        </Link>{" "}
+            {new Date().getFullYear()}
+            {"."}
+        </Typography>
+    );
+}
 
 class Sign extends Component {
     constructor(props) {
@@ -263,15 +279,25 @@ class Sign extends Component {
 
     render() {
         return (
+            <>
             <div className="sign-box">
-                <link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
+                {/* <link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.carousel.min.css" /> */}
                 <div className='Sign'>
                     <header className='logo-header'>
                         <img src={LOGO} alt='GATS-logo' />
                         <div className='CompName'>
                             GATS SCS
-                    </div>
+                        </div>
                     </header>
+
+{/*                     <Container component="main" maxWidth="xs" >
+                        <div className="semi-container">
+                        {this.toggleinup()}
+                        </div>
+                        <div className="copyright">
+                            <Copyright />
+                        </div>
+                    </Container> */}
 
                     <div className='Sign-content'>
                         <Grid className='main-grid'>
@@ -281,11 +307,8 @@ class Sign extends Component {
                         </Grid>
                     </div>
                 </div>
-                <div className="slider">
-                    <Carousel />
-                </div>
-
             </div>
+            </ >
         )
     }
 }

@@ -28,7 +28,7 @@ const usePersonStyles = makeStyles(() => ({
 }));
 
 const PersonItem = ({ src, name, email }) => {
-    const avatarStyles = useDynamicAvatarStyles({ size: 50 });
+    const avatarStyles = useDynamicAvatarStyles({ size: 40 });
     const styles = usePersonStyles();
     return (
         <Row gap={2} p={2.5}>
@@ -62,7 +62,7 @@ const useStyles = makeStyles(() => ({
         color: "#BDC9D7"
     },
     divider: {
-        backgroundColor: "#d9e2ee",
+        backgroundColor: "red",
         margin: "0 20px"
     }
 }));
