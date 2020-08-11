@@ -1,6 +1,6 @@
-input {
+/* input {
     border-width: 0 0 2px 0;
-}
+} */
 
 .otp-input-box {
     border: 2px solid red;
@@ -16,23 +16,6 @@ input {
     border-width: 0 0 2px 0;
 }
 
-.otp-input-box Button {
-    background-color: red;
-    color: white;
-    width: 80%;
-}
-
-.otp-input-box Button:hover {
-    background-color: red;
-    color: white;
-    width: 80%;
-}
-
-.otp-input-box Button:disabled {
-    background-color: rgba(255, 0, 0, 0.404) !important;
-    color: rgba(0, 0, 0, 0.233) !important;
-}
-
 .addVehicleInfo {
     width: 500px;
 }
@@ -46,69 +29,13 @@ input {
 .info-form TextField {
     width: 80%
 }
-.MuiFormControl-root, MuiTextField-root {
-    width: 80%
-}
-.info-form Button {
-    background-color: red;
-    color: white;
-    width: 80%;
-}
 
-.info-form Button:hover {
-    background-color: red;
-    color: white;
-    width: 80%;
-}
-
-.info-form Button:disabled {
-    background-color: rgba(255, 0, 0, 0.404) !important;
-    color: rgba(0, 0, 0, 0.233) !important;
-}
-
-.input-box Button:disabled {
-    background-color: rgba(255, 0, 0, 0.404) !important;
-    color: rgba(0, 0, 0, 0.233) !important;
-}
 
 .file-upload-form {
     border: 2px solid red;
     width: 500px;
     font-size: 0.3em;
     margin-right: auto;
-}
-
-.file-upload-form Button {
-    background-color: red;
-    color: white;
-    width: 80%;
-}
-
-.file-upload-form Button:hover {
-    background-color: red;
-    color: white;
-    width: 80%;
-}
-
-.file-upload-form Button:disabled {
-    background-color: rgba(255, 0, 0, 0.404) !important;
-    color: rgba(0, 0, 0, 0.233) !important;
-}
-.map Button {
-    background-color: red;
-    color: white;
-    width: 80%;
-}
-
-.map Button:hover {
-    background-color: red;
-    color: white;
-    width: 80%;
-}
-
-.map Button:disabled {
-    background-color: rgba(255, 0, 0, 0.404) !important;
-    color: rgba(0, 0, 0, 0.233) !important;
 }
 
 .semi-container {

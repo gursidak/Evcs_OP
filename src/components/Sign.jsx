@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './Css/App.css'
-import { Button, Grid, Cell } from 'react-mdl';
-import Carousel from './Carousel'
-import LOGO from './logo.jpg'
+// import { Button } from 'react-mdl';
+import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import OtpInput from 'react-otp-input';
 import TextField from '@material-ui/core/TextField';
@@ -15,15 +14,18 @@ import FindLocation from './FindLocation'
 // import FormSnackBar from './FormSnackBar'
 import WrappedMap from './Map';
 import ChooseOptions from './ChooseOptions'
-import './Sign.css';
 import Typography from "@material-ui/core/Typography";
+import WebAppBar from './WebAppBar';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import PhoneRoundedIcon from '@material-ui/icons/PhoneRounded';
+import './Sign.css';
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {"Copyright © "}
-            <Link color="inherit" href="https://material-ui.com/">
-                EVCS
+            <Link color="inherit" href="#">
+                GATS SCS, 
         </Link>{" "}
             {new Date().getFullYear()}
             {"."}
@@ -67,7 +69,7 @@ class Sign extends Component {
 
     handleChange = event => {
         const mobileNo = event.target.value
-        if (isNaN(mobileNo)) return;
+        if (isNaN(mobileNo) || mobileNo.length > 10) return;
         this.setState({ mobileNo: mobileNo })
     }
 
@@ -129,31 +131,39 @@ class Sign extends Component {
         if (this.state.activelog === 0) {
             const isDisabled = this.state.mobileNo.length !== 10;
             return (
-                <div>
+                <>
+                    <h3>GATS Charging Station</h3>
                     <form className='sign-in-form' onSubmit={this.handleSubmit} >
-                        <h3>GATS Charging Station</h3><br />
-                        <div className='input-box'>
-                            <i className='fa fa-phone'></i>
-                            <input
-                                type='tel'
-                                minLength='10'
+                        <MuiThemeProvider theme={theme}>
+                            <TextField
+                                autoFocus
+                                fullWidth
                                 value={this.state.mobileNo}
                                 onChange={this.handleChange}
-                                pattern="-?[0-9]*(\.[0-9]+)?"
-                                maxLength='10'
-                                placeholder='Enter your phone number'
-                                autoFocus
-                            ></input>
-                            <Button
-                                type='button'
-                                id='submitphone'
-                                onClick={() => this.changeState(1)}
-                                disabled={isDisabled}
-                            > <i className='fa fa-arrow-right' ></i>
+                                margin="normal"
+                                id="input-with-icon-textfield"
+                                label="Enter Phone Number"
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <PhoneRoundedIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                        </MuiThemeProvider>
+                        <Button
+                            type='button'
+                            variant="contained"
+                            onClick={() => this.changeState(1)}
+                            disabled={isDisabled}
+                            fullWidth
+                            color="primary"
+                            style={{ margin: theme.spacing(3, 0, 2) }}
+                        >Request OTP
                             </Button>
-                        </div>
                     </form>
-                </div>
+                </>
             )
         }
 
@@ -280,34 +290,16 @@ class Sign extends Component {
     render() {
         return (
             <>
-            <div className="sign-box">
-                {/* <link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.carousel.min.css" /> */}
-                <div className='Sign'>
-                    <header className='logo-header'>
-                        <img src={LOGO} alt='GATS-logo' />
-                        <div className='CompName'>
-                            GATS SCS
-                        </div>
-                    </header>
-
-{/*                     <Container component="main" maxWidth="xs" >
-                        <div className="semi-container">
+                <WebAppBar />
+                <Container component="main" maxWidth="xs">
+                    <div className="semi-container">
                         {this.toggleinup()}
-                        </div>
-                        <div className="copyright">
-                            <Copyright />
-                        </div>
-                    </Container> */}
-
-                    <div className='Sign-content'>
-                        <Grid className='main-grid'>
-                            <Cell col={12}>
-                                {this.toggleinup()}
-                            </Cell>
-                        </Grid>
                     </div>
+
+                </Container>
+                <div className="copyright">
+                    <footer><Copyright /></footer>
                 </div>
-            </div>
             </ >
         )
     }
