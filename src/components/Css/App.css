@@ -15,7 +15,6 @@
   border-width: 0 0 2px 0;
   padding: 0;
   font-size: 2em;
-  /* width: 1em; */
 }
 
 .otp-box-container {
@@ -40,7 +39,6 @@ Button {
 Button:hover {
   background-color: red !important;
   color: white;
-  /* width: 80%; */
 }
 
 Button:disabled {

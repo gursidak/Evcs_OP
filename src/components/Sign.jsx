@@ -7,7 +7,6 @@ import OtpInput from 'react-otp-input';
 import TextField from '@material-ui/core/TextField';
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 import FirstForm from './FirstForm';
-import validator from 'gstin-validator';
 import Link from "@material-ui/core/Link";
 import FileAndLocation from './FileAndLocation';
 import FindLocation from './FindLocation'
@@ -44,7 +43,6 @@ class Sign extends Component {
             otp: '',
             aadharNumber: '',
             gstin: '',
-            showWarning: false,
             place: '',
             location: {
                 lat: '',
@@ -95,13 +93,7 @@ class Sign extends Component {
         // if (!validator.isValidGSTNumber( this.state.gstin)) return <FormSnackBar />
     }
 
-    handleFirstForm = (e) => {
-        if (validator.isValidGSTNumber(this.state.gstin)) {
-            this.changeState(3);
-        } else {
-            this.setState({ showWarning: true });
-        }
-    }
+    
 
     handleLocation = (location) => {
         this.setState({ location: location });
@@ -204,11 +196,10 @@ class Sign extends Component {
                     showAadhar={showAadhar}
                     // isDisabled={isDisabled}
                     gstin={this.state.gstin}
-                    showWarning={this.state.showWarning}
                     handleGSTIN={this.handleGSTIN}
                     handleAadhar={this.handleAadhar}
-                    handleFirstForm={this.handleFirstForm}
                     aadharNumber={this.state.aadharNumber}
+                    changeState={this.changeState}
                 />
             )
         }
