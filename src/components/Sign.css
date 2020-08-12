@@ -27,3 +27,8 @@
 .copyright {
   margin-top: 3em;
 }
+
+.file-container {
+  display: flex;
+  flex-direction: row;
+}

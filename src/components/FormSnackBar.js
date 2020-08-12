@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function FormSnackBar() {
+export default function FormSnackBar({text, severity}) {
     // console.log(`Show Warning in FormSnackBar is ${isOpen}`);
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
@@ -33,15 +33,15 @@ export default function FormSnackBar() {
         <div className={classes.root}>
             <Snackbar
                 open={open}
-                autoHideDuration={10000}
+                autoHideDuration={4000}
                 onClose={handleClose}
                 anchorOrigin={{
-                    vertical: 'top',
+                    vertical: 'center',
                     horizontal: 'center'
                 }}
             >
-                <Alert onClose={handleClose} severity="error">
-                    Enter Correct GSTIN Number
+                <Alert onClose={handleClose} severity={severity} color={severity}>
+                    {text}
                 </Alert>
             </Snackbar>
         </div>

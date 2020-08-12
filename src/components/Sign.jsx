@@ -37,7 +37,6 @@ class Sign extends Component {
 
         this.state = {
             activelog: 0,
-            imageUploaded: null,
             mobileNo: "",
             otp: '',
             aadharNumber: '',
@@ -47,10 +46,13 @@ class Sign extends Component {
                 lat: '',
                 lng: ''
             },
+            aadharUIM: null,
+            gstinFile: null,
             useGPS: true,
             name: '',
             accountNumber: '',
-            ifsc: ''
+            ifsc: '',
+            fileWarning: false
         };
     }
 
@@ -124,6 +126,17 @@ class Sign extends Component {
         this.setState({ ifsc: ifsc });
     }
 
+    handleFile = e => {
+        const file = e.target.files[0];
+        const type = file.type;
+        if (type === 'application/pdf' || type === "image/jpeg" || type === 'image/jpg') {
+            this.setState({ fileWarning: false });
+            this.setState({ [e.target.id]: file })
+        }
+        else
+            this.setState({ fileWarning: true });
+    }
+
     toggleinup() {
         const color = "#f00";
         const black = '000000';
@@ -192,11 +205,11 @@ class Sign extends Component {
                     />
                     <Button
                         className="otp-button"
-                        variant="contained"
                         disabled={isDisabled}
                         onClick={() => this.changeState(2)}
-                        style={{ margin: theme.spacing(3, 0, 2) }}
                         fullWidth
+                        variant="contained"
+                        style={{ margin: theme.spacing(3, 0, 2) }}
                     >{text}</Button>
                 </div>
             );
@@ -276,6 +289,9 @@ class Sign extends Component {
                     location={this.state.location}
                     handleGPS={this.handleGPS}
                     useGPS={this.state.useGPS}
+                    theme={theme}
+                    handleFile={this.handleFile}
+                    fileWarning={this.state.fileWarning}
                 />
             )
         } else if (this.state.activelog === 5) {

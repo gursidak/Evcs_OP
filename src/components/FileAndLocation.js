@@ -1,8 +1,9 @@
 import React from 'react'
 import './Sign.css';
-import { Button } from 'react-mdl';
+// import { Button } from 'react-mdl';
+import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
-
+import FormSnakBar from './FormSnackBar';
 /* 
     1. Ask user For Co-ordinates
         If permision is available:
@@ -18,7 +19,7 @@ import TextField from '@material-ui/core/TextField';
                     If successfull, pass co-ordinates to maps.
 */
 
-export default function FileAndLocation({ location, changeState, handlePlace, handleLocation, handleGPS, useGPS, place }) {
+export default function FileAndLocation({ location, changeState, handlePlace, handleLocation, handleGPS, useGPS, place, theme, handleFile, fileWarning }) {
 
     const onClick = () => {
         changeState(7);
@@ -27,21 +28,28 @@ export default function FileAndLocation({ location, changeState, handlePlace, ha
     return (
         <>
             <h3>Upload Files</h3>
-            <div className="files-input">
-                <label htmlFor="gstin">GSTIN</label> :
-                <input type="file" alt="gstin" id="gstin" accept="image/jpeg, .pdf"></input> <br /> <br />
-                <label htmlFor="uim">Aadhar Card UIM</label> :
-                <input type="file" alt="Aadhar Card UIM" id="uim" accept="image/jpeg, .pdf"></input> <br /> <br />
-                <input type="image" alt=""></input>
-                <Button
+            <div className="sign-in-form">
+                {fileWarning && <FormSnakBar text="Please Upload image and PDFs only" severity="warning"/>}
+                <label htmlFor="gstinFile">GSTIN</label><br />
+                <input type="file" alt="gstin" id="gstinFile" accept="image/jpeg, .pdf" onChange={handleFile}></input> <br /> <br />
+                <label htmlFor="aadharUIM">Aadhar UIM</label><br />
+                <input type="file" alt="aadharUIM" id="aadharUIM" accept="image/jpeg, .pdf" onChange={handleFile}></input > <br /> <br />
+                {/* <Button
                     className="otp-button"
                     onClick={onClick}
-                >SELECT LOCATION</Button>
-                {location.lat !== '' && <TextField id="outlined-basic" label="Location" variant="outlined" disabled defaultValue={place}/>}
+                    fullWidth
+                    variant="contained"
+                    style={{ margin: theme.spacing(3, 0, 2) }}
+                >SELECT LOCATION</Button> */}
+                {/* <TextField id="outlined-basic" label="Location" variant="outlined" disabled defaultValue="Unname Street, East Vinod Nagar, Delhi" /> */}
 
                 <Button
                     className="otp-button"
-                >SUBMIT</Button>
+                    fullWidth
+                    variant="contained"
+                    style={{ margin: theme.spacing(3, 0, 2) }}
+                    onClick={onClick}
+                >REVIEW DOCUMENTS AND SUBMIT</Button>
             </div>
         </>
     )
