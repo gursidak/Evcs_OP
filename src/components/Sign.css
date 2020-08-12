@@ -1,8 +1,6 @@
 .otp-input-box {
   width: 100%;
   margin-top: 1em;
-  /* justify-content: center; */
-  /* align-items: center; */
   text-align: center;
 }
 
@@ -17,13 +15,6 @@
 
 .addVehicleInfo {
   width: 500px;
-}
-
-.file-upload-form {
-  border: 2px solid red;
-  width: 500px;
-  font-size: 0.3em;
-  margin-right: auto;
 }
 
 .semi-container {

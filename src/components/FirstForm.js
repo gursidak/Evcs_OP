@@ -9,12 +9,10 @@ import Button from "@material-ui/core/Button";
 export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handleAadhar, aadharNumber, changeState }) {
     const [warning, setWarning] = useState(false);
     const isDisabled = gstin.length !== 15 || aadharNumber.length !== 12;
-    console.log(`ShowWarning in FirstForm component: ${warning}`);
 
     const handleFirstForm = (e) => {
         setWarning(false);
         if (validator.isValidGSTNumber(gstin)) {
-            // setWarning(false);
             changeState(3);
         } else {
             setWarning(true);
@@ -41,7 +39,8 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
                         onChange={gstinChange}
                         value={gstin}
                         error={warning}
-                        helperText={warning? "Please Enter a valid GSTIN" : ""}
+                        placeholder="15 Digits GSTIN Number"
+                        helperText={warning ? "Please Enter a valid GSTIN" : ""}
                     />
                     <br />
                     <TextField
@@ -51,6 +50,7 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
                         onChange={handleAadhar}
                         value={showAadhar}
                         fullWidth
+                        placeholder="12 Digits Aadhar Number"
                     />
                     <br />
                 </MuiThemeProvider>

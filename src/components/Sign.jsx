@@ -10,7 +10,6 @@ import FirstForm from './FirstForm';
 import Link from "@material-ui/core/Link";
 import FileAndLocation from './FileAndLocation';
 import FindLocation from './FindLocation'
-// import FormSnackBar from './FormSnackBar'
 import WrappedMap from './Map';
 import ChooseOptions from './ChooseOptions'
 import Typography from "@material-ui/core/Typography";
@@ -24,7 +23,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {"Copyright © "}
             <Link color="inherit" href="#">
-                GATS SCS, 
+                GATS SCS,
         </Link>{" "}
             {new Date().getFullYear()}
             {"."}
@@ -48,7 +47,10 @@ class Sign extends Component {
                 lat: '',
                 lng: ''
             },
-            useGPS: true
+            useGPS: true,
+            name: '',
+            accountNumber: '',
+            ifsc: ''
         };
     }
 
@@ -87,13 +89,10 @@ class Sign extends Component {
     }
 
     handleGSTIN = e => {
-        const gstin = e.target.value;
+        const gstin = e.target.value.toUpperCase().replace(/\s/g, '');
         if (gstin.length > 15) return;
         this.setState({ gstin: gstin })
-        // if (!validator.isValidGSTNumber( this.state.gstin)) return <FormSnackBar />
     }
-
-    
 
     handleLocation = (location) => {
         this.setState({ location: location });
@@ -107,7 +106,23 @@ class Sign extends Component {
         this.setState({ useGPS: val })
     }
 
+    handleAccountNumber = e => {
+        const accountNumber = e.target.value.replace(/\s/g, '');
+        if (accountNumber.length > 20) return;
+        this.setState({ accountNumber: accountNumber });
+    }
 
+    handleName = e => {
+        const name = e.target.value.replace(/[^a-zA-Z ]/g, '');
+        if (name.length > 50) return;
+        this.setState({ name: name });
+    }
+
+    handleifsc = e => {
+        const ifsc = e.target.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+        if (ifsc.length > 11) return;
+        this.setState({ ifsc: ifsc });
+    }
 
     toggleinup() {
         const color = "#f00";
@@ -133,7 +148,6 @@ class Sign extends Component {
                                 value={this.state.mobileNo}
                                 onChange={this.handleChange}
                                 margin="normal"
-                                id="input-with-icon-textfield"
                                 label="Enter Phone Number"
                                 InputProps={{
                                     startAdornment: (
@@ -178,6 +192,7 @@ class Sign extends Component {
                     />
                     <Button
                         className="otp-button"
+                        variant="contained"
                         disabled={isDisabled}
                         onClick={() => this.changeState(2)}
                         style={{ margin: theme.spacing(3, 0, 2) }}
@@ -194,7 +209,6 @@ class Sign extends Component {
                 <FirstForm
                     theme={theme}
                     showAadhar={showAadhar}
-                    // isDisabled={isDisabled}
                     gstin={this.state.gstin}
                     handleGSTIN={this.handleGSTIN}
                     handleAadhar={this.handleAadhar}
@@ -206,30 +220,51 @@ class Sign extends Component {
 
         else if (this.state.activelog === 3) {
             return (
-                <div className="info-form">
-                    <MuiThemeProvider theme={theme}>
-                        <TextField
-                            label="Bank A/C Holder Name"
-                            maxLength='100'
-                            type="text"
-                            autoFocus
-                        />
-                        <br />
-                        <TextField
-                            label="Bank A/C Number"
-                            maxLength='30'
-                            type="text"
-                        />
-                        <br />
-                        <TextField
-                            label="IFSC Code"
-                            maxLength='30'
-                            type="text"
-                        />
-                        <br />
-                    </MuiThemeProvider>
-                    <Button className="otp-button" onClick={() => this.changeState(4)}>SUBMIT</Button>
-                </div>
+                <>
+                    <h4>Provide Banking Details</h4>
+                    <div className="sign-in-form">
+                        <MuiThemeProvider theme={theme}>
+                            <TextField
+                                label="Bank A/C Holder Name"
+                                maxLength='50'
+                                type="text"
+                                autoFocus
+                                margin="normal"
+                                value={this.state.name}
+                                onChange={this.handleName}
+                                fullWidth
+                            />
+                            <br />
+                            <TextField
+                                label="Bank A/C Number"
+                                maxLength='20'
+                                type="number"
+                                margin="normal"
+                                value={this.state.accountNumber}
+                                onChange={this.handleAccountNumber}
+                                fullWidth
+                            />
+                            <br />
+                            <TextField
+                                label="IFSC Code"
+                                maxLength='11'
+                                value={this.state.ifsc}
+                                onChange={this.handleifsc}
+                                placeholder="11 Digit IFSC Code"
+                                type="text"
+                                margin="normal"
+                                fullWidth
+                            />
+                            <br />
+                        </MuiThemeProvider>
+                        <Button
+                            className="otp-button"
+                            onClick={() => this.changeState(4)}
+                            style={{ margin: theme.spacing(3, 0, 2) }}
+                            fullWidth
+                        >SUBMIT</Button>
+                    </div>
+                </>
             )
         } else if (this.state.activelog === 4) {
             return (
@@ -294,7 +329,7 @@ class Sign extends Component {
                 <div className="copyright">
                     <footer><Copyright /></footer>
                 </div>
-            </ >
+            </>
         )
     }
 }

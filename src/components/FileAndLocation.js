@@ -25,7 +25,7 @@ export default function FileAndLocation({ location, changeState, handlePlace, ha
     }
 
     return (
-        <div className="file-upload-form">
+        <>
             <h3>Upload Files</h3>
             <div className="files-input">
                 <label htmlFor="gstin">GSTIN</label> :
@@ -43,6 +43,6 @@ export default function FileAndLocation({ location, changeState, handlePlace, ha
                     className="otp-button"
                 >SUBMIT</Button>
             </div>
-        </div>
+        </>
     )
 }
