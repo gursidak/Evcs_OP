@@ -63,7 +63,7 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
                     className="otp-button"
                     disabled={isDisabled}
                     onClick={handleFirstForm}
-                >ADD INFO</Button>
+                >{isDisabled ? "ENTER DETAILS" : "REVIEW DETAILS AND SUBMIT"}</Button>
             </form>
         </>
     )

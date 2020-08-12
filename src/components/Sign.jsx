@@ -161,7 +161,7 @@ class Sign extends Component {
                                 value={this.state.mobileNo}
                                 onChange={this.handleChange}
                                 margin="normal"
-                                label="Enter Phone Number"
+                                label="Enter Mobile Number"
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
@@ -169,6 +169,7 @@ class Sign extends Component {
                                         </InputAdornment>
                                     ),
                                 }}
+                                placeholder="10 Digits Mobile Number"
                             />
                         </MuiThemeProvider>
                         <Button
@@ -179,8 +180,7 @@ class Sign extends Component {
                             fullWidth
                             color="primary"
                             style={{ margin: theme.spacing(3, 0, 2) }}
-                        >Request OTP
-                            </Button>
+                        >{isDisabled ? "ENTER MOBILE NUMBER": "REQUEST OTP"}</Button>
                     </form>
                 </>
             )
@@ -232,6 +232,7 @@ class Sign extends Component {
         }
 
         else if (this.state.activelog === 3) {
+            const disabled = !(this.state.name && this.state.accountNumber && this.state.ifsc.length >= 11);
             return (
                 <>
                     <h4>Provide Banking Details</h4>
@@ -275,7 +276,8 @@ class Sign extends Component {
                             onClick={() => this.changeState(4)}
                             style={{ margin: theme.spacing(3, 0, 2) }}
                             fullWidth
-                        >SUBMIT</Button>
+                            disabled={disabled}
+                        >{disabled ? "ENTER DETAILS" : "CONFIRM DETAILS AND SUBMIT"}</Button>
                     </div>
                 </>
             )
@@ -283,15 +285,11 @@ class Sign extends Component {
             return (
                 <FileAndLocation
                     changeState={this.changeState}
-                    handlePlace={this.handlePlace}
-                    handleLocation={this.handleLocation}
-                    place={this.state.place}
-                    location={this.state.location}
-                    handleGPS={this.handleGPS}
-                    useGPS={this.state.useGPS}
                     theme={theme}
                     handleFile={this.handleFile}
                     fileWarning={this.state.fileWarning}
+                    aadharUIM={this.state.aadharUIM}
+                    gstinFile={this.state.gstinFile}
                 />
             )
         } else if (this.state.activelog === 5) {
@@ -319,11 +317,13 @@ class Sign extends Component {
                     place={this.state.place}
                     location={this.state.location}
                     handleUseGPS={this.handleUseGPS}
+                    aadharUIM={this.state.aadharUIM}
+                    gstinFile={this.state.gstinFile}
                 />
             )
         } else if (this.state.activelog === 7) {
             return (
-                <ChooseOptions changeState={this.changeState} />
+                <ChooseOptions changeState={this.changeState} theme={theme} />
             )
         } else if (this.state.activelog === 8) {
             return (

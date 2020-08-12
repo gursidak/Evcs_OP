@@ -42,8 +42,9 @@ Button:hover {
 }
 
 Button:disabled {
-  background-color: rgba(255, 0, 0, 0.486) !important;
-  color: rgba(0, 0, 0, 0.637) !important;
+  background-color: rgba(255, 0, 0, 0.74) !important;
+  color: rgba(0, 0, 0, 0.466) !important;
+  font-weight: bold !important;
 }
 Button:enabled {
   background-color: red !important;
