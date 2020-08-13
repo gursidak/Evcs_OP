@@ -18,6 +18,16 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import PhoneRoundedIcon from '@material-ui/icons/PhoneRounded';
 import './Sign.css';
 
+const color = "#f00";
+const black = '#000000';
+const theme = createMuiTheme({
+    palette: {
+        common: { black: color, white: color },
+        primary: { main: color, dark: color, light: color },
+        text: { primary: black, secondary: black }
+    }
+});
+
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -59,13 +69,6 @@ class Sign extends Component {
     changeState = activeId => {
         this.setState({ activelog: activeId });
     }
-
-    /* fileSelector(event) {
-        this.setState({
-            imageUploaded: event.target.files[0]
-        }
-        )
-    } */
 
     handleOTPChange = otp => this.setState({ otp: otp });
 
@@ -138,16 +141,6 @@ class Sign extends Component {
     }
 
     toggleinup() {
-        const color = "#f00";
-        const black = '000000';
-        const theme = createMuiTheme({
-            palette: {
-                common: { black: color, white: color },
-                primary: { main: color, dark: color, light: color },
-                text: { primary: black, secondary: black }
-            }
-        });
-
         if (this.state.activelog === 0) {
             const isDisabled = this.state.mobileNo.length !== 10;
             return (
@@ -180,7 +173,7 @@ class Sign extends Component {
                             fullWidth
                             color="primary"
                             style={{ margin: theme.spacing(3, 0, 2) }}
-                        >{isDisabled ? "ENTER MOBILE NUMBER": "REQUEST OTP"}</Button>
+                        >{isDisabled ? "ENTER MOBILE NUMBER" : "REQUEST OTP"}</Button>
                     </form>
                 </>
             )
@@ -273,7 +266,7 @@ class Sign extends Component {
                         </MuiThemeProvider>
                         <Button
                             className="otp-button"
-                            onClick={() => this.changeState(4)}
+                            onClick={() => { this.setState({ name: this.state.name.trim() }); this.changeState(4) }}
                             style={{ margin: theme.spacing(3, 0, 2) }}
                             fullWidth
                             disabled={disabled}
@@ -294,18 +287,22 @@ class Sign extends Component {
             )
         } else if (this.state.activelog === 5) {
             return (
-                <WrappedMap
-                    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw`}
-                    loadingElement={<div style={{ height: `100%` }} />}
-                    containerElement={<div style={{ height: `220px`, width: '300px' }} />}
-                    mapElement={<div style={{ height: `100%` }} />}
-                    location={this.state.location}
-                    handleLocation={this.handleLocation}
-                    changeState={this.changeState}
-                    place={this.state.place}
-                    handlePlace={this.handlePlace}
-                    handleUseGPS={this.handleUseGPS}
-                />
+                <>
+                    <h3>Confirm Location</h3>
+                        <WrappedMap
+                            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw`}
+                            loadingElement={<div style={{ height: `100%` }} />}
+                            containerElement={<div style={{ height: `50%`, width: '95%', position: 'absolute', marginTop: '25%' }} />}
+                            mapElement={<div style={{ height: `100%` }} />}
+                            location={this.state.location}
+                            handleLocation={this.handleLocation}
+                            changeState={this.changeState}
+                            place={this.state.place}
+                            handlePlace={this.handlePlace}
+                            useGPS={this.state.useGPS}
+                            handleUseGPS={this.handleUseGPS}
+                        />
+                </>
             )
         } else if (this.state.activelog === 6) {
             return (
@@ -316,6 +313,7 @@ class Sign extends Component {
                     handleLocation={this.handleLocation}
                     place={this.state.place}
                     location={this.state.location}
+                    useGPS={this.state.useGPS}
                     handleUseGPS={this.handleUseGPS}
                     aadharUIM={this.state.aadharUIM}
                     gstinFile={this.state.gstinFile}
@@ -323,7 +321,11 @@ class Sign extends Component {
             )
         } else if (this.state.activelog === 7) {
             return (
-                <ChooseOptions changeState={this.changeState} theme={theme} />
+                <ChooseOptions
+                    changeState={this.changeState}
+                    theme={theme}
+                    place={this.state.place}
+                />
             )
         } else if (this.state.activelog === 8) {
             return (
@@ -340,7 +342,6 @@ class Sign extends Component {
                     <div className="semi-container">
                         {this.toggleinup()}
                     </div>
-
                 </Container>
                 <div className="copyright">
                     <footer><Copyright /></footer>

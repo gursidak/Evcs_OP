@@ -29,7 +29,7 @@ export default function FileAndLocation({ changeState, theme, handleFile, fileWa
                     style={{ margin: theme.spacing(3, 0, 2) }}
                     onClick={onClick}
                     disabled={disabled}
-                >{disabled ? "PLEASE UPLOAD FILES" : "REVIEW DOCUMENTS AND SUBMIT"}</Button>
+                >{disabled ? "PLEASE SELECT FILES" : "REVIEW DOCUMENTS AND SUBMIT"}</Button>
             </div>
         </>
     )

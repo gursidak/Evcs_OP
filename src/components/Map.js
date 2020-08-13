@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Geocode from "react-geocode";
-import { Button } from 'react-mdl';
+// import { Button } from 'react-mdl';
+import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
 import {
     GoogleMap,
@@ -10,16 +11,17 @@ import {
 } from "react-google-maps";
 import './Sign.css';
 
-function Map({ location, handleLocation, changeState, place, handlePlace, handleUseGPS }) {
-    Geocode.setApiKey("AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw");
+Geocode.setApiKey("AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw");
+
+function Map({ location, handleLocation, changeState, place, handlePlace, useGPS, handleUseGPS }) {
     const [center, setCenter] = useState(location);
     const [showMap, setShowMap] = useState(false);
     const refMap = useRef(null);
 
     var options = {
         enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 10000
+        timeout: 10000,
+        maximumAge: 30000
     };
 
     function success(pos) {
@@ -72,18 +74,24 @@ function Map({ location, handleLocation, changeState, place, handlePlace, handle
     }
 
     const handleBoundsChanged = () => {
+
         const mapCenter = refMap.current.getCenter(); //get map center
         setCenter(mapCenter);
     }
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(success, error, options);
-
-        return () => {
-            handlePlace('');
-            handleLocation({});
-            handleUseGPS(true);
+        if (useGPS)
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        else {
+            setCenter(location);
+            setShowMap(true);
         }
+
+        /*         return () => {
+                    handlePlace('');
+                    handleLocation({});
+                    handleUseGPS(true);
+                } */
     }, [])
 
     const handleDragEnd = () => {
@@ -97,7 +105,7 @@ function Map({ location, handleLocation, changeState, place, handlePlace, handle
     }
 
     const returnToMenu = () => {
-        changeState(4);
+        changeState(7);
     }
 
     const getAndChangeAddress = loc => {
@@ -120,19 +128,40 @@ function Map({ location, handleLocation, changeState, place, handlePlace, handle
     }
 
     return (
-        <div className="map">
-            {showMap && <GoogleMap
-                ref={refMap}
-                defaultZoom={17}
-                defaultCenter={center}
-                onBoundsChanged={handleBoundsChanged}
-                onDragEnd={handleDragEnd}
-            >
-                <Marker position={center} />
-            </GoogleMap>}
-            {location.lat !== '' && <TextField id="outlined-basic" label="Location" variant="outlined" disabled value={place} />}
-            <Button className="otp-button" onClick={returnToMenu}>SAVE LOCATION</Button>
-        </div>
+        <>
+            <div className="sign-in-form">
+                {showMap && <GoogleMap
+                    ref={refMap}
+                    defaultZoom={15}
+                    defaultCenter={center}
+                    onBoundsChanged={handleBoundsChanged}
+                    onDragEnd={handleDragEnd}
+
+                >
+                    <Marker
+                        // defaultPlace={center}
+                        position={center}
+                    // ref={refMap}
+                    // defaultPosition={center}
+                    // onDrag={handleBoundsChanged}
+                    // onDragEnd={handleDragEnd}
+                    />
+                </GoogleMap>}
+                {location.lat !== '' && <>
+                    <hr />
+                    <div style={{ margin: '1em' }}>
+                        {place}
+                    </div>
+                    <hr />
+                </>}
+                <Button
+                    className="otp-button"
+                    onClick={returnToMenu}
+                    fullWidth
+                    variant="contained"
+                >SAVE LOCATION</Button>
+            </div>
+        </>
     );
 }
 
