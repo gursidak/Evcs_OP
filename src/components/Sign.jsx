@@ -7,15 +7,15 @@ import OtpInput from 'react-otp-input';
 import TextField from '@material-ui/core/TextField';
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 import FirstForm from './FirstForm';
-import Link from "@material-ui/core/Link";
 import FileAndLocation from './FileAndLocation';
 import FindLocation from './FindLocation'
 import WrappedMap from './Map';
 import ChooseOptions from './ChooseOptions'
-import Typography from "@material-ui/core/Typography";
 import WebAppBar from './WebAppBar';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import PhoneRoundedIcon from '@material-ui/icons/PhoneRounded';
+import WaitingRoom from './WaitingRoom'
+import Footer from './Footer'
 import './Sign.css';
 
 const color = "#f00";
@@ -27,19 +27,6 @@ const theme = createMuiTheme({
         text: { primary: black, secondary: black }
     }
 });
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {"Copyright © "}
-            <Link color="inherit" href="#">
-                GATS SCS,
-        </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
-        </Typography>
-    );
-}
 
 class Sign extends Component {
     constructor(props) {
@@ -62,7 +49,8 @@ class Sign extends Component {
             name: '',
             accountNumber: '',
             ifsc: '',
-            fileWarning: false
+            fileWarning: false,
+            login: this.props.location.state.login
         };
     }
 
@@ -289,19 +277,19 @@ class Sign extends Component {
             return (
                 <>
                     <h3>Confirm Location</h3>
-                        <WrappedMap
-                            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw`}
-                            loadingElement={<div style={{ height: `100%` }} />}
-                            containerElement={<div style={{ height: `50%`, width: '95%', position: 'absolute', marginTop: '25%' }} />}
-                            mapElement={<div style={{ height: `100%` }} />}
-                            location={this.state.location}
-                            handleLocation={this.handleLocation}
-                            changeState={this.changeState}
-                            place={this.state.place}
-                            handlePlace={this.handlePlace}
-                            useGPS={this.state.useGPS}
-                            handleUseGPS={this.handleUseGPS}
-                        />
+                    <WrappedMap
+                        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw`}
+                        loadingElement={<div style={{ height: `100%` }} />}
+                        containerElement={<div style={{ height: `50%`, width: '95%', position: 'absolute', marginTop: '25%' }} />}
+                        mapElement={<div style={{ height: `100%` }} />}
+                        location={this.state.location}
+                        handleLocation={this.handleLocation}
+                        changeState={this.changeState}
+                        place={this.state.place}
+                        handlePlace={this.handlePlace}
+                        useGPS={this.state.useGPS}
+                        handleUseGPS={this.handleUseGPS}
+                    />
                 </>
             )
         } else if (this.state.activelog === 6) {
@@ -329,7 +317,9 @@ class Sign extends Component {
             )
         } else if (this.state.activelog === 8) {
             return (
-                <></ >
+                <>
+                    <WaitingRoom />
+                </ >
             )
         }
     }
@@ -344,7 +334,7 @@ class Sign extends Component {
                     </div>
                 </Container>
                 <div className="copyright">
-                    <footer><Copyright /></footer>
+                    <footer><Footer /></footer>
                 </div>
             </>
         )

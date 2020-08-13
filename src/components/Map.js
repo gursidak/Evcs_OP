@@ -132,7 +132,7 @@ function Map({ location, handleLocation, changeState, place, handlePlace, useGPS
             <div className="sign-in-form">
                 {showMap && <GoogleMap
                     ref={refMap}
-                    defaultZoom={15}
+                    defaultZoom={16}
                     defaultCenter={center}
                     onBoundsChanged={handleBoundsChanged}
                     onDragEnd={handleDragEnd}
