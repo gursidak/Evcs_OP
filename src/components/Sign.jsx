@@ -14,7 +14,10 @@ import ChooseOptions from './ChooseOptions'
 import WebAppBar from './WebAppBar';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import PhoneRoundedIcon from '@material-ui/icons/PhoneRounded';
-import WaitingRoom from './WaitingRoom'
+import WaitingRoom from './WaitingRoom';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import { Redirect } from 'react-router-dom'
 import Footer from './Footer'
 import './Sign.css';
 
@@ -152,6 +155,12 @@ class Sign extends Component {
                                 }}
                                 placeholder="10 Digits Mobile Number"
                             />
+                            {
+                                this.state.login && <FormControlLabel
+                                    control={<Checkbox value="remember" color="primary" />}
+                                    label="Remember me"
+                                />
+                            }
                         </MuiThemeProvider>
                         <Button
                             type='button'
@@ -187,7 +196,7 @@ class Sign extends Component {
                     <Button
                         className="otp-button"
                         disabled={isDisabled}
-                        onClick={() => this.changeState(2)}
+                        onClick={() => { this.state.login ? this.changeState(9) : this.changeState(2) }}
                         fullWidth
                         variant="contained"
                         style={{ margin: theme.spacing(3, 0, 2) }}
@@ -319,6 +328,12 @@ class Sign extends Component {
             return (
                 <>
                     <WaitingRoom />
+                </ >
+            )
+        } else if (this.state.activelog === 9) {
+            return (
+                <>
+                    return <Redirect to='/login' />;
                 </ >
             )
         }
