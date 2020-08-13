@@ -196,7 +196,7 @@ class Sign extends Component {
                     <Button
                         className="otp-button"
                         disabled={isDisabled}
-                        onClick={() => { this.state.login ? this.changeState(9) : this.changeState(2) }}
+                        onClick={() => { this.state.login ? this.changeState(10) : this.changeState(2) }}
                         fullWidth
                         variant="contained"
                         style={{ margin: theme.spacing(3, 0, 2) }}
@@ -327,13 +327,48 @@ class Sign extends Component {
         } else if (this.state.activelog === 8) {
             return (
                 <>
-                    <WaitingRoom />
+                    <WaitingRoom
+                        changeState={this.changeState}
+                    />
                 </ >
             )
         } else if (this.state.activelog === 9) {
             return (
                 <>
-                    return <Redirect to='/login' />;
+                    <h3>Add Chargers</h3>
+                    <div className="sign-in-form">
+                        <div style={{margin: '2em'}}>
+                            <MuiThemeProvider theme={theme}>
+                                <FormControlLabel
+                                    control={<Checkbox value="a" color="primary" />}
+                                    label="Type A "
+                                /> <br />
+                                <FormControlLabel
+                                    control={<Checkbox value="b" color="primary" />}
+                                    label="Type B"
+                                /> <br />
+                                <FormControlLabel
+                                    control={<Checkbox value="c" color="primary" />}
+                                    label="Type C"
+                                /> <br />
+                                <FormControlLabel
+                                    control={<Checkbox value="c" color="primary" />}
+                                    label="Type D"
+                                />
+                                <Button
+                                    onClick={() => this.changeState(10)}
+                                    style={{ margin: theme.spacing(3, 0, 2) }}
+                                    fullWidth
+                                >ADD CHARGERS AND PROCEED</Button>
+                            </MuiThemeProvider>
+                        </div>
+                    </div>
+                </ >
+            )
+        } else if (this.state.activelog === 10) {
+            return (
+                <>
+                    <Redirect to='/login' />;
                 </ >
             )
         }
