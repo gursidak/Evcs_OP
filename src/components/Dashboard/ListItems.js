@@ -1,5 +1,5 @@
 import React from 'react';
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -10,7 +10,6 @@ import BugReportRoundedIcon from '@material-ui/icons/BugReportRounded';
 import ContactSupportRoundedIcon from '@material-ui/icons/ContactSupportRounded';
 import EmojiObjectsRoundedIcon from '@material-ui/icons/EmojiObjectsRounded';
 import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRounded';
-import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
 import Card from './Card'
 
 export const mainListItems = (
