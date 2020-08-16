@@ -21,7 +21,7 @@ const LoginAppbar = ({ open, online, setOnline, handleDrawerOpen }) => {
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
-            color="inherit"
+            color="default"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
@@ -32,17 +32,17 @@ const LoginAppbar = ({ open, online, setOnline, handleDrawerOpen }) => {
             Dashboard
           </Typography>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="inherit">
+            <Badge badgeContent={4} color="default">
               <NotificationsIcon />
             </Badge>
           </IconButton>
           <IconButton color="inherit">
-            <Badge badgeContent={2} color="inherit">
+            <Badge badgeContent={2} color="default">
               <OfflineBoltRoundedIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit" onClick={() => setOnline(!online)}>
-            <Badge color="inherit">
+          <IconButton color="default" onClick={() => setOnline(!online)}>
+            <Badge color="default">
               {online ? <PowerOffRoundedIcon /> : <PowerRoundedIcon />}
             </Badge>
           </IconButton>
