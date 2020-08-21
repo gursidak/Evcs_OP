@@ -17,10 +17,10 @@ import PhoneRoundedIcon from "@material-ui/icons/PhoneRounded";
 import WaitingRoom from "./WaitingRoom";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import { Redirect } from "react-router-dom";
 import Footer from "./Footer";
 import Dashboard from "../components/Dashboard/Dashboard";
 import BankingDetails from "./BankingDetails";
+import TypeOfChargers from "./TypeOfChargers";
 import "./Sign.css";
 
 const color = "#f00";
@@ -158,6 +158,7 @@ class Sign extends Component {
                   ),
                 }}
                 placeholder="10 Digits Mobile Number"
+                type="tel"
               />
               {this.state.login && (
                 <FormControlLabel
@@ -317,49 +318,9 @@ class Sign extends Component {
         />
       );
     } else if (this.state.activelog === 8) {
-      return (
-        <>
-          <WaitingRoom changeState={this.changeState} />
-        </>
-      );
+      return <WaitingRoom changeState={this.changeState} />;
     } else if (this.state.activelog === 9) {
-      return (
-        <>
-          <h3>Add Chargers</h3>
-          <div className="sign-in-form">
-            <div style={{ margin: "2em" }}>
-              <MuiThemeProvider theme={theme}>
-                <FormControlLabel
-                  control={<Checkbox value="a" color="primary" />}
-                  label="Type A "
-                />{" "}
-                <br />
-                <FormControlLabel
-                  control={<Checkbox value="b" color="primary" />}
-                  label="Type B"
-                />{" "}
-                <br />
-                <FormControlLabel
-                  control={<Checkbox value="c" color="primary" />}
-                  label="Type C"
-                />{" "}
-                <br />
-                <FormControlLabel
-                  control={<Checkbox value="c" color="primary" />}
-                  label="Type D"
-                />
-                <Button
-                  onClick={() => this.changeState(10)}
-                  style={{ margin: theme.spacing(3, 0, 2) }}
-                  fullWidth
-                >
-                  ADD CHARGERS AND PROCEED
-                </Button>
-              </MuiThemeProvider>
-            </div>
-          </div>
-        </>
-      );
+      return <TypeOfChargers theme={theme} changeState={this.changeState} />;
     } else if (this.state.activelog === 10) {
       return <Dashboard />;
     }
