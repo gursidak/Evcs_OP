@@ -20,6 +20,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { Redirect } from "react-router-dom";
 import Footer from "./Footer";
 import Dashboard from "../components/Dashboard/Dashboard";
+import BankingDetails from "./BankingDetails";
 import "./Sign.css";
 
 const color = "#f00";
@@ -234,55 +235,18 @@ class Sign extends Component {
       );
       return (
         <>
-          <h4>Provide Banking Details</h4>
-          <form className="sign-in-form">
-            <MuiThemeProvider theme={theme}>
-              <TextField
-                label="Bank A/C Holder Name"
-                maxLength="50"
-                type="text"
-                autoFocus
-                margin="normal"
-                value={this.state.name}
-                onChange={this.handleName}
-                fullWidth
-              />
-              <br />
-              <TextField
-                label="Bank A/C Number"
-                maxLength="20"
-                type="number"
-                margin="normal"
-                value={this.state.accountNumber}
-                onChange={this.handleAccountNumber}
-                fullWidth
-              />
-              <br />
-              <TextField
-                label="IFSC Code"
-                maxLength="11"
-                value={this.state.ifsc}
-                onChange={this.handleifsc}
-                placeholder="11 Digit IFSC Code"
-                type="text"
-                margin="normal"
-                fullWidth
-              />
-              <br />
-            </MuiThemeProvider>
-            <Button
-              className="otp-button"
-              onClick={() => {
-                this.setState({ name: this.state.name.trim() });
-                this.changeState(4);
-              }}
-              style={{ margin: theme.spacing(3, 0, 2) }}
-              fullWidth
-              disabled={disabled}
-            >
-              {disabled ? "ENTER DETAILS" : "CONFIRM DETAILS AND SUBMIT"}
-            </Button>
-          </form>
+          <BankingDetails
+            theme={theme}
+            disabled={disabled}
+            name={this.state.name}
+            ifsc={this.state.ifsc}
+            accountNumber={this.state.accountNumber}
+            handleName={this.handleName}
+            handleAccountNumber={this.handleAccountNumber}
+            handleifsc={this.handleifsc}
+            setState={this.setState}
+            changeState={this.changeState}
+          />
         </>
       );
     } else if (this.state.activelog === 4) {
