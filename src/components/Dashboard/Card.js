@@ -67,14 +67,18 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-const Card = React.memo(function Card() {
+const Card = React.memo(function Card({ setCounter, handleDrawerClose }) {
     const styles = useStyles();
+    const profileClick = () => {
+        setCounter(1);
+        handleDrawerClose();
+    }
     return (
         <>
             <NoSsr>
                 <GoogleFontLoader fonts={[{ font: "Barlow", weights: [400, 600] }]} />
             </NoSsr>
-            <Column p={0} gap={0} className={styles.card}>
+            <Column p={0} gap={0} className={styles.card} onClick={profileClick}>
                 <PersonItem
                     name="Shivam Jha"
                     email="shivamjjha@gmail.com"

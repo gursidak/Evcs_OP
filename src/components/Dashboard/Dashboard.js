@@ -20,99 +20,100 @@ import LoginDrawer from './LoginDrawer';
 import MainPage from './MainPage';
 import Sign from '../Sign'
 import FileAndLocation from '../FileAndLocation'
+import UserProfile from './UserProfile';
 // import AlertDialogueSlide from './AlertDialogueSlide'
 import './styles.css'
 
 const color = "#f00";
 const black = "#000000";
 const theme = createMuiTheme({
-    palette: {
-        common: { black: color, white: color },
-        primary: { main: color, dark: color, light: color },
-        text: { primary: black, secondary: black },
-    },
+  palette: {
+    common: { black: color, white: color },
+    primary: { main: color, dark: color, light: color },
+    text: { primary: black, secondary: black },
+  },
 });
 
 function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                EVCS
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        EVCS
       </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
 }
 
 function Dashboard({ props }) {
-    let location = useLocation();
-    // let { id } = location.state || { from: { pathname: "/" } }
-    const classes = myStyles();
-    const [open, setOpen] = useState(false);
-    const [online, setOnline] = useState(true);
-    const [counter, setCounter] = useState(0);
-    const [firstTimeLogin, setFirstTimeLogin] = useState(true);
-    const [confirm, setShowconfirm] = React.useState(true);
+  let location = useLocation();
+  // let { id } = location.state || { from: { pathname: "/" } }
+  const classes = myStyles();
+  const [open, setOpen] = useState(false);
+  const [online, setOnline] = useState(true);
+  const [counter, setCounter] = useState(0);
+  const [firstTimeLogin, setFirstTimeLogin] = useState(true);
+  const [confirm, setShowconfirm] = React.useState(true);
 
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
-    useEffect(() => {
-        if (firstTimeLogin)
-            setShowconfirm(true);
-        // console.log(id);
-        console.log(`Props:`, JSON.stringify(location));
-    }, []);
+  useEffect(() => {
+    if (firstTimeLogin)
+      setShowconfirm(true);
+    // console.log(id);
+    console.log(`Props:`, JSON.stringify(location));
+  }, []);
 
-    // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-    const toggleView = () => {
-        switch (counter) {
-            case 0:
-                return (
-                    <MainPage />
-                );
+  const toggleView = () => {
+    switch (counter) {
+      case 0:
+        return (
+          <MainPage />
+        );
 
-            case 1:
-                return (
-                    <></>
-                );
+      case 1:
+        return (
+          <UserProfile />
+        );
 
-            default:
-                break;
-        }
+      default:
+        break;
     }
+  }
 
-    return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <LoginAppbar
-                open={open}
-                online={online}
-                setOnline={setOnline}
-                handleDrawerOpen={handleDrawerOpen}
-            />
-            <LoginDrawer
-                open={open}
-                setCounter={setCounter}
-                handleDrawerClose={handleDrawerClose}
-            />
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    {toggleView()}
-                    <Box pt={4}>
-                        <Copyright />
-                    </Box>
-                </Container>
-            </main>
-        </div>
-    );
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <LoginAppbar
+        open={open}
+        online={online}
+        setOnline={setOnline}
+        handleDrawerOpen={handleDrawerOpen}
+      />
+      <LoginDrawer
+        open={open}
+        setCounter={setCounter}
+        handleDrawerClose={handleDrawerClose}
+      />
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+          {toggleView()}
+          <Box pt={4}>
+            <Copyright />
+          </Box>
+        </Container>
+      </main>
+    </div>
+  );
 }
 export default (Dashboard);

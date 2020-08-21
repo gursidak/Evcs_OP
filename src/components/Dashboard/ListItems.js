@@ -1,70 +1,70 @@
-import React from 'react';
+import React from "react";
 // import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import RestoreRoundedIcon from '@material-ui/icons/RestoreRounded';
-import EvStationRoundedIcon from '@material-ui/icons/EvStation';
-import BugReportRoundedIcon from '@material-ui/icons/BugReportRounded';
-import ContactSupportRoundedIcon from '@material-ui/icons/ContactSupportRounded';
-import EmojiObjectsRoundedIcon from '@material-ui/icons/EmojiObjectsRounded';
-import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRounded';
-import Card from './Card'
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import RestoreRoundedIcon from "@material-ui/icons/RestoreRounded";
+import EvStationRoundedIcon from "@material-ui/icons/EvStation";
+import BugReportRoundedIcon from "@material-ui/icons/BugReportRounded";
+import ContactSupportRoundedIcon from "@material-ui/icons/ContactSupportRounded";
+import EmojiObjectsRoundedIcon from "@material-ui/icons/EmojiObjectsRounded";
+import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
+import Card from "./Card";
 
-export const MainListItems = ({setCounter}) => (
-    <div>
-        <ListItem button>
-            {/* <ListItemIcon>
+export const MainListItems = ({ setCounter, handleDrawerClose }) => (
+  <div>
+    <ListItem button>
+      {/* <ListItemIcon>
                 <AccountCircleRoundedIcon />
             </ListItemIcon> */}
-            {/* <ListItemText primary="My Profile" /> */}
-            <Card />
-        </ListItem>
-        {/* <Divider /> */}
-        <ListItem button selected={true} onClick={() => setCounter(1)}>
-            <ListItemIcon> 
-                <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText primary="Dashboard" />
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon>
-                <RestoreRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="All Bookings" />
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon>
-                <EvStationRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="My Station" />
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon>
-                <BugReportRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Raise Issue" />
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon>
-                <ContactSupportRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Contact Admin" />
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon>
-                <EmojiObjectsRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tips To EVCS" />
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon>
-                <PowerSettingsNewRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Logout" />
-        </ListItem>
-    </div>
+      {/* <ListItemText primary="My Profile" /> */}
+      <Card setCounter={setCounter} handleDrawerClose={handleDrawerClose} />
+    </ListItem>
+    {/* <Divider /> */}
+    <ListItem button selected={true} onClick={() => {}}>
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Dashboard" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <RestoreRoundedIcon />
+      </ListItemIcon>
+      <ListItemText primary="All Bookings" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <EvStationRoundedIcon />
+      </ListItemIcon>
+      <ListItemText primary="My Station" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <BugReportRoundedIcon />
+      </ListItemIcon>
+      <ListItemText primary="Raise Issue" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <ContactSupportRoundedIcon />
+      </ListItemIcon>
+      <ListItemText primary="Contact Admin" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <EmojiObjectsRoundedIcon />
+      </ListItemIcon>
+      <ListItemText primary="Tips To EVCS" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <PowerSettingsNewRoundedIcon />
+      </ListItemIcon>
+      <ListItemText primary="Logout" />
+    </ListItem>
+  </div>
 );
 
 /* export const secondaryListItems = (
