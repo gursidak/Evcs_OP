@@ -233,6 +233,10 @@ class Sign extends Component {
         this.state.accountNumber &&
         this.state.ifsc.length >= 11
       );
+      const onClick = () => {
+        this.setState({ name: this.state.name.trim() });
+        this.changeState(4);
+      };
       return (
         <>
           <BankingDetails
@@ -246,6 +250,7 @@ class Sign extends Component {
             handleifsc={this.handleifsc}
             setState={this.setState}
             changeState={this.changeState}
+            onClick={onClick}
           />
         </>
       );
