@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from 'clsx';
-import { mainListItems, /* secondaryListItems */ } from './ListItems';
+import { MainListItems, /* secondaryListItems */ } from './ListItems';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import myStyles from "./myStyles";
 
-export default function LoginDrawer({open, handleDrawerClose}) {
+export default function LoginDrawer({open, handleDrawerClose, setCounter}) {
   const classes = myStyles();
   return (
     <Drawer
@@ -27,7 +27,7 @@ export default function LoginDrawer({open, handleDrawerClose}) {
       </div>
       <Divider />
       {/* <Card /> */}
-      <List>{mainListItems}</List>
+      <List><MainListItems setCounter={setCounter} /></List>
       {/* <Divider /> */}
       {/* <List>{secondaryListItems}</List> */}
     </Drawer>

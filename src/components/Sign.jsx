@@ -19,6 +19,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Redirect } from "react-router-dom";
 import Footer from "./Footer";
+import Dashboard from "../components/Dashboard/Dashboard";
 import "./Sign.css";
 
 const color = "#f00";
@@ -391,31 +392,28 @@ class Sign extends Component {
         </>
       );
     } else if (this.state.activelog === 10) {
-      return (
-        <>
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { randominfo: "112" },
-            }}
-          />
-        </>
-      );
+      return <Dashboard />;
     }
   }
 
   render() {
     return (
       <>
-        <WebAppBar />
-        <Container component="main" maxWidth="xs">
-          <div className="semi-container">{this.toggleinup()}</div>
-        </Container>
-        <div className="copyright">
-          <footer>
-            <Footer />
-          </footer>
-        </div>
+        {this.state.activelog < 10 ? (
+          <div>
+            <WebAppBar />
+            <Container component="main" maxWidth="xs">
+              <div className="semi-container">{this.toggleinup()}</div>
+            </Container>
+            <div className="copyright">
+              <footer>
+                <Footer />
+              </footer>
+            </div>
+          </div>
+        ) : (
+          <>{this.toggleinup()}</>
+        )}
       </>
     );
   }

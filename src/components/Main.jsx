@@ -10,10 +10,10 @@ export default function Main() {
     return (
         <Switch>
             <Route exact path='/' component={Landing} />
-            <Route path='/main' component={MainView} />
-            <Route path='/sign' component={Sign} />
-            <Route path='/appbar' component={WebAppBar} />
-            <Route path='/login' component={Dashboard} />
+            <Route exact path='/sign' component={Sign} />
+            <Route exact path='/appbar' component={WebAppBar} />
+            <Route exact path='/main' component={MainView} />
+            <Route exact path='/login' component={Dashboard} />
         </Switch>
     );
 }

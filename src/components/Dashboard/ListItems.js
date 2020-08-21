@@ -12,7 +12,7 @@ import EmojiObjectsRoundedIcon from '@material-ui/icons/EmojiObjectsRounded';
 import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRounded';
 import Card from './Card'
 
-export const mainListItems = (
+export const MainListItems = ({setCounter}) => (
     <div>
         <ListItem button>
             {/* <ListItemIcon>
@@ -22,8 +22,8 @@ export const mainListItems = (
             <Card />
         </ListItem>
         {/* <Divider /> */}
-        <ListItem button>
-            <ListItemIcon>
+        <ListItem button selected={true} onClick={() => setCounter(1)}>
+            <ListItemIcon> 
                 <DashboardIcon />
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
