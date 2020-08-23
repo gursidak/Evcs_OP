@@ -21,6 +21,7 @@ import Footer from "./Footer";
 import Dashboard from "../components/Dashboard/Dashboard";
 import BankingDetails from "./BankingDetails";
 import TypeOfChargers from "./TypeOfChargers";
+import MobileNumber from "./MobileNumber";
 import "./Sign.css";
 
 const color = "#f00";
@@ -51,11 +52,14 @@ class Sign extends Component {
       aadharUIM: null,
       gstinFile: null,
       useGPS: true,
-      name: "",
+      accountHolder: "",
       accountNumber: "",
       ifsc: "",
       fileWarning: false,
       login: this.props.location.state.login,
+      name: "",
+      email: "",
+      profileUpdated: false,
     };
   }
 
@@ -92,6 +96,17 @@ class Sign extends Component {
     this.setState({ gstin: gstin });
   };
 
+  handleName = e => {
+    const name = e.target ? e.target.value : e;
+    // console.log(name);
+    this.setState({name: name});
+  }
+
+  handleEmail = e => {
+    const email = e.target.value;
+    this.setState({ email: email });
+  };
+
   handleLocation = location => {
     this.setState({ location: location });
   };
@@ -110,10 +125,10 @@ class Sign extends Component {
     this.setState({ accountNumber: accountNumber });
   };
 
-  handleName = e => {
-    const name = e.target.value.replace(/[^a-zA-Z ]/g, "");
-    if (name.length > 50) return;
-    this.setState({ name: name });
+  handleAccountHolder = e => {
+    const accountHolder = e.target.value.replace(/[^a-zA-Z ]/g, "");
+    if (accountHolder.length > 50) return;
+    this.setState({ accountHolder: accountHolder });
   };
 
   handleifsc = e => {
@@ -135,51 +150,24 @@ class Sign extends Component {
     } else this.setState({ fileWarning: true });
   };
 
+  setProfileUpdateToTrue = () => {
+    this.setState({ profileUpdated: true });
+  };
+
   toggleinup() {
     if (this.state.activelog === 0) {
-      const isDisabled = this.state.mobileNo.length !== 10;
       return (
-        <>
-          <h3>GATS Charging Station</h3>
-          <form className="sign-in-form" onSubmit={this.handleSubmit}>
-            <MuiThemeProvider theme={theme}>
-              <TextField
-                autoFocus
-                fullWidth
-                value={this.state.mobileNo}
-                onChange={this.handleChange}
-                margin="normal"
-                label="Enter Mobile Number"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <PhoneRoundedIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                placeholder="10 Digits Mobile Number"
-                type="tel"
-              />
-              {this.state.login && (
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-              )}
-            </MuiThemeProvider>
-            <Button
-              type="button"
-              variant="contained"
-              onClick={() => this.changeState(1)}
-              disabled={isDisabled}
-              fullWidth
-              color="primary"
-              style={{ margin: theme.spacing(3, 0, 2) }}
-            >
-              {isDisabled ? "ENTER MOBILE NUMBER" : "REQUEST OTP"}
-            </Button>
-          </form>
-        </>
+        <MobileNumber
+          theme={theme}
+          mobileNo={this.state.mobileNo}
+          handleChange={this.handleChange}
+          login={this.state.login}
+          handleSubmit={this.handleSubmit}
+          changeState={this.changeState}
+          activelog={this.state.activelog}
+          profileUpdated={this.state.profileUpdated}
+          setProfileUpdateToTrue={this.setProfileUpdateToTrue}
+        />
       );
     } else if (this.state.activelog === 1) {
       const isDisabled = this.state.otp.length < 4;
@@ -230,12 +218,12 @@ class Sign extends Component {
       );
     } else if (this.state.activelog === 3) {
       const disabled = !(
-        this.state.name &&
+        this.state.accountHolder &&
         this.state.accountNumber &&
         this.state.ifsc.length >= 11
       );
       const onClick = () => {
-        this.setState({ name: this.state.name.trim() });
+        this.setState({ accountHolder: this.state.accountHolder.trim() });
         this.changeState(4);
       };
       return (
@@ -243,10 +231,10 @@ class Sign extends Component {
           <BankingDetails
             theme={theme}
             disabled={disabled}
-            name={this.state.name}
+            accountHolder={this.state.accountHolder}
             ifsc={this.state.ifsc}
             accountNumber={this.state.accountNumber}
-            handleName={this.handleName}
+            handleName={this.handleAccountHolder}
             handleAccountNumber={this.handleAccountNumber}
             handleifsc={this.handleifsc}
             setState={this.setState}
@@ -322,7 +310,28 @@ class Sign extends Component {
     } else if (this.state.activelog === 9) {
       return <TypeOfChargers theme={theme} changeState={this.changeState} />;
     } else if (this.state.activelog === 10) {
-      return <Dashboard />;
+      return (
+        <Dashboard
+          state={this.state}
+          theme={theme}
+          changeState={this.changeState}
+          // handleAadhar
+          // handleAccountNumber
+          handleChange={this.handleChange}
+          // handleFile
+          // handleGSTIN
+          // handleLocation
+          // handleName
+          // handleOTPChange
+          // handlePlace
+          handleSubmit={this.handleSubmit}
+          // handleUseGPS
+          // handleifsc
+          setProfileUpdateToTrue={this.setProfileUpdateToTrue}
+          handleEmail={this.handleEmail}
+          handleName={this.handleName}
+        />
+      );
     }
   }
 

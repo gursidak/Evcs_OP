@@ -1,17 +1,41 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
+import MobileNumber from "../MobileNumber";
 
-export default function UserProfile() {
+export default function UserProfile({
+  state,
+  theme,
+  handleChange,
+  handleSubmit,
+  changeState,
+  setProfileUpdateToTrue,
+  handleEmail,
+  handleName,
+}) {
   return (
     <>
       <Grid container spacing={3}>
-        <h4 style={{margin: '0 auto'}}>Shivam's EVCS Profile</h4>
-        <Divider variant='middle' />
+        {/* <h3 style={{ margin: "0 auto" }}>Shivam's Profile</h3> */}
+        {/* {console.log(`name: ${state.name}`)} */}
+        <Divider variant="middle" />
         <Grid item xs={12}>
-          Name <br />
-          Mobile No. <br />
-          Email Address <br />
+          <MobileNumber
+            // state={state}
+            theme={theme}
+            mobileNo={state.mobileNo}
+            handleChange={handleChange}
+            login={state.login}
+            handleSubmit={handleSubmit}
+            changeState={changeState}
+            activelog={state.activelog}
+            profileUpdated={state.profileUpdated}
+            setProfileUpdateToTrue={setProfileUpdateToTrue}
+            email={state.email}
+            handleEmail={handleEmail}
+            name={state.name}
+            handleName={handleName}
+          />
         </Grid>
         {/* Bank Account Details */}
         <Grid item xs={12}>
@@ -33,5 +57,5 @@ export default function UserProfile() {
         </Grid>
       </Grid>
     </>
-  )
+  );
 }

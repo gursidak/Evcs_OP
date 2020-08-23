@@ -47,7 +47,19 @@ function Copyright() {
   );
 }
 
-function Dashboard({ props }) {
+function Dashboard(
+  {
+    state,
+    theme,
+    handleChange,
+    handleSubmit,
+    changeState,
+    setProfileUpdateToTrue,
+    handleEmail,
+    handleName,
+    setState
+  }
+) {
   let location = useLocation();
   // let { id } = location.state || { from: { pathname: "/" } }
   const classes = myStyles();
@@ -82,7 +94,20 @@ function Dashboard({ props }) {
 
       case 1:
         return (
-          <UserProfile />
+          <UserProfile
+            state={state}
+            theme={theme}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            changeState={changeState}
+            activelog={state.activelog}
+            profileUpdated={state.profileUpdated}
+            setProfileUpdateToTrue={setProfileUpdateToTrue}
+            email={state.email}
+            handleEmail={handleEmail}
+            name={state.name}
+            handleName={handleName}
+          />
         );
 
       default:

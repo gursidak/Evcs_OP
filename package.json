@@ -12,6 +12,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "clsx": "^1.1.1",
+    "email-validator": "^2.0.4",
     "gstin-validator": "^0.2.5",
     "react": "^16.13.1",
     "react-browser-router": "^2.1.2",
