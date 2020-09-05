@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import MobileNumber from "../MobileNumber";
 import FirstForm from '../FirstForm';
+import BankingDetails from '../BankingDetails';
 
 export default function UserProfile({
   state,
@@ -16,10 +17,15 @@ export default function UserProfile({
   showAadhar,
   handleGSTIN,
   handleAadhar,
-  
+  disabled,
+  onClick,
+  handleAccountHolder,
+  handleAccountNumber,
+  handleifsc,
+  setState
 }) {
   return (
-    <>
+    <>  
       <Grid container spacing={3}>
         {/* <h3 style={{ margin: "0 auto" }}>Shivam's Profile</h3> */}
         {/* {console.log(`name: ${state.name}`)} */}
@@ -57,10 +63,22 @@ export default function UserProfile({
             onProfilePage={state.onProfilePage}
           />
         </Grid>
+        <hr />
         <Grid item xs={12}>
-          Bank A/C Holder Name <br />
-          Bank A/C Number <br />
-          IFSC Code
+          <BankingDetails
+            theme={theme}
+            disabled={disabled}
+            accountHolder={state.accountHolder}
+            ifsc={state.ifsc}
+            accountNumber={state.accountNumber}
+            handleName={handleAccountHolder}
+            handleAccountNumber={handleAccountNumber}
+            handleifsc={handleifsc}
+            setState={setState}
+            changeState={changeState}
+            onClick={onClick}
+            onProfilePage={state.onProfilePage}
+          />
         </Grid>
         <Grid item xs={12}>
           Location Details

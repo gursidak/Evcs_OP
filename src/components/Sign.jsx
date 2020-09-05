@@ -60,7 +60,7 @@ class Sign extends Component {
       name: "",
       email: "",
       profileUpdated: false,
-      onProfilePage: false
+      onProfilePage: false,
     };
   }
 
@@ -100,8 +100,8 @@ class Sign extends Component {
   handleName = e => {
     const name = e.target ? e.target.value : e;
     // console.log(name);
-    this.setState({name: name});
-  }
+    this.setState({ name: name });
+  };
 
   handleEmail = e => {
     const email = e.target.value;
@@ -242,6 +242,7 @@ class Sign extends Component {
             handleifsc={this.handleifsc}
             setState={this.setState}
             changeState={this.changeState}
+            onProfilePage={this.state.onProfilePage}
             onClick={onClick}
           />
         </>
@@ -314,13 +315,26 @@ class Sign extends Component {
       return <TypeOfChargers theme={theme} changeState={this.changeState} />;
     } else if (this.state.activelog === 10) {
       const showAadhar = this.state.aadharNumber
-      .replace(/(.{4})/g, "$1 ")
-      .trim();
-      !this.state.onProfilePage && this.setState({onProfilePage: true});
+        .replace(/(.{4})/g, "$1 ")
+        .trim();
+      !this.state.onProfilePage && this.setState({ onProfilePage: true });
+
+      const disabled = !(
+        this.state.accountHolder &&
+        this.state.accountNumber &&
+        this.state.ifsc.length >= 11
+      );
+
+      const onClick = () => {
+        this.setState({ accountHolder: this.state.accountHolder.trim() });
+        this.changeState(4);
+      };
       return (
         <Dashboard
           state={this.state}
           theme={theme}
+          disabled={disabled}
+          onClick={onClick}
           changeState={this.changeState}
           handleAadhar={this.handleAadhar}
           // handleAccountNumber
@@ -339,6 +353,10 @@ class Sign extends Component {
           handleEmail={this.handleEmail}
           handleName={this.handleName}
           showAadhar={showAadhar}
+          handleAccountHolder={this.handleAccountHolder}
+          handleAccountNumber={this.handleAccountNumber}
+          handleifsc={this.handleifsc}
+          setState={this.setState}
         />
       );
     }

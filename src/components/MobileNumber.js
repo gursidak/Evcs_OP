@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 import validator from "email-validator";
-import './Sign.css';
+// import './Sign.css';
 
 export default function MobileNumber(
   { theme,
@@ -50,6 +50,12 @@ export default function MobileNumber(
     setWarning(false);
     handleEmail(e);
   }
+
+  const styles = theme => ({
+    input: {
+      fontSize : '1.5em'
+    }
+  });
   return (
     <>
       {onProfilePage ? <h4 style={{ margin: '0' }}>Basic Details</h4> : <h3>GATS Charging Station</h3>}
@@ -75,7 +81,7 @@ export default function MobileNumber(
                 placeholder="Enter your name"
                 type="text"
                 required
-                // inputProps={{ readOnly: true }}
+              // inputProps={{ readOnly: true }}
               />
               <TextField
                 fullWidth
@@ -111,12 +117,15 @@ export default function MobileNumber(
                   <PhoneRoundedIcon />
                 </InputAdornment>
               ),
+              // className: styles.input
             }}
             placeholder="Enter 10 Digits Mobile Number"
             type="tel"
-            // style={{fontSize: "1.5em"}}
+            // style={{ fontSize: "1.5em" }}
             id="mobile-number"
             required
+            // InputProps={{ fontSize: '1.5em' }}
+
           />
           {login && (
             <FormControlLabel

@@ -15,12 +15,13 @@ export default function BankingDetails(
     handleifsc,
     setState,
     changeState,
-    onClick
+    onClick,
+    onProfilePage
   }
 ) {
   return (
     <>
-      <h4>Provide Banking Details</h4>
+      {onProfilePage ? <h4 style={{ margin: '0' }}>Banking Details</h4> : <h3>Provide Banking Details</h3>}
       <form className="sign-in-form">
         <MuiThemeProvider theme={theme}>
           <TextField
@@ -68,7 +69,11 @@ export default function BankingDetails(
           fullWidth
           disabled={disabled}
         >
-          {disabled ? "ENTER DETAILS" : "CONFIRM DETAILS AND SUBMIT"}
+          {
+            disabled
+              ? "ENTER DETAILS"
+              : (onProfilePage ? "VERIFY AND SAVE DETAILS" : "REQUEST OTP")
+          }
         </Button>
       </form>
     </>

@@ -67,7 +67,7 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
         >{
             isDisabled
               ? "ENTER DETAILS"
-              : (onProfilePage ? "VERIFY DETAILS AND PROCEED" : "VERIFY DETAILS AND SAVE")
+              : (onProfilePage ? "VERIFY DETAILS AND SAVE" : "VERIFY DETAILS AND PROCEED")
           }
         </Button>
       </form>

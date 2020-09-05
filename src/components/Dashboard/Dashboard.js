@@ -61,6 +61,11 @@ function Dashboard(
     showAadhar,
     handleGSTIN,
     handleAadhar,
+    disabled,
+    onClick,
+    handleAccountHolder,
+    handleAccountNumber,
+    handleifsc,
   }
 ) {
   // let location = useLocation();
@@ -116,7 +121,12 @@ function Dashboard(
             showAadhar={showAadhar}
             handleGSTIN={handleGSTIN}
             handleAadhar={handleAadhar}
-
+            disabled={disabled}
+            onClick={onClick}
+            handleAccountHolder={handleAccountHolder}
+            handleAccountNumber={handleAccountNumber}
+            handleifsc={handleifsc}
+            setState={setState}
           />
         );
 
