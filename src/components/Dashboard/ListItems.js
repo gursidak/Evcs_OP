@@ -22,11 +22,11 @@ export const MainListItems = ({ setCounter, handleDrawerClose }) => (
       <Card setCounter={setCounter} handleDrawerClose={handleDrawerClose} />
     </ListItem>
     {/* <Divider /> */}
-    <ListItem button selected={true} onClick={() => {}}>
+    <ListItem button selected={true}>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemText primary="Dashboard" onClick={() => {handleDrawerClose() ;setCounter(0)}}/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>

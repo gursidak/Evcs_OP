@@ -60,6 +60,7 @@ class Sign extends Component {
       name: "",
       email: "",
       profileUpdated: false,
+      onProfilePage: false
     };
   }
 
@@ -165,6 +166,7 @@ class Sign extends Component {
           handleSubmit={this.handleSubmit}
           changeState={this.changeState}
           activelog={this.state.activelog}
+          onProfilePage={this.state.onProfilePage}
           profileUpdated={this.state.profileUpdated}
           setProfileUpdateToTrue={this.setProfileUpdateToTrue}
         />
@@ -214,6 +216,7 @@ class Sign extends Component {
           handleAadhar={this.handleAadhar}
           aadharNumber={this.state.aadharNumber}
           changeState={this.changeState}
+          onProfilePage={this.state.onProfilePage}
         />
       );
     } else if (this.state.activelog === 3) {
@@ -310,16 +313,20 @@ class Sign extends Component {
     } else if (this.state.activelog === 9) {
       return <TypeOfChargers theme={theme} changeState={this.changeState} />;
     } else if (this.state.activelog === 10) {
+      const showAadhar = this.state.aadharNumber
+      .replace(/(.{4})/g, "$1 ")
+      .trim();
+      !this.state.onProfilePage && this.setState({onProfilePage: true});
       return (
         <Dashboard
           state={this.state}
           theme={theme}
           changeState={this.changeState}
-          // handleAadhar
+          handleAadhar={this.handleAadhar}
           // handleAccountNumber
           handleChange={this.handleChange}
           // handleFile
-          // handleGSTIN
+          handleGSTIN={this.handleGSTIN}
           // handleLocation
           // handleName
           // handleOTPChange
@@ -327,9 +334,11 @@ class Sign extends Component {
           handleSubmit={this.handleSubmit}
           // handleUseGPS
           // handleifsc
+          onProfilePage={this.state.onProfilePage}
           setProfileUpdateToTrue={this.setProfileUpdateToTrue}
           handleEmail={this.handleEmail}
           handleName={this.handleName}
+          showAadhar={showAadhar}
         />
       );
     }

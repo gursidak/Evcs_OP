@@ -11,11 +11,22 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide({handleClose, confirm}) {
+export default function AlertDialogSlide({setCounter }) {
+  const [open, setOpen] = React.useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const openProfile = () => {
+    handleClose();
+    setCounter(1);
+  }
+
   return (
     <div>
       <Dialog
-        open={true}
+        open={open}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
@@ -32,7 +43,7 @@ export default function AlertDialogSlide({handleClose, confirm}) {
           <Button onClick={handleClose} color="primary">
             Dismiss
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={openProfile} color="primary">
             Update Profile
           </Button>
         </DialogActions>

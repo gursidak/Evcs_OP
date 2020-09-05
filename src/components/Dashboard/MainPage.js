@@ -6,14 +6,15 @@ import myStyles from './myStyles'
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import AlertDialogueSlide from './AlertDialogueSlide';
 
-export default function MainPage() {
+export default function MainPage({ confirm, setCounter }) {
   const classes = myStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <>
-      {/* {confirm && <AlertDialogueSlide handleClose={handleClose} />} */}
+      {confirm && <AlertDialogueSlide setCounter={setCounter} />}
       <Grid container spacing={3}>
         {/* Chart */}
         <Grid item xs={12} md={8} lg={9}>

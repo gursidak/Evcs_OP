@@ -28,3 +28,11 @@ API KEY: 'AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw'
 https://www.npmjs.com/package/@react-google-maps/api
 
 type A. B, ChatMo, D
+
+---------------------------------------
+Upcoming Bookings -> Thunder
+Edit Profile
+Offline/Online : After offline, Upcoming Booking should be greyed out.
+Card - PastTransactions 
+Responsive
+-----------------------------------------

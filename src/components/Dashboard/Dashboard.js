@@ -24,15 +24,15 @@ import UserProfile from './UserProfile';
 // import AlertDialogueSlide from './AlertDialogueSlide'
 import './styles.css'
 
-const color = "#f00";
-const black = "#000000";
-const theme = createMuiTheme({
-  palette: {
-    common: { black: color, white: color },
-    primary: { main: color, dark: color, light: color },
-    text: { primary: black, secondary: black },
-  },
-});
+// const color = "#f00";
+// const black = "#000000";
+// const theme = createMuiTheme({
+//   palette: {
+//     common: { black: color, white: color },
+//     primary: { main: color, dark: color, light: color },
+//     text: { primary: black, secondary: black },
+//   },
+// });
 
 function Copyright() {
   return (
@@ -57,10 +57,13 @@ function Dashboard(
     setProfileUpdateToTrue,
     handleEmail,
     handleName,
-    setState
+    setState,
+    showAadhar,
+    handleGSTIN,
+    handleAadhar,
   }
 ) {
-  let location = useLocation();
+  // let location = useLocation();
   // let { id } = location.state || { from: { pathname: "/" } }
   const classes = myStyles();
   const [open, setOpen] = useState(false);
@@ -80,7 +83,7 @@ function Dashboard(
     if (firstTimeLogin)
       setShowconfirm(true);
     // console.log(id);
-    console.log(`Props:`, JSON.stringify(location));
+    // console.log(`Props:`, JSON.stringify(location));
   }, []);
 
   // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -89,7 +92,10 @@ function Dashboard(
     switch (counter) {
       case 0:
         return (
-          <MainPage />
+          <MainPage
+            confirm={confirm}
+            setCounter={setCounter}
+          />
         );
 
       case 1:
@@ -107,6 +113,10 @@ function Dashboard(
             handleEmail={handleEmail}
             name={state.name}
             handleName={handleName}
+            showAadhar={showAadhar}
+            handleGSTIN={handleGSTIN}
+            handleAadhar={handleAadhar}
+
           />
         );
 

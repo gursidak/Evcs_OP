@@ -46,3 +46,11 @@
   /* padding: 1em; */
   line-height: 1em;
 }
+
+.sign-in-form .MuiInputBase-input {
+  font-size: 1.1rem;
+}
+
+#mobile-number {
+  font-size: 1.4rem;
+}

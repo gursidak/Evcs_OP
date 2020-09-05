@@ -2,6 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import MobileNumber from "../MobileNumber";
+import FirstForm from '../FirstForm';
 
 export default function UserProfile({
   state,
@@ -12,6 +13,10 @@ export default function UserProfile({
   setProfileUpdateToTrue,
   handleEmail,
   handleName,
+  showAadhar,
+  handleGSTIN,
+  handleAadhar,
+  
 }) {
   return (
     <>
@@ -35,14 +40,22 @@ export default function UserProfile({
             handleEmail={handleEmail}
             name={state.name}
             handleName={handleName}
+            onProfilePage={state.onProfilePage}
           />
         </Grid>
         {/* Bank Account Details */}
+        <hr />
         <Grid item xs={12}>
-          GSTIN <br />
-          Aadhar Number <br />
-          File 1 <br />
-          File 2 <br />
+          <FirstForm
+            theme={theme}
+            showAadhar={showAadhar}
+            gstin={state.gstin}
+            handleGSTIN={handleGSTIN}
+            handleAadhar={handleAadhar}
+            aadharNumber={state.aadharNumber}
+            changeState={changeState}
+            onProfilePage={state.onProfilePage}
+          />
         </Grid>
         <Grid item xs={12}>
           Bank A/C Holder Name <br />

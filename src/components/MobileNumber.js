@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 import validator from "email-validator";
+import './Sign.css';
 
 export default function MobileNumber(
   { theme,
@@ -24,10 +25,10 @@ export default function MobileNumber(
     handleEmail,
     name,
     handleName,
+    onProfilePage
   }
 ) {
   const isDisabled = mobileNo.length !== 10 /* && name.length > 0 && validator.validate(email) */;
-  const onProfilePage = activelog === 10;
   const [warning, setWarning] = useState(false);
   const handleProfile = (e) => {
     if (onProfilePage) {
@@ -113,6 +114,8 @@ export default function MobileNumber(
             }}
             placeholder="Enter 10 Digits Mobile Number"
             type="tel"
+            // style={{fontSize: "1.5em"}}
+            id="mobile-number"
             required
           />
           {login && (
