@@ -48,7 +48,7 @@ export default function MobileNumber(
         handleChange(tempMobile);
         // setState({name: name.trim()});
         // changeState(3);
-        handleEditSubmit();
+        // handleEditSubmit();
         setEdit(false);
       } else {
         setWarning(true);
@@ -195,7 +195,7 @@ export default function MobileNumber(
           {
             isDisabled
               ? (onProfilePage ? "ENTER DETAILS" : "ENTER MOBILE NUMBER")
-              : (onProfilePage ? "VERIFY AND SUBMIT DETAILS" : "REQUEST OTP")
+              : (onProfilePage ? "VERIFY DETAILS AND SAVE" : "REQUEST OTP")
           }
         </Button>
         {edit &&

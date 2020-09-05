@@ -28,7 +28,10 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
         handleGSTIN(tempGstin);
         // if (isNaN(num) || num.length > 12)
         handleAadhar(tempAadharNumber);
-        handleEditSubmit();
+        // setTempAadharNumber(aadharNumber);
+        // setTempGstin(gstin);
+        setEdit(!edit);
+        // handleEditSubmit();
         // setEdit(false);
       } else {
         setWarning(true);
