@@ -29,16 +29,27 @@ export default function MobileNumber(
     onProfilePage
   }
 ) {
-  const isDisabled = mobileNo.length !== 10 /* && name.length > 0 && validator.validate(email) */;
   const [warning, setWarning] = useState(false);
+  const [edit, setEdit] = useState(false);
+
+  const [tempName, setTempName] = useState(name);
+  const [tempEmail, setTempEmail] = useState(email);
+  const [tempMobile, setTempMobile] = useState(mobileNo);
+
+  const isDisabled = onProfilePage ? tempMobile.length < 10 : mobileNo.length < 10 /* && name.length > 0 && validator.validate(email) */;
+
   const handleProfile = (e) => {
     if (onProfilePage) {
-      setWarning(false);
-      if (validator.validate(email)) {
-        setProfileUpdateToTrue();
-        handleName(name.trim());
+      if (validator.validate(tempEmail)) {
+        setWarning(false);
+        // setProfileUpdateToTrue();
+        handleName(tempName.trim());
+        handleEmail(tempEmail);
+        handleChange(tempMobile);
         // setState({name: name.trim()});
         // changeState(3);
+        handleEditSubmit();
+        setEdit(false);
       } else {
         setWarning(true);
       }
@@ -49,7 +60,7 @@ export default function MobileNumber(
 
   const emailChange = e => {
     setWarning(false);
-    handleEmail(e);
+    handleEmail(e.target.value);
   }
 
   const styles = theme => ({
@@ -57,11 +68,39 @@ export default function MobileNumber(
       fontSize: '1.5em'
     }
   });
+
+  const handleEditSubmit = () => {
+    setEdit(!edit);
+    setTempName(name);
+    setTempEmail(email);
+    setTempMobile(mobileNo);
+  }
+
+  const handleEditProfileField = (e) => {
+    switch (e.target.id) {
+      case "tempName":
+        setTempName(e.target.value)
+        break;
+
+      case "tempEmail":
+        setWarning(false);
+        setTempEmail(e.target.value)
+        break;
+
+      case "tempMobile":
+        setTempMobile(e.target.value)
+        break;
+
+      default:
+        break;
+    }
+  }
+
   return (
     <>
       {
         onProfilePage
-          ? <EditProfileHeading text="Basic Details"/>
+          ? <EditProfileHeading text="Basic Details" onEditClicked={handleEditSubmit} />
           : <h3>GATS Charging Station</h3>
       }
       <form className="sign-in-form" onSubmit={handleSubmit}>
@@ -70,10 +109,11 @@ export default function MobileNumber(
             onProfilePage &&
             <>
               <TextField
+                id="tempName"
                 autoFocus
                 fullWidth
-                value={name}
-                onChange={handleName}
+                value={onProfilePage ? tempName : name}
+                onChange={onProfilePage ? handleEditProfileField : handleName}
                 margin="normal"
                 label="Name"
                 InputProps={{
@@ -86,12 +126,14 @@ export default function MobileNumber(
                 placeholder="Enter your name"
                 type="text"
                 required
+                disabled={onProfilePage ? !edit : false}
               // inputProps={{ readOnly: true }}
               />
               <TextField
+                id="tempEmail"
                 fullWidth
-                value={email}
-                onChange={emailChange}
+                value={onProfilePage ? tempEmail : email}
+                onChange={onProfilePage ? handleEditProfileField : emailChange}
                 margin="normal"
                 label="Email Address"
                 InputProps={{
@@ -104,17 +146,20 @@ export default function MobileNumber(
                 placeholder="Enter Mail ID"
                 type="email"
                 required
+                disabled={onProfilePage ? !edit : false}
                 error={warning}
                 helperText={warning ? "Please Enter a valid Email Address" : ""}
               />
             </>
           }
           <TextField
+            id="tempMobile"
             autoFocus={!onProfilePage}
             fullWidth
-            value={mobileNo}
-            onChange={handleChange}
+            value={onProfilePage ? tempMobile : mobileNo}
+            onChange={onProfilePage ? handleEditProfileField : handleChange}
             margin="normal"
+            disabled={onProfilePage ? !edit : false}
             label={onProfilePage ? "Mobile Number" : "Enter Mobile Number"}
             InputProps={{
               startAdornment: (
@@ -127,7 +172,6 @@ export default function MobileNumber(
             placeholder="Enter 10 Digits Mobile Number"
             type="tel"
             // style={{ fontSize: "1.5em" }}
-            id="mobile-number"
             required
           // InputProps={{ fontSize: '1.5em' }}
 
@@ -154,6 +198,16 @@ export default function MobileNumber(
               : (onProfilePage ? "VERIFY AND SUBMIT DETAILS" : "REQUEST OTP")
           }
         </Button>
+        {edit &&
+          <Button
+            type="button"
+            variant="contained"
+            onClick={handleEditSubmit}
+            fullWidth
+            color="primary"
+            className="discard-button"
+          // style={{ margin: theme.spacing(3, 0, 2) }}
+          >DISCARD CHANGES</Button>}
       </form>
     </>
   )

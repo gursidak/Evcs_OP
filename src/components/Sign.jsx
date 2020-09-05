@@ -71,8 +71,8 @@ class Sign extends Component {
   handleOTPChange = otp => this.setState({ otp: otp });
 
   handleChange = event => {
-    const mobileNo = event.target.value;
-    if (isNaN(mobileNo) || mobileNo.length > 10) return;
+    const mobileNo = event.target || event;
+    if (isNaN(mobileNo)) return;
     this.setState({ mobileNo: mobileNo });
   };
 
@@ -104,7 +104,7 @@ class Sign extends Component {
   };
 
   handleEmail = e => {
-    const email = e.target.value;
+    const email = e.target || e;
     this.setState({ email: email });
   };
 

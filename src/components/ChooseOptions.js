@@ -59,6 +59,7 @@ export default function ChooseOptions({ changeState, theme, place, onProfilePage
             : (onProfilePage ? "VERIFY AND SAVE LOCATION" : "VERIFY LOCATION AND PROCEED")
         }
       </Button>
+      
     </>
   )
 }
