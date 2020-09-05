@@ -70,7 +70,7 @@ export default function UserProfile({
           <BankingDetails
             theme={theme}
             disabled={disabled}
-            accountHolder={state.accountHolder}
+            name={state.accountHolder}
             ifsc={state.ifsc}
             accountNumber={state.accountNumber}
             handleName={handleAccountHolder}

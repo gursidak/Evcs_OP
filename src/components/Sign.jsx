@@ -70,8 +70,8 @@ class Sign extends Component {
 
   handleOTPChange = otp => this.setState({ otp: otp });
 
-  handleChange = event => {
-    const mobileNo = event.target || event;
+  handleChange = e => {
+    const mobileNo = e.target ? e.target.value : e;
     if (isNaN(mobileNo)) return;
     this.setState({ mobileNo: mobileNo });
   };
@@ -106,7 +106,7 @@ class Sign extends Component {
   };
 
   handleEmail = e => {
-    const email = e.target || e;
+    const email = e.target ? e.target.value : e;
     this.setState({ email: email });
   };
 
@@ -123,19 +123,22 @@ class Sign extends Component {
   };
 
   handleAccountNumber = e => {
-    const accountNumber = e.target.value.replace(/\s/g, "");
+    const temp = e.target ? e.target.value : e;
+    const accountNumber = temp.replace(/\s/g, "");
     if (accountNumber.length > 20) return;
     this.setState({ accountNumber: accountNumber });
   };
 
   handleAccountHolder = e => {
-    const accountHolder = e.target.value.replace(/[^a-zA-Z ]/g, "");
+    const temp = e.target ? e.target.value : e;
+    const accountHolder = temp.replace(/[^a-zA-Z ]/g, "");
     if (accountHolder.length > 50) return;
     this.setState({ accountHolder: accountHolder });
   };
 
   handleifsc = e => {
-    const ifsc = e.target.value.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
+    const temp = e.target ? e.target.value : e;
+    const ifsc = temp.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
     if (ifsc.length > 11) return;
     this.setState({ ifsc: ifsc });
   };
@@ -246,6 +249,7 @@ class Sign extends Component {
             changeState={this.changeState}
             onProfilePage={this.state.onProfilePage}
             onClick={onClick}
+            name={this.state.accountHolder}
           />
         </>
       );

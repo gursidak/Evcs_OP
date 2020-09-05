@@ -49,7 +49,9 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
   const handleEditProfileField = (e) => {
     switch (e.target.id) {
       case "tempAadharNumber":
-        setTempAadharNumber(e.target.value);
+        const t = e.target.value;
+        if (isNaN(t) || t.length > 12) break;
+        setTempAadharNumber(t);
         // handleAadhar(e.target.value)
         break;
 
@@ -73,7 +75,6 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
   // 12AAACI1681G1Z0 : Use as a valid GSTIN
   return (
     <>
-      {console.log(`onProfilePage: ${onProfilePage}`)}
       {onProfilePage ? <EditProfileHeading text="GSTIN Details" onEditClicked={handleEditSubmit} /> : <h3>Provide Details:</h3>}
       <form className='sign-in-form' >
         <MuiThemeProvider theme={theme}>
