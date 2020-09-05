@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import EditProfileHeading from './EditProfileHeading';
 import '../App.css';
 
-export default function TypeOfChargers({ theme, changeState, onProfilePage }) {
+export default function TypeOfChargers({ theme, changeState, onProfilePage, chargers, handleCharger }) {
   return (
     <>
       {onProfilePage ? <EditProfileHeading text="Chargers" /> : <h3>Select Chargers</h3>}
@@ -14,22 +14,22 @@ export default function TypeOfChargers({ theme, changeState, onProfilePage }) {
         <div style={!onProfilePage ? { margin: "2em" } : { margin: '0' }}>
           <MuiThemeProvider theme={theme}>
             <FormControlLabel
-              control={<Checkbox value="a" color="primary" />}
+              control={<Checkbox id="a" checked={chargers.a} color="primary" onChange={handleCharger} />}
               label="Type A "
             />{" "}
             <br />
             <FormControlLabel
-              control={<Checkbox value="b" color="primary" />}
+              control={<Checkbox id="b" checked={chargers.b} color="primary" onChange={handleCharger} />}
               label="Type B"
             />{" "}
             <br />
             <FormControlLabel
-              control={<Checkbox value="c" color="primary" />}
+              control={<Checkbox id="c" checked={chargers.c} color="primary" onChange={handleCharger} />}
               label="Type C"
             />{" "}
             <br />
             <FormControlLabel
-              control={<Checkbox value="c" color="primary" />}
+              control={<Checkbox id="d" checked={chargers.d} color="primary" onChange={handleCharger} />}
               label="Type D"
             />
             <Button

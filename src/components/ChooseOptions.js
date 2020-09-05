@@ -67,7 +67,7 @@ export default function ChooseOptions(
     <>
       {onProfilePage ? <EditProfileHeading text="Location Details" onEditClicked={handleEditSubmit} /> : <h3>Provide Location</h3>}
       {
-        (!onProfilePage || (onProfilePage && counter === 0)) &&
+        (!onProfilePage || (onProfilePage && counter === 0 && edit)) &&
         <>
           <Button
             className="otp-button"
@@ -134,7 +134,7 @@ export default function ChooseOptions(
       }
 
       {
-        (!onProfilePage || (onProfilePage && counter === 0)) &&
+        (!onProfilePage || (onProfilePage && counter === 0 && edit)) &&
         <Button className="otp-button"
           onClick={onClick}
           fullWidth

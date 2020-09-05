@@ -177,7 +177,7 @@ function Map(
           onClick={returnToMenu}
           fullWidth
           variant="contained"
-        >SAVE LOCATION</Button>
+        >SELECT LOCATION</Button>
       </div>
     </>
   );

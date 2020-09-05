@@ -61,6 +61,12 @@ class Sign extends Component {
       email: "",
       profileUpdated: false,
       onProfilePage: false,
+      chargers: {
+        a: false,
+        b: false,
+        c: false,
+        d: false
+      }
     };
   }
 
@@ -159,6 +165,18 @@ class Sign extends Component {
   setProfileUpdateToTrue = () => {
     this.setState({ profileUpdated: true });
   };
+
+  handleCharger = e => {
+    const temp = e.target ? e.target.checked : e;
+    const id = e.target.id;
+    console.log('event', e);
+    this.setState(prevState => ({
+      chargers: {                   // object that we want to update
+          ...prevState.chargers,    // keep all other key-value pairs
+          [id]: temp       // update the value of specific key
+      }
+  }))
+  }
 
   toggleinup() {
     if (this.state.activelog === 0) {
@@ -325,6 +343,8 @@ class Sign extends Component {
           theme={theme}
           changeState={this.changeState}
           onProfilePage={this.state.onProfilePage}
+          chargers={this.state.chargers}
+          handleCharger={this.handleCharger}
         />
       );
     } else if (this.state.activelog === 10) {
