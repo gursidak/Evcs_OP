@@ -69,7 +69,6 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
     setTempAadharNumber(aadharNumber);
     setTempGstin(gstin);
     setEdit(!edit);
-
   }
 
   // 12AAACI1681G1Z0 : Use as a valid GSTIN

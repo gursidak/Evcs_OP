@@ -313,6 +313,7 @@ class Sign extends Component {
           changeState={this.changeState}
           theme={theme}
           place={this.state.place}
+          location={this.state.location}
           onProfilePage={this.state.onProfilePage}
         />
       );

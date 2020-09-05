@@ -89,13 +89,15 @@ export default function UserProfile({
             theme={theme}
             place={state.place}
             onProfilePage={state.onProfilePage}
+            location={state.location}
+
           />
         </Grid>
         <hr />
         <Grid item xs={12}>
-          <TypeOfChargers 
-          theme={theme} changeState={changeState} 
-          onProfilePage={state.onProfilePage}
+          <TypeOfChargers
+            theme={theme} changeState={changeState}
+            onProfilePage={state.onProfilePage}
           />
         </Grid>
       </Grid>
