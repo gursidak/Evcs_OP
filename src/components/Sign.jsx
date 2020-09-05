@@ -86,13 +86,15 @@ class Sign extends Component {
   };
 
   handleAadhar = e => {
-    const num = e.target.value.replace(/\s+/g, "");
+    const temp = e.target ? e.target.value : e;
+    const num = temp;
     if (isNaN(num) || num.length > 12) return;
     this.setState({ aadharNumber: num });
   };
 
   handleGSTIN = e => {
-    const gstin = e.target.value.toUpperCase().replace(/\s/g, "");
+    const temp = e.target ? e.target.value : e;
+    const gstin = temp.toUpperCase().replace(/\s/g, "");
     if (gstin.length > 15) return;
     this.setState({ gstin: gstin });
   };
