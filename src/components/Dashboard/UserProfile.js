@@ -5,6 +5,7 @@ import MobileNumber from "../MobileNumber";
 import FirstForm from '../FirstForm';
 import BankingDetails from '../BankingDetails';
 import ChooseOptions from '../ChooseOptions';
+import TypeOfChargers from '../TypeOfChargers';
 
 export default function UserProfile({
   state,
@@ -81,6 +82,7 @@ export default function UserProfile({
             onProfilePage={state.onProfilePage}
           />
         </Grid>
+        <hr />
         <Grid item xs={12}>
           <ChooseOptions
             changeState={changeState}
@@ -89,8 +91,12 @@ export default function UserProfile({
             onProfilePage={state.onProfilePage}
           />
         </Grid>
+        <hr />
         <Grid item xs={12}>
-          Charger Details
+          <TypeOfChargers 
+          theme={theme} changeState={changeState} 
+          onProfilePage={state.onProfilePage}
+          />
         </Grid>
       </Grid>
     </>

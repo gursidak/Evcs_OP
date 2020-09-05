@@ -5,12 +5,12 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import '../App.css';
 
-export default function TypeOfChargers({theme, changeState}) {
+export default function TypeOfChargers({ theme, changeState, onProfilePage }) {
   return (
     <>
-      <h3>Add Chargers</h3>
+      {onProfilePage ? <h4 style={{ margin: '0' }}>Chargers</h4> : <h3>Select Chargers</h3>}
       <div className="sign-in-form">
-        <div style={{ margin: "2em" }}>
+        <div style={!onProfilePage ? { margin: "2em" } : { margin: '0' }}>
           <MuiThemeProvider theme={theme}>
             <FormControlLabel
               control={<Checkbox value="a" color="primary" />}
@@ -36,8 +36,10 @@ export default function TypeOfChargers({theme, changeState}) {
               style={{ margin: theme.spacing(3, 0, 2) }}
               fullWidth
             >
-              ADD CHARGERS AND PROCEED
-                </Button>
+              {
+                onProfilePage ? "VERIFY AND SAVE" : "ADD CHARGERS"
+              }
+            </Button>
           </MuiThemeProvider>
         </div>
       </div>

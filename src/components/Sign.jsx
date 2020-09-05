@@ -313,7 +313,13 @@ class Sign extends Component {
     } else if (this.state.activelog === 8) {
       return <WaitingRoom changeState={this.changeState} />;
     } else if (this.state.activelog === 9) {
-      return <TypeOfChargers theme={theme} changeState={this.changeState} />;
+      return (
+        <TypeOfChargers
+          theme={theme}
+          changeState={this.changeState}
+          onProfilePage={this.state.onProfilePage}
+        />
+      );
     } else if (this.state.activelog === 10) {
       const showAadhar = this.state.aadharNumber
         .replace(/(.{4})/g, "$1 ")
