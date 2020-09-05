@@ -371,6 +371,9 @@ class Sign extends Component {
           handleAccountNumber={this.handleAccountNumber}
           handleifsc={this.handleifsc}
           setState={this.setState}
+          handleLocation={this.handleLocation}
+          handlePlace={this.handlePlace}
+          handleUseGPS={this.handleUseGPS}
         />
       );
     }

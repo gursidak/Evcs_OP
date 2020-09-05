@@ -1,11 +1,22 @@
 import React, { useState } from 'react'
-// import { Button } from 'react-mdl';
 import Button from "@material-ui/core/Button";
-// import TextField from '@material-ui/core/TextField';
 import EditProfileHeading from './EditProfileHeading';
+import WrappedMap from './Map';
 import './Sign.css';
 
-export default function ChooseOptions({ changeState, theme, place, location, onProfilePage }) {
+export default function ChooseOptions(
+  {
+    changeState,
+    theme,
+    place,
+    location,
+    onProfilePage,
+    handleLocation,
+    handlePlace,
+    useGPS,
+    handleUseGPS
+  }
+) {
   const [edit, setEdit] = useState(false);
   const [tempLocation, setTempLocation] = useState(location); // Temporary Coordinates
   const [tempPlace, setTempPlace] = useState(place);
@@ -17,6 +28,7 @@ export default function ChooseOptions({ changeState, theme, place, location, onP
     setTempLocation(location);
     setTempPlace(place);
     setEdit(!edit);
+    setCounter(0);
   }
 
   const chooseGPS = () => {
@@ -27,12 +39,26 @@ export default function ChooseOptions({ changeState, theme, place, location, onP
     changeState(6);
   }
 
-  const nextState = () => {
-    changeState(8);
+  const onClick = () => {
+    if (onProfilePage) {
+      handleLocation(tempLocation);
+      handlePlace(tempPlace);
+      setEdit(false);
+    } else {
+      changeState(8);
+    }
   }
 
   const chooseGPSInProfile = () => {
     setCounter(1);
+  }
+
+  const handleTempLocation = (location) => {
+    setTempLocation(location)
+  }
+
+  const handleTempPlace = (place) => {
+    setTempPlace(place);
   }
 
   const disabled = onProfilePage ? tempPlace === '' : place === '';
@@ -45,7 +71,7 @@ export default function ChooseOptions({ changeState, theme, place, location, onP
         <>
           <Button
             className="otp-button"
-            onClick={onProfilePage ? chooseGPSInProfile : chooseGPS }
+            onClick={onProfilePage ? chooseGPSInProfile : chooseGPS}
             fullWidth
             variant="contained"
             style={{ margin: theme.spacing(3, 0, 2) }}
@@ -62,31 +88,68 @@ export default function ChooseOptions({ changeState, theme, place, location, onP
         </>
       }
 
-      {(!disabled && (!onProfilePage || (onProfilePage && counter === 0))) && <>
-        <hr />
-        <div style={{ margin: '1em' }}>
-          {place}
-        </div>
-        <hr />
-      </>}  
-
       {
-        
+        (!disabled && (!onProfilePage || (onProfilePage && counter === 0))) &&
+        <>
+          <hr />
+          <div style={{ margin: '1em' }}>
+            {onProfilePage ? tempPlace : place}
+          </div>
+          <hr />
+        </>
       }
 
-      <Button className="otp-button"
-        onClick={nextState}
-        fullWidth
-        variant="contained"
-        style={{ margin: theme.spacing(3, 0, 2) }}
-        disabled={disabled}
-      >
-        {
-          disabled
-            ? "SELECT OPTION"
-            : (onProfilePage ? "VERIFY AND SAVE LOCATION" : "VERIFY LOCATION AND PROCEED")
-        }
-      </Button>
+      {
+        counter === 1 && edit
+          ? <div style={{ height: "400px", width: "100%", position: "relative" }}>
+            <h5>Confirm Location</h5>
+            <WrappedMap
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw`}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={
+                <div
+                  style={{
+                    height: `50%`,
+                    width: "100%",
+                    // padding: "50%"
+                    // marginBottom: "25%"
+                    position: "absolute",
+                    // marginTop: "25%",
+                  }}
+                />
+              }
+              mapElement={<div style={{ height: `100%` }} />}
+              location={tempLocation}
+              handleLocation={handleTempLocation}
+              changeState={changeState}
+              place={tempPlace}
+              handlePlace={handleTempPlace}
+              useGPS={useGPS}
+              // handleUseGPS={handleUseGPS}
+              onProfilePage={onProfilePage}
+              setCounter={setCounter}
+            />
+          </div>
+          : ""
+      }
+
+      {
+        (!onProfilePage || (onProfilePage && counter === 0)) &&
+        <Button className="otp-button"
+          onClick={onClick}
+          fullWidth
+          variant="contained"
+          style={{ margin: theme.spacing(3, 0, 2) }}
+          disabled={disabled}
+        >
+          {
+            disabled
+              ? "SELECT OPTION"
+              : (onProfilePage ? "VERIFY AND SAVE LOCATION" : "VERIFY LOCATION AND PROCEED")
+          }
+        </Button>
+      }
+
       {edit &&
         <Button
           type="button"

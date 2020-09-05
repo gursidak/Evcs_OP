@@ -7,25 +7,30 @@ import BankingDetails from '../BankingDetails';
 import ChooseOptions from '../ChooseOptions';
 import TypeOfChargers from '../TypeOfChargers';
 
-export default function UserProfile({
-  state,
-  theme,
-  handleChange,
-  handleSubmit,
-  changeState,
-  setProfileUpdateToTrue,
-  handleEmail,
-  handleName,
-  showAadhar,
-  handleGSTIN,
-  handleAadhar,
-  disabled,
-  onClick,
-  handleAccountHolder,
-  handleAccountNumber,
-  handleifsc,
-  setState
-}) {
+export default function UserProfile(
+  {
+    state,
+    theme,
+    handleChange,
+    handleSubmit,
+    changeState,
+    setProfileUpdateToTrue,
+    handleEmail,
+    handleName,
+    showAadhar,
+    handleGSTIN,
+    handleAadhar,
+    disabled,
+    onClick,
+    handleAccountHolder,
+    handleAccountNumber,
+    handleifsc,
+    setState,
+    handleLocation,
+    handlePlace,
+    handleUseGPS
+  }
+) {
   return (
     <>
       <Grid container spacing={3}>
@@ -90,7 +95,10 @@ export default function UserProfile({
             place={state.place}
             onProfilePage={state.onProfilePage}
             location={state.location}
-
+            handleLocation={handleLocation}
+            handlePlace={handlePlace}
+            useGPS={state.useGPS}
+            handleUseGPS={handleUseGPS}
           />
         </Grid>
         <hr />

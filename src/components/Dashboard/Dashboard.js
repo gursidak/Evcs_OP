@@ -66,6 +66,9 @@ function Dashboard(
     handleAccountHolder,
     handleAccountNumber,
     handleifsc,
+    handleLocation,
+    handlePlace,
+    handleUseGPS
   }
 ) {
   // let location = useLocation();
@@ -127,6 +130,10 @@ function Dashboard(
             handleAccountNumber={handleAccountNumber}
             handleifsc={handleifsc}
             setState={setState}
+            handleLocation={handleLocation}
+            handlePlace={handlePlace}
+            useGPS={state.useGPS}
+            handleUseGPS={handleUseGPS}
           />
         );
 
