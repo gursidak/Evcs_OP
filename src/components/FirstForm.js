@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 // import { Button } from 'react-mdl';
 // import Button from "@material-ui/core/Button";
 import Button from "@material-ui/core/Button";
+import EditProfileHeading from './EditProfileHeading';
+
 
 export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handleAadhar, aadharNumber, changeState, onProfilePage }) {
   const [warning, setWarning] = useState(false);
@@ -29,7 +31,7 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
   return (
     <>
       {console.log(`onProfilePage: ${onProfilePage}`)}
-      {onProfilePage ? <h4 style={{ margin: '0' }}>GSTIN Details</h4> : <h3>Provide Details:</h3>}
+      {onProfilePage ? <EditProfileHeading text="GSTIN Details" /> : <h3>Provide Details:</h3>}
       <form className='sign-in-form' >
         <MuiThemeProvider theme={theme}>
           <TextField

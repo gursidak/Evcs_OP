@@ -2,6 +2,7 @@ import React from 'react'
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { MuiThemeProvider } from "@material-ui/core";
+import EditProfileHeading from './EditProfileHeading';
 import '../App.css';
 
 export default function BankingDetails(
@@ -21,7 +22,7 @@ export default function BankingDetails(
 ) {
   return (
     <>
-      {onProfilePage ? <h4 style={{ margin: '0' }}>Banking Details</h4> : <h3>Provide Banking Details</h3>}
+      {onProfilePage ? <EditProfileHeading text="Banking Details" /> : <h3>Provide Banking Details</h3>}
       <form className="sign-in-form">
         <MuiThemeProvider theme={theme}>
           <TextField

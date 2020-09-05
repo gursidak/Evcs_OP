@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 import validator from "email-validator";
-import EditRoundedIcon from '@material-ui/icons/EditRounded';
+import EditProfileHeading from './EditProfileHeading';
 import './Sign.css';
 
 export default function MobileNumber(
@@ -61,10 +61,7 @@ export default function MobileNumber(
     <>
       {
         onProfilePage
-          ? <div className="heading">
-            <h4 style={{ margin: '0' }}>Basic Details</h4>
-            <Button className="edit-button"><EditRoundedIcon /></Button>
-          </div>
+          ? <EditProfileHeading text="Basic Details"/>
           : <h3>GATS Charging Station</h3>
       }
       <form className="sign-in-form" onSubmit={handleSubmit}>

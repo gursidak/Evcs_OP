@@ -2,6 +2,7 @@ import React from 'react'
 // import { Button } from 'react-mdl';
 import Button from "@material-ui/core/Button";
 // import TextField from '@material-ui/core/TextField';
+import EditProfileHeading from './EditProfileHeading';
 import './Sign.css';
 
 export default function ChooseOptions({ changeState, theme, place, onProfilePage }) {
@@ -21,7 +22,7 @@ export default function ChooseOptions({ changeState, theme, place, onProfilePage
 
   return (
     <>
-      {onProfilePage ? <h4 style={{ margin: '0' }}>Location Details</h4> : <h3>Provide Location</h3>}
+      {onProfilePage ? <EditProfileHeading text="Edit Location Details" /> : <h3>Provide Location</h3>}
       <Button
         className="otp-button"
         onClick={chooseGPS}

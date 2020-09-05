@@ -3,12 +3,13 @@ import { MuiThemeProvider } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
+import EditProfileHeading from './EditProfileHeading';
 import '../App.css';
 
 export default function TypeOfChargers({ theme, changeState, onProfilePage }) {
   return (
     <>
-      {onProfilePage ? <h4 style={{ margin: '0' }}>Chargers</h4> : <h3>Select Chargers</h3>}
+      {onProfilePage ? <EditProfileHeading text="Chargers" /> : <h3>Select Chargers</h3>}
       <div className="sign-in-form">
         <div style={!onProfilePage ? { margin: "2em" } : { margin: '0' }}>
           <MuiThemeProvider theme={theme}>
