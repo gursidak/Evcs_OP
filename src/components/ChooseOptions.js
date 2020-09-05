@@ -31,7 +31,11 @@ export default function ChooseOptions({ changeState, theme, place, location, onP
     changeState(8);
   }
 
-  const disabled = place === '';
+  const chooseGPSInProfile = () => {
+    setCounter(1);
+  }
+
+  const disabled = onProfilePage ? tempPlace === '' : place === '';
 
   return (
     <>
@@ -41,7 +45,7 @@ export default function ChooseOptions({ changeState, theme, place, location, onP
         <>
           <Button
             className="otp-button"
-            onClick={chooseGPS}
+            onClick={onProfilePage ? chooseGPSInProfile : chooseGPS }
             fullWidth
             variant="contained"
             style={{ margin: theme.spacing(3, 0, 2) }}
@@ -65,6 +69,10 @@ export default function ChooseOptions({ changeState, theme, place, location, onP
         </div>
         <hr />
       </>}  
+
+      {
+        
+      }
 
       <Button className="otp-button"
         onClick={nextState}
