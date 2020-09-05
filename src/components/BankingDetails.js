@@ -40,7 +40,7 @@ export default function BankingDetails(
           <TextField
             label="Bank A/C Number"
             maxLength="20"
-            type="number"
+            type="text"
             margin="normal"
             value={accountNumber}
             placeholder="Enter Bank A/C Number"

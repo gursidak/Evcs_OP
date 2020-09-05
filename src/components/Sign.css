@@ -54,3 +54,14 @@
 #mobile-number {
   font-size: 1.4rem;
 } */
+
+.heading {
+  /* display: inline; */
+  display: flex;
+  justify-content: space-between;
+}
+
+Button.edit-button {
+  background-color: orange !important;
+  cursor: pointer;
+}
