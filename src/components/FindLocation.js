@@ -29,7 +29,7 @@ export default function FindLocation({ theme, place, location, changeState, hand
         handleUseGPS(true);
         changeState(7);
     }
-    const className = 'location-item';
+    // const className = 'location-item';
     return (
         <>
             <div className="sign-in-form">

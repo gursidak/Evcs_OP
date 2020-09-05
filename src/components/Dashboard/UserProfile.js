@@ -4,6 +4,7 @@ import Divider from "@material-ui/core/Divider";
 import MobileNumber from "../MobileNumber";
 import FirstForm from '../FirstForm';
 import BankingDetails from '../BankingDetails';
+import ChooseOptions from '../ChooseOptions';
 
 export default function UserProfile({
   state,
@@ -25,7 +26,7 @@ export default function UserProfile({
   setState
 }) {
   return (
-    <>  
+    <>
       <Grid container spacing={3}>
         {/* <h3 style={{ margin: "0 auto" }}>Shivam's Profile</h3> */}
         {/* {console.log(`name: ${state.name}`)} */}
@@ -81,7 +82,12 @@ export default function UserProfile({
           />
         </Grid>
         <Grid item xs={12}>
-          Location Details
+          <ChooseOptions
+            changeState={changeState}
+            theme={theme}
+            place={state.place}
+            onProfilePage={state.onProfilePage}
+          />
         </Grid>
         <Grid item xs={12}>
           Charger Details

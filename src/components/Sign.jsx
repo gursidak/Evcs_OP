@@ -56,7 +56,7 @@ class Sign extends Component {
       accountNumber: "",
       ifsc: "",
       fileWarning: false,
-      login: this.props.location.state.login,
+      // login: this.props.location.state.login,
       name: "",
       email: "",
       profileUpdated: false,
@@ -307,6 +307,7 @@ class Sign extends Component {
           changeState={this.changeState}
           theme={theme}
           place={this.state.place}
+          onProfilePage={this.state.onProfilePage}
         />
       );
     } else if (this.state.activelog === 8) {
