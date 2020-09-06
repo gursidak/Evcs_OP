@@ -1,0 +1,10 @@
+.offlineLink .MuiTypography-colorPrimary {
+  text-decoration: none;
+  color: #999999;
+  pointer-events: none;
+  margin-top: 24px;
+}
+.offlineLink {
+  margin-top: 24px;
+
+}

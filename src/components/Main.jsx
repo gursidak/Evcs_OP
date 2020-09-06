@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Landing from './Landing';
-import {Switch , Route , Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import MainView from './MainView';
 import Sign from './Sign';
-import Carousel from './Carousel';
+import Dashboard from './Dashboard/Dashboard'
+import WebAppBar from './WebAppBar'
 
 export default function Main() {
-    return(
-        <switch>
+    return (
+        <Switch>
             <Route exact path='/' component={Landing} />
-            <Route path='/main' component={MainView}  />
-            <Route path='/sign' component={Sign}      />
-            <Route path='/carousel' component={Carousel} />
-        </switch>
+            <Route exact path='/sign' component={Sign} />
+            <Route exact path='/appbar' component={WebAppBar} />
+            <Route exact path='/main' component={MainView} />
+            <Route exact path='/login' component={Dashboard} />
+        </Switch>
     );
 }

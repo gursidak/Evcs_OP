@@ -1,256 +1,24 @@
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.sign-box {
+.sign-in-form {
   width: 100%;
-  height: 100vh;
-  position: relative;
+  margin-top: 1em;
 }
 
-.sign-box .Sign {
-  /*
-@media screen and (max-width:528px){
-    .logo-header{
-        img{
-            width: 25%;
-        }
-    }
-}
-
-@media screen and (max-width:1050px) {
-    .logo-header{
-        img{
-            width: 18%;
-        }
-    }
-}
-*/
-  background-color: white;
-  width: 50%;
-  height: 100%;
-  position: fixed;
-  float: left;
-}
-
-.sign-box .Sign .logo-header {
-  background-color: red;
-  width: 100%;
-  height: auto;
-}
-
-.sign-box .Sign .logo-header img {
-  height: 60px;
-  width: 80px;
-  position: left;
-}
-
-.sign-box .Sign .logo-header .CompName {
-  display: inline-block;
-  color: white;
-  font-size: large;
-  margin: 17px 10px;
-  font-size-adjust: 0.60;
-  font-weight: bolder;
-}
-
-.sign-box .Sign .Sign-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  font-size: 4em;
-  height: 100%;
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-}
-
-.sign-box .Sign .sign-in-form {
-  padding: auto;
-  width: 100%;
-}
-
-.sign-box .Sign .sign-in-form h3 {
-  font-family: 'Quicksand', sans-serif;
-  color: rgba(0, 0, 0, 0.9);
-}
-
-.sign-box .Sign .sign-in-form .input-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border: 2px solid #EC1B21;
-  margin: 0 auto;
-  padding: 0px;
-  font-family: 'Comic Neue', cursive;
-}
-
-.sign-box .Sign .sign-in-form .input-box .fa-phone {
-  padding: 5px;
-  margin: 3px;
-  font-size: 35px;
-  color: #EC1B21;
-}
-
-.sign-box .Sign .sign-in-form .input-box ::-webkit-input-placeholder {
-  font-weight: 500;
-  text-align: center;
-}
-
-.sign-box .Sign .sign-in-form .input-box :-ms-input-placeholder {
-  font-weight: 500;
-  text-align: center;
-}
-
-.sign-box .Sign .sign-in-form .input-box ::-ms-input-placeholder {
-  font-weight: 500;
-  text-align: center;
-}
-
-.sign-box .Sign .sign-in-form .input-box ::placeholder {
-  font-weight: 500;
-  text-align: center;
-}
-
-.sign-box .Sign .sign-in-form .input-box input {
+.otp-input {
+  border-style: solid;
+  margin: 1em;
   outline: none;
-  font-size: 1.5rem;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 10px 20px;
-  border: none;
-  text-align: left;
+  border-width: 0 0 2px 0;
+  padding: 0;
+  font-size: 2em;
 }
 
-.sign-box .Sign .sign-in-form .input-box:visited {
-  border: 2px solid #EC1B21;
-}
-
-.sign-box .Sign #submitphone {
-  margin: auto;
-  font-size: 25px;
-  height: 51px;
-  color: #EC1B21;
-  padding: 0px;
-}
-
-.sign-box .Sign #submitphone:hover {
-  background-color: #EC1B21;
-  color: white;
-}
-
-.sign-box .Sign .otp-boxes {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.sign-box .Sign .otp-input {
-  border-style: double;
-  border-radius: 25%;
-  margin: 0.15em;
-  outline: none;
-}
-
-.sign-box .Sign Button {
-  display: block;
-  margin: 40px auto;
-}
-
-.sign-box .slider {
-  width: 50%;
-  float: right;
-  height: 100vh;
-}
-
-.sign-box .slider img {
-  width: 100%;
-  height: 100vh;
-  background-repeat: no-repeat;
-}
-
-.sign-box .slider .owl-theme .owl-dots {
-  display: none;
-}
-
-@media screen and (max-width: 485px) {
-  .Sign {
-    position: static;
-  }
-  .Sign .sign-in-form {
-    padding-top: 5px;
-  }
-  .Sign .sign-in-form .otp-input {
-    border-style: double;
-    border-radius: 25%;
-    margin: 0em;
-    outline: none;
-  }
-  .Sign .submit-page {
-    margin: 0px;
-  }
-}
-
-@media screen and (max-width: 716px) {
-  .sign-box {
-    position: static;
-  }
-  .sign-box .Sign {
-    width: 100%;
-    float: none;
-  }
-  .sign-box .slider {
-    width: 100%;
-    float: none;
-    display: none;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .Sign-content {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-  }
-  .Sign-content .mdl-grid {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    width: 100%;
-    position: static;
-    margin: 0px;
-    padding: 16px;
-  }
-  .Sign-content .sign-in-form .input-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
+.otp-box-container {
+  justify-content: center;
 }
 
 .stationListItem :hover {
@@ -262,4 +30,30 @@
 .stationListItem .listItemImg {
   margin: 10px;
 }
-/*# sourceMappingURL=App.css.map */
+
+Button {
+  background-color: red !important;
+  color: white;
+}
+
+Button:hover {
+  background-color: red !important;
+  color: white;
+}
+
+Button:disabled {
+  background-color: rgba(255, 0, 0, 0.74) !important;
+  color: rgba(0, 0, 0, 0.466) !important;
+  font-weight: bold !important;
+}
+Button:enabled {
+  background-color: red !important;
+  color: white;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5%;
+}

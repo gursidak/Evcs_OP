@@ -1,0 +1,82 @@
+.find-location {
+  border: 2px solid red;
+  height: 80%;
+  width: 400px;
+  margin: auto;
+  height: 500px;
+  display: flex;
+}
+
+.MuiFormControl-root,
+MuiTextField-root {
+  width: 100%;
+}
+
+#back-arrow {
+  font-size: 2em;
+  -webkit-text-stroke: 1px white;
+  font-weight: lighter;
+  color: red;
+}
+
+#location-back-button {
+  margin: 0;
+  height: 4em;
+  border: 0;
+  padding: 0;
+  padding-right: 0;
+  background-color: white;
+}
+
+.location-list-container {
+  margin-top: 0.5em;
+  width: 80%;
+  font-size: 0.3em;
+  padding-left: 0;
+}
+.location-item {
+  border-bottom: 2px solid rgba(240, 240, 240, 0.068);
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 0;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+#main-text {
+  font-weight: bold;
+  padding-left: 0;
+}
+
+#secondary-text {
+  font-weight: bold;
+  padding-left: 0;
+  color: rgba(0, 0, 0, 0.438);
+}
+
+.location-search-box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: stretch;
+}
+
+.location-search-box Button {
+  background-color:white !important;
+  color: black;
+}
+
+.location-search-box Button:hover {
+  background-color: white !important;
+  color: black;
+}
+
+.location-search-box Button:disabled {
+  background-color: rgba(255, 0, 0, 0.74) !important;
+  color: rgba(0, 0, 0, 0.466) !important;
+  font-weight: bold !important;
+}
+.location-search-box Button:enabled {
+  background-color: white !important;
+  color: black;
+}

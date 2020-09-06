@@ -1,0 +1,27 @@
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+.web-app-bar {
+  background-color: red;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  color: white;
+  font-size: large;
+}
+
+.web-app-bar img {
+  height: 60px;
+  width: 80px;
+  position: left;
+}
+
+.company-name {
+  display: inline-block;
+  color: white;
+  font-size: large;
+  margin: 17px 10px;
+  font-size-adjust: 0.6;
+  font-weight: bolder;
+}
