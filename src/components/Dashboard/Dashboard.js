@@ -75,11 +75,26 @@ function Dashboard(
   // let location = useLocation();
   // let { id } = location.state || { from: { pathname: "/" } }
   const classes = myStyles();
+
+  let profileReady =
+    !isNaN(state.mobileNo)
+    && state.aadharNumber.length === 12
+    && state.gstin.length === 15
+    && (
+      state.accountHolder.length > 0 &&
+      state.accountNumber.length > 0 &&
+      state.ifsc.length === 11
+    )
+    && state.place.length > 0
+    && Object.values(state.chargers).some(v => v);
+
+  console.log('profile ready: ', profileReady);
+
   const [open, setOpen] = useState(false);
   const [online, setOnline] = useState(true);
   const [counter, setCounter] = useState(0);
-  const [firstTimeLogin, setFirstTimeLogin] = useState(true);
-  const [confirm, setShowconfirm] = React.useState(true);
+  // const [firstTimeLogin, setFirstTimeLogin] = useState(true);
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -88,12 +103,12 @@ function Dashboard(
     setOpen(false);
   };
 
-  useEffect(() => {
-    if (firstTimeLogin)
-      setShowconfirm(true);
-    // console.log(id);
-    // console.log(`Props:`, JSON.stringify(location));
-  }, []);
+  // useEffect(() => {
+  //   if ()
+  //     setShowconfirm(true);
+  //   // console.log(id);
+  //   // console.log(`Props:`, JSON.stringify(location));
+  // }, [profileReady]);
 
   // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -102,7 +117,7 @@ function Dashboard(
       case 0:
         return (
           <MainPage
-            confirm={confirm}
+            confirm={!profileReady}
             setCounter={setCounter}
           />
         );
