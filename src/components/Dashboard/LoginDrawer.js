@@ -8,7 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import myStyles from "./myStyles";
 
-export default function LoginDrawer({ open, handleDrawerClose, setCounter }) {
+export default function LoginDrawer({ open, handleDrawerClose, setCounter/* , online */ }) {
   const classes = myStyles();
   return (
     <Drawer
@@ -31,6 +31,7 @@ export default function LoginDrawer({ open, handleDrawerClose, setCounter }) {
         <MainListItems
           setCounter={setCounter}
           handleDrawerClose={handleDrawerClose}
+          // online={online}
         />
       </List>
       {/* <Divider /> */}

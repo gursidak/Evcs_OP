@@ -16,6 +16,7 @@ import Sign from '../Sign'
 import FileAndLocation from '../FileAndLocation'
 import UserProfile from './UserProfile';
 import UpcomingOrders from './UpcomingOrders';
+import AllOrders from './AllOrders';
 import './styles.css'
 
 // const color = "#f00";
@@ -150,8 +151,13 @@ function Dashboard(
         );
 
       case 2:
-        return(
+        return (
           <UpcomingOrders />
+        );
+
+      case 3:
+        return (
+          <AllOrders online={online} />
         );
 
       default:
@@ -173,6 +179,7 @@ function Dashboard(
         open={open}
         setCounter={setCounter}
         handleDrawerClose={handleDrawerClose}
+        // online={online}
       />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />

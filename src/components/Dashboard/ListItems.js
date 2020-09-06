@@ -32,7 +32,7 @@ export const MainListItems = ({ setCounter, handleDrawerClose }) => (
       <ListItemIcon>
         <RestoreRoundedIcon />
       </ListItemIcon>
-      <ListItemText primary="All Bookings" />
+      <ListItemText primary="All Bookings" onClick={() => {handleDrawerClose() ;setCounter(3)}} />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
