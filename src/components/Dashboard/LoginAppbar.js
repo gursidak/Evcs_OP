@@ -12,7 +12,7 @@ import PowerRoundedIcon from '@material-ui/icons/PowerRounded';
 import IconButton from '@material-ui/core/IconButton';
 import myStyles from './myStyles'
 
-const LoginAppbar = ({ open, online, setOnline, handleDrawerOpen }) => {
+const LoginAppbar = ({ open, online, setOnline, handleDrawerOpen, setCounter }) => {
   const classes = myStyles();
 
   return (
@@ -38,7 +38,7 @@ const LoginAppbar = ({ open, online, setOnline, handleDrawerOpen }) => {
           </IconButton>
           <IconButton color="inherit">
             <Badge badgeContent={2} color="default">
-              <OfflineBoltRoundedIcon />
+              <OfflineBoltRoundedIcon onClick={() => setCounter(2)} />
             </Badge>
           </IconButton>
           <IconButton color="default" onClick={() => setOnline(!online)}>

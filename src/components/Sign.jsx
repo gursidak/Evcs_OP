@@ -40,11 +40,11 @@ class Sign extends Component {
 
     this.state = {
       activelog: 0,
-      mobileNo: "+919811921298",
+      mobileNo: "",
       otp: "",
-      aadharNumber: "291929129122",
-      gstin: "12AAACI1681G1Z0",
-      place: "East Vinod Nagar, Delhi",
+      aadharNumber: "",
+      gstin: "",
+      place: "",
       location: {
         lat: "",
         lng: "",
@@ -52,17 +52,16 @@ class Sign extends Component {
       aadharUIM: null,
       gstinFile: null,
       useGPS: true,
-      accountHolder: "Shivam Jha",
-      accountNumber: "1212121212",
-      ifsc: "J1j3jsjJ1j1",
+      accountHolder: "",
+      accountNumber: "",
+      ifsc: "",
       fileWarning: false,
-      // login: this.props.location.state.login,
       name: "",
       email: "",
       profileUpdated: false,
       onProfilePage: false,
       chargers: {
-        a: true,
+        a: false,
         b: false,
         c: false,
         d: false

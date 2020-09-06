@@ -1,27 +1,21 @@
 
 import React, { useState, useEffect } from 'react';
-// import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-// import Grid from '@material-ui/core/Grid';
-// import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 // import {withRouter } from 'react-router'
 import { useLocation } from 'react-router-dom';
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 import myStyles from './myStyles'
-// import Chart from './Chart';
-// import Deposits from './Deposits';
-// import Orders from './Orders';
 import LoginAppbar from './LoginAppbar'
 import LoginDrawer from './LoginDrawer';
 import MainPage from './MainPage';
 import Sign from '../Sign'
 import FileAndLocation from '../FileAndLocation'
 import UserProfile from './UserProfile';
-// import AlertDialogueSlide from './AlertDialogueSlide'
+import UpcomingOrders from './UpcomingOrders';
 import './styles.css'
 
 // const color = "#f00";
@@ -155,6 +149,11 @@ function Dashboard(
           />
         );
 
+      case 2:
+        return(
+          <UpcomingOrders />
+        );
+
       default:
         break;
     }
@@ -167,6 +166,7 @@ function Dashboard(
         open={open}
         online={online}
         setOnline={setOnline}
+        setCounter={setCounter}
         handleDrawerOpen={handleDrawerOpen}
       />
       <LoginDrawer
