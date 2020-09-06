@@ -105,20 +105,24 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
           />
           <br />
         </MuiThemeProvider>
-        <Button
-          type="button"
-          variant="contained"
-          fullWidth
-          style={{ margin: theme.spacing(3, 0, 2) }}
-          className="otp-button"
-          disabled={isDisabled}
-          onClick={handleFirstForm}
-        >{
-            isDisabled
-              ? "ENTER DETAILS"
-              : (onProfilePage ? "VERIFY DETAILS AND SAVE" : "VERIFY DETAILS AND PROCEED")
-          }
-        </Button>
+        {
+          (!onProfilePage || (onProfilePage && edit)) &&
+          <Button
+            type="button"
+            variant="contained"
+            fullWidth
+            style={{ margin: theme.spacing(3, 0, 2) }}
+            className="otp-button"
+            disabled={isDisabled}
+            onClick={handleFirstForm}
+          >{
+              isDisabled
+                ? "ENTER DETAILS"
+                : (onProfilePage ? "VERIFY DETAILS AND SAVE" : "VERIFY DETAILS AND PROCEED")
+            }
+          </Button>
+        }
+
         {edit &&
           <Button
             type="button"

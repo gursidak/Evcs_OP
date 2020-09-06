@@ -183,21 +183,26 @@ export default function MobileNumber(
             />
           )}
         </MuiThemeProvider>
-        <Button
-          type="button"
-          variant="contained"
-          onClick={handleProfile}
-          disabled={isDisabled}
-          fullWidth
-          color="primary"
-          style={{ margin: theme.spacing(3, 0, 2) }}
-        >
-          {
-            isDisabled
-              ? (onProfilePage ? "ENTER DETAILS" : "ENTER MOBILE NUMBER")
-              : (onProfilePage ? "VERIFY DETAILS AND SAVE" : "REQUEST OTP")
-          }
-        </Button>
+
+        {
+          (!onProfilePage || (onProfilePage && edit)) &&
+          <Button
+            type="button"
+            variant="contained"
+            onClick={handleProfile}
+            disabled={isDisabled}
+            fullWidth
+            color="primary"
+            style={{ margin: theme.spacing(3, 0, 2) }}
+          >
+            {
+              isDisabled
+                ? (onProfilePage ? "ENTER DETAILS" : "ENTER MOBILE NUMBER")
+                : (onProfilePage ? "VERIFY DETAILS AND SAVE" : "REQUEST OTP")
+            }
+          </Button>
+        }
+
         {edit &&
           <Button
             type="button"

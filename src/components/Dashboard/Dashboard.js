@@ -68,7 +68,8 @@ function Dashboard(
     handleifsc,
     handleLocation,
     handlePlace,
-    handleUseGPS
+    handleUseGPS,
+    handleCharger
   }
 ) {
   // let location = useLocation();
@@ -134,6 +135,8 @@ function Dashboard(
             handlePlace={handlePlace}
             useGPS={state.useGPS}
             handleUseGPS={handleUseGPS}
+            chargers={state.chargers}
+            handleCharger={handleCharger}
           />
         );
 

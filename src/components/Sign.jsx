@@ -167,15 +167,19 @@ class Sign extends Component {
   };
 
   handleCharger = e => {
-    const temp = e.target ? e.target.checked : e;
-    const id = e.target.id;
-    console.log('event', e);
-    this.setState(prevState => ({
-      chargers: {                   // object that we want to update
-          ...prevState.chargers,    // keep all other key-value pairs
-          [id]: temp       // update the value of specific key
-      }
-  }))
+    if (this.state.onProfilePage) {
+      this.setState({chargers: e});
+    } else {
+      const temp = e.target ? e.target.checked : e;
+      const id = e.target.id;
+      console.log('event', e);
+      this.setState(prevState => ({
+        chargers: {                   // object that we want to update
+            ...prevState.chargers,    // keep all other key-value pairs
+            [id]: temp       // update the value of specific key (charger)
+        }
+    }));
+    }
   }
 
   toggleinup() {
@@ -394,6 +398,7 @@ class Sign extends Component {
           handleLocation={this.handleLocation}
           handlePlace={this.handlePlace}
           handleUseGPS={this.handleUseGPS}
+          handleCharger={this.handleCharger}
         />
       );
     }

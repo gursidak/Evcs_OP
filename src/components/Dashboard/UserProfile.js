@@ -28,7 +28,8 @@ export default function UserProfile(
     setState,
     handleLocation,
     handlePlace,
-    handleUseGPS
+    handleUseGPS,
+    handleCharger
   }
 ) {
   return (
@@ -106,6 +107,8 @@ export default function UserProfile(
           <TypeOfChargers
             theme={theme} changeState={changeState}
             onProfilePage={state.onProfilePage}
+            handleCharger={handleCharger}
+            chargers={state.chargers}
           />
         </Grid>
       </Grid>

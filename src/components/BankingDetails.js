@@ -121,19 +121,24 @@ export default function BankingDetails(
           />
           <br />
         </MuiThemeProvider>
-        <Button
-          className="otp-button"
-          onClick={handleProfile}
-          style={{ margin: theme.spacing(3, 0, 2) }}
-          fullWidth
-          disabled={isDisabled}
-        >
-          {
-            isDisabled
-              ? "ENTER DETAILS"
-              : (onProfilePage ? "VERIFY AND SAVE DETAILS" : "VERIFY DETAILS AND PROCEED")
-          }
-        </Button>
+
+        {
+          (!onProfilePage || (onProfilePage && edit)) &&
+          <Button
+            className="otp-button"
+            onClick={handleProfile}
+            style={{ margin: theme.spacing(3, 0, 2) }}
+            fullWidth
+            disabled={isDisabled}
+          >
+            {
+              isDisabled
+                ? "ENTER DETAILS"
+                : (onProfilePage ? "VERIFY AND SAVE DETAILS" : "VERIFY DETAILS AND PROCEED")
+            }
+          </Button>
+        }
+
         {edit &&
           <Button
             type="button"
