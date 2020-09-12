@@ -3,8 +3,8 @@ import Landing from './Landing';
 import { Route, Switch } from 'react-router-dom';
 import MainView from './MainView';
 import Sign from './Sign';
-import Dashboard from './Dashboard/Dashboard'
-import WebAppBar from './WebAppBar'
+import Dashboard from './Dashboard/Dashboard';
+import WebAppBar from './WebAppBar';
 
 export default function Main() {
     return (

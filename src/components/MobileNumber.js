@@ -152,6 +152,7 @@ export default function MobileNumber(
               />
             </>
           }
+
           <TextField
             id="tempMobile"
             autoFocus={!onProfilePage}
@@ -167,21 +168,18 @@ export default function MobileNumber(
                   <PhoneRoundedIcon />
                 </InputAdornment>
               ),
-              // className: styles.input
             }}
             placeholder="Enter 10 Digits Mobile Number"
             type="tel"
-            // style={{ fontSize: "1.5em" }}
             required
-          // InputProps={{ fontSize: '1.5em' }}
-
           />
-          {login && (
+
+          {/* {login && (
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-          )}
+          )} */}
         </MuiThemeProvider>
 
         {
@@ -198,7 +196,7 @@ export default function MobileNumber(
             {
               isDisabled
                 ? (onProfilePage ? "ENTER DETAILS" : "ENTER MOBILE NUMBER")
-                : (onProfilePage ? "VERIFY DETAILS AND SAVE" : "REQUEST OTP")
+                : (onProfilePage ? "VERIFY DETAILS AND SAVE" : "CONTINUE")
             }
           </Button>
         }

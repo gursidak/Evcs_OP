@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import "./Css/App.css";
 // import { Button } from 'react-mdl';
-import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import OtpInput from "react-otp-input";
-import TextField from "@material-ui/core/TextField";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 import FirstForm from "./FirstForm";
 import FileAndLocation from "./FileAndLocation";
@@ -12,16 +9,13 @@ import FindLocation from "./FindLocation";
 import WrappedMap from "./Map";
 import ChooseOptions from "./ChooseOptions";
 import WebAppBar from "./WebAppBar";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import PhoneRoundedIcon from "@material-ui/icons/PhoneRounded";
 import WaitingRoom from "./WaitingRoom";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Footer from "./Footer";
 import Dashboard from "../components/Dashboard/Dashboard";
 import BankingDetails from "./BankingDetails";
 import TypeOfChargers from "./TypeOfChargers";
 import MobileNumber from "./MobileNumber";
+import Login from "./Login";
 import "./Sign.css";
 
 const color = "#f00";
@@ -64,9 +58,16 @@ class Sign extends Component {
         a: false,
         b: false,
         c: false,
-        d: false
-      }
+        d: false,
+      },
+      login: false,
+      password: "",
     };
+  }
+
+  componentDidMount() {
+    console.log(`State from previous component: `, this.props.location.state);
+    this.setState({ login: this.props.location.state.login });
   }
 
   changeState = activeId => {
@@ -77,7 +78,19 @@ class Sign extends Component {
 
   handleChange = e => {
     const mobileNo = e.target ? e.target.value : e;
-    if (isNaN(mobileNo)) return;
+
+    // '+91 - '
+    // if (mobileNo.substring(0, 7) === "+91 - ") {
+    //   if(mobileNo.length > 16 || isNaN(mobileNo.substring(7))) return;
+    //   this.setState({ mobileNo: mobileNo.substring(7) });
+    //   return;
+    // } else if (isNaN(mobileNo)) {
+    //   console.log(`Invalid Mobile number`);
+    //   return;
+    // }
+    // this.setState({ mobileNo: mobileNo });
+
+    if (isNaN(mobileNo) || mobileNo.length > 10) return;
     this.setState({ mobileNo: mobileNo });
   };
 
@@ -167,18 +180,28 @@ class Sign extends Component {
 
   handleCharger = e => {
     if (this.state.onProfilePage) {
-      this.setState({chargers: e});
+      this.setState({ chargers: e });
     } else {
       const temp = e.target ? e.target.checked : e;
       const id = e.target.id;
-      console.log('event', e);
+      console.log("event", e);
       this.setState(prevState => ({
-        chargers: {                   // object that we want to update
-            ...prevState.chargers,    // keep all other key-value pairs
-            [id]: temp       // update the value of specific key (charger)
-        }
-    }));
+        chargers: {
+          // object that we want to update
+          ...prevState.chargers, // keep all other key-value pairs
+          [id]: temp, // update the value of specific key (charger)
+        },
+      }));
     }
+  };
+
+  handlePassword = e => {
+    const temp = e.target ? e.target.value : e;
+    this.setState({password: temp});
+  };
+
+  clearMobileNumber = () => {
+    this.setState({mobileNo : ''})
   }
 
   toggleinup() {
@@ -198,35 +221,18 @@ class Sign extends Component {
         />
       );
     } else if (this.state.activelog === 1) {
-      const isDisabled = this.state.otp.length < 4;
-      const text = isDisabled ? "ENTER OTP" : "VERIFY AND PROCEED";
       return (
-        <div className="otp-input-box">
-          <h4> Enter verification code </h4>
-          <OtpInput
-            value={this.state.otp}
-            onChange={this.handleOTPChange}
-            numInputs={4}
-            separator={<span> </span>}
-            isInputNum={true}
-            shouldAutoFocus={true}
-            inputStyle="otp-input"
-            focusStyle="focus-style"
-            containerStyle="otp-box-container"
-          />
-          <Button
-            className="otp-button"
-            disabled={isDisabled}
-            onClick={() => {
-              this.state.login ? this.changeState(10) : this.changeState(2);
-            }}
-            fullWidth
-            variant="contained"
-            style={{ margin: theme.spacing(3, 0, 2) }}
-          >
-            {text}
-          </Button>
-        </div>
+        <Login
+          login={this.state.login}
+          otp={this.state.otp}
+          theme={theme}
+          handleOTPChange={this.handleOTPChange}
+          password={this.state.password}
+          handlePassword={this.handlePassword}
+          changeState={this.changeState}
+          mobileNo={this.state.mobileNo}
+          clearMobileNumber={this.clearMobileNumber}
+        />
       );
     } else if (this.state.activelog === 2) {
       const showAadhar = this.state.aadharNumber
@@ -400,6 +406,8 @@ class Sign extends Component {
           handleCharger={this.handleCharger}
         />
       );
+    } else if (this.state.activelog === 11) {
+      return "";
     }
   }
 
