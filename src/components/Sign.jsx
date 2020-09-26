@@ -67,7 +67,7 @@ class Sign extends Component {
 
   componentDidMount() {
     console.log(`State from previous component: `, this.props.location.state);
-    // this.setState({ login: this.props.location.state.login });
+    this.setState({ login: this.props.location.state.login || false });
   }
 
   changeState = activeId => {
