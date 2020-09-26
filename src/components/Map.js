@@ -1,14 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import Geocode from "react-geocode";
-// import { Button } from 'react-mdl';
 import Button from "@material-ui/core/Button";
-import TextField from '@material-ui/core/TextField';
 import {
   GoogleMap,
   withScriptjs,
   withGoogleMap,
   Marker
 } from "react-google-maps";
+import mapIcon from '../images/mapIcon.png';
 import './Sign.css';
 
 Geocode.setApiKey("AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw");
@@ -154,15 +153,18 @@ function Map(
           defaultCenter={center}
           onBoundsChanged={handleBoundsChanged}
           onDragEnd={handleDragEnd}
-
+          defaultOptions={{
+            mapTypeControl: false,
+            fullscreenControl: false,
+            zoomControlOptions: false,
+            zoomControl: false,
+            streetView: false,
+            streetViewControl: false
+          }}
         >
           <Marker
-            // defaultPlace={center}
             position={center}
-          // ref={refMap}
-          // defaultPosition={center}
-          // onDrag={handleBoundsChanged}
-          // onDragEnd={handleDragEnd}
+            icon={require('../images/mapIcon.png')}
           />
         </GoogleMap>}
         {location.lat !== '' && <>
