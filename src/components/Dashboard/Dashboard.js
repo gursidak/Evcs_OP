@@ -1,33 +1,18 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
-// import {withRouter } from 'react-router'
-import { useLocation } from 'react-router-dom';
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 import myStyles from './myStyles'
 import LoginAppbar from './LoginAppbar'
 import LoginDrawer from './LoginDrawer';
 import MainPage from './MainPage';
-import Sign from '../Sign'
-import FileAndLocation from '../FileAndLocation'
 import UserProfile from './UserProfile';
 import UpcomingOrders from './UpcomingOrders';
 import AllOrders from './AllOrders';
 import './styles.css'
-
-// const color = "#f00";
-// const black = "#000000";
-// const theme = createMuiTheme({
-//   palette: {
-//     common: { black: color, white: color },
-//     primary: { main: color, dark: color, light: color },
-//     text: { primary: black, secondary: black },
-//   },
-// });
 
 function Copyright() {
   return (
@@ -88,7 +73,6 @@ function Dashboard(
   const [open, setOpen] = useState(false);
   const [online, setOnline] = useState(true);
   const [counter, setCounter] = useState(0);
-  // const [firstTimeLogin, setFirstTimeLogin] = useState(true);
 
 
   const handleDrawerOpen = () => {
@@ -97,15 +81,6 @@ function Dashboard(
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  // useEffect(() => {
-  //   if ()
-  //     setShowconfirm(true);
-  //   // console.log(id);
-  //   // console.log(`Props:`, JSON.stringify(location));
-  // }, [profileReady]);
-
-  // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   const toggleView = () => {
     switch (counter) {
@@ -179,7 +154,6 @@ function Dashboard(
         open={open}
         setCounter={setCounter}
         handleDrawerClose={handleDrawerClose}
-        // online={online}
       />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />

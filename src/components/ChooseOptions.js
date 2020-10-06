@@ -111,10 +111,7 @@ export default function ChooseOptions(
                   style={{
                     height: `50%`,
                     width: "100%",
-                    // padding: "50%"
-                    // marginBottom: "25%"
                     position: "absolute",
-                    // marginTop: "25%",
                   }}
                 />
               }
@@ -158,7 +155,6 @@ export default function ChooseOptions(
           fullWidth
           color="primary"
           className="discard-button"
-        // style={{ margin: theme.spacing(3, 0, 2) }}
         >DISCARD CHANGES</Button>}
     </>
   )

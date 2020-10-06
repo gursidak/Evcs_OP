@@ -3,8 +3,6 @@ import { MuiThemeProvider } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import PhoneRoundedIcon from "@material-ui/icons/PhoneRounded";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
@@ -42,13 +40,9 @@ export default function MobileNumber(
     if (onProfilePage) {
       if (validator.validate(tempEmail)) {
         setWarning(false);
-        // setProfileUpdateToTrue();
         handleName(tempName.trim());
         handleEmail(tempEmail);
         handleChange(tempMobile);
-        // setState({name: name.trim()});
-        // changeState(3);
-        // handleEditSubmit();
         setEdit(false);
       } else {
         setWarning(true);
@@ -127,7 +121,6 @@ export default function MobileNumber(
                 type="text"
                 required
                 disabled={onProfilePage ? !edit : false}
-              // inputProps={{ readOnly: true }}
               />
               <TextField
                 id="tempEmail"
@@ -173,13 +166,6 @@ export default function MobileNumber(
             type="tel"
             required
           />
-
-          {/* {login && (
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-          )} */}
         </MuiThemeProvider>
 
         {

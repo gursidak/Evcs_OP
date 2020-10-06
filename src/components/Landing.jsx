@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import './Logo.css'
 import { Redirect } from 'react-router-dom'
 import WebAppBar from './WebAppBar';
 import Container from "@material-ui/core/Container";

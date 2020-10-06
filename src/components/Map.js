@@ -7,7 +7,6 @@ import {
   withGoogleMap,
   Marker
 } from "react-google-maps";
-import mapIcon from '../images/mapIcon.png';
 import './Sign.css';
 
 Geocode.setApiKey("AIzaSyCbTDD_FfveKWUS5YnpMAkqFM2G_iMNQmw");
@@ -97,12 +96,6 @@ function Map(
       setCenter(location);
       setShowMap(true);
     }
-
-    /*         return () => {
-                handlePlace('');
-                handleLocation({});
-                handleUseGPS(true);
-            } */
   }, [])
 
   const handleDragEnd = () => {
@@ -117,8 +110,6 @@ function Map(
 
   const returnToMenu = () => {
     if (onProfilePage) {
-      // handleLocation(tempLocation);
-      // handlePlace(tempPlace);
       setCounter(0);
     } else {
       changeState(7);

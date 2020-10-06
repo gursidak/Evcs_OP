@@ -26,13 +26,8 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
       if (validator.isValidGSTNumber(tempGstin)) {
         setWarning(false);
         handleGSTIN(tempGstin);
-        // if (isNaN(num) || num.length > 12)
         handleAadhar(tempAadharNumber);
-        // setTempAadharNumber(aadharNumber);
-        // setTempGstin(gstin);
         setEdit(!edit);
-        // handleEditSubmit();
-        // setEdit(false);
       } else {
         setWarning(true);
       }
@@ -52,7 +47,6 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
         const t = e.target.value;
         if (isNaN(t) || t.length > 12) break;
         setTempAadharNumber(t);
-        // handleAadhar(e.target.value)
         break;
 
       case "tempGstin":
@@ -131,7 +125,6 @@ export default function FirstForm({ theme, showAadhar, gstin, handleGSTIN, handl
             fullWidth
             color="primary"
             className="discard-button"
-          // style={{ margin: theme.spacing(3, 0, 2) }}
           >DISCARD CHANGES</Button>}
       </form>
     </>

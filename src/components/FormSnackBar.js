@@ -1,6 +1,5 @@
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
-// import Alert from '@material-ui/lab/Alert';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -18,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function FormSnackBar({text, severity}) {
-    // console.log(`Show Warning in FormSnackBar is ${isOpen}`);
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
 
