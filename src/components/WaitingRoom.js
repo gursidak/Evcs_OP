@@ -4,7 +4,6 @@ import './Sign.css';
 
 export default function WaitingRoom({ changeState }) {
     const [redirect, setRedirect] = useState(false);
-    // const goNext = () => changeState(9)
     useEffect(() => {
         const timer = setTimeout(() => {
             setRedirect(true);

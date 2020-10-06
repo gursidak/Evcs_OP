@@ -1,10 +1,6 @@
 import React from 'react'
-// import AppBar from "@material-ui/core/AppBar";
-// import Toolbar from "@material-ui/core/Toolbar";
 import './WebAppBar.css'
-// import './Sign.css'
 import logo from './logo.jpg'
-
 
 export default function WebAppBar() {
     return (

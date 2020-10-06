@@ -77,12 +77,9 @@ export default function Login({ login, otp, theme, mobileNo, handleOTPChange, pa
                 type="password"
                 autoFocus
                 fullWidth
-                // onChange={onProfilePage ? handleEditProfileField : gstinChange}
-                // value={onProfilePage ? tempGstin : gstin}
                 error={warning}
                 placeholder="Enter your Password"
                 helperText={warning ? "Password must be of atleast 8 characters" : ""}
-                // disabled={onProfilePage ? !edit : false}
                 value={password}
                 onChange={passwordChange}
               />
@@ -118,36 +115,12 @@ export default function Login({ login, otp, theme, mobileNo, handleOTPChange, pa
 
           <Button
             className="otp-button"
-            // disabled={isDisabled}
             onClick={handleContinueOption}
             fullWidth
             variant="contained"
             style={{ margin: theme.spacing(2, 0, 2) }}
           >{secondButtonText}</Button>
         </MuiThemeProvider>
-
-        {/* <OtpInput
-          value={otp}
-          onChange={handleOTPChange}
-          numInputs={4}
-          separator={<span> </span>}
-          isInputNum={true}
-          shouldAutoFocus={true}
-          inputStyle="otp-input"
-          focusStyle="focus-style"
-          containerStyle="otp-box-container"
-        />
-
-        <Button
-          className="otp-button"
-          // disabled={isDisabled}
-          onClick={handleLogin}
-          fullWidth
-          variant="contained"
-          style={{ margin: theme.spacing(1, 0, 2) }}
-        >
-          {text}
-        </Button> */}
       </div>
     </>
   )

@@ -6,7 +6,6 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-places-au
 import KeyboardBackspaceRoundedIcon from '@material-ui/icons/KeyboardBackspaceRounded';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import uniqid from 'uniqid';
-// import Map from './Map'
 import './FindLocation.css';
 
 
@@ -29,7 +28,6 @@ export default function FindLocation({ theme, place, location, changeState, hand
         handleUseGPS(true);
         changeState(7);
     }
-    // const className = 'location-item';
     return (
         <>
             <div className="sign-in-form">
@@ -37,16 +35,13 @@ export default function FindLocation({ theme, place, location, changeState, hand
                     <MuiThemeProvider theme={theme}>
                         <Button
                             onClick={onClick}
-                        // id="location-back-button"
                         ><KeyboardBackspaceRoundedIcon />
                         </Button>
 
                         <PlacesAutocomplete
-                            // key={id}
                             value={name}
                             onChange={setName}
                             onSelect={handleSelect}
-                        // shouldFetchSuggestions={place.length > 1}
                         >
                             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                 <div >

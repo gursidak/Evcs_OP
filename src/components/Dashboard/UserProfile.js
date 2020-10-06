@@ -35,12 +35,9 @@ export default function UserProfile(
   return (
     <>
       <Grid container spacing={3}>
-        {/* <h3 style={{ margin: "0 auto" }}>Shivam's Profile</h3> */}
-        {/* {console.log(`name: ${state.name}`)} */}
         <Divider variant="middle" />
         <Grid item xs={12}>
           <MobileNumber
-            // state={state}
             theme={theme}
             mobileNo={state.mobileNo}
             handleChange={handleChange}
@@ -57,7 +54,6 @@ export default function UserProfile(
             onProfilePage={state.onProfilePage}
           />
         </Grid>
-        {/* Bank Account Details */}
         <hr />
         <Grid item xs={12}>
           <FirstForm

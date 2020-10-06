@@ -31,7 +31,6 @@ export default function LoginDrawer({ open, handleDrawerClose, setCounter/* , on
         <MainListItems
           setCounter={setCounter}
           handleDrawerClose={handleDrawerClose}
-          // online={online}
         />
       </List>
       {/* <Divider /> */}

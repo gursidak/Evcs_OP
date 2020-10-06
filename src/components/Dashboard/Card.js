@@ -13,7 +13,6 @@ const usePersonStyles = makeStyles(() => ({
     fontFamily: "Barlow, san-serif",
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
-    // overflow: "hidden"
   },
   name: {
     fontWeight: 600,

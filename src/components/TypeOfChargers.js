@@ -19,7 +19,6 @@ export default function TypeOfChargers({ theme, changeState, onProfilePage, char
     const temp = e.target ? e.target.checked : e;
     const id = e.target.id;
     console.log('event', e);
-    // console.log('temp', temp);
     id && setTempChargers({                 // object that we want to update
         ...tempChargers,    // keep all other key-value pairs
         [id]: temp       // update the value of specific key (charger)
@@ -87,7 +86,6 @@ export default function TypeOfChargers({ theme, changeState, onProfilePage, char
               fullWidth
               color="primary"
               className="discard-button"
-            // style={{ margin: theme.spacing(3, 0, 2) }}
             >DISCARD CHANGES</Button>}
         </div>
       </div>

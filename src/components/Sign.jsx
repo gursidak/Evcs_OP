@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./Css/App.css";
-// import { Button } from 'react-mdl';
 import Container from "@material-ui/core/Container";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+import { createMuiTheme } from "@material-ui/core";
 import FirstForm from "./FirstForm";
 import FileAndLocation from "./FileAndLocation";
 import FindLocation from "./FindLocation";
@@ -78,18 +77,6 @@ class Sign extends Component {
 
   handleChange = e => {
     const mobileNo = e.target ? e.target.value : e;
-
-    // '+91 - '
-    // if (mobileNo.substring(0, 7) === "+91 - ") {
-    //   if(mobileNo.length > 16 || isNaN(mobileNo.substring(7))) return;
-    //   this.setState({ mobileNo: mobileNo.substring(7) });
-    //   return;
-    // } else if (isNaN(mobileNo)) {
-    //   console.log(`Invalid Mobile number`);
-    //   return;
-    // }
-    // this.setState({ mobileNo: mobileNo });
-
     if (isNaN(mobileNo) || mobileNo.length > 10) return;
     this.setState({ mobileNo: mobileNo });
   };
@@ -119,7 +106,6 @@ class Sign extends Component {
 
   handleName = e => {
     const name = e.target ? e.target.value : e;
-    // console.log(name);
     this.setState({ name: name });
   };
 
@@ -380,17 +366,9 @@ class Sign extends Component {
           onClick={onClick}
           changeState={this.changeState}
           handleAadhar={this.handleAadhar}
-          // handleAccountNumber
           handleChange={this.handleChange}
-          // handleFile
           handleGSTIN={this.handleGSTIN}
-          // handleLocation
-          // handleName
-          // handleOTPChange
-          // handlePlace
           handleSubmit={this.handleSubmit}
-          // handleUseGPS
-          // handleifsc
           onProfilePage={this.state.onProfilePage}
           setProfileUpdateToTrue={this.setProfileUpdateToTrue}
           handleEmail={this.handleEmail}
